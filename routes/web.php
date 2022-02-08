@@ -38,10 +38,10 @@ Route::put('/api/ofiLoc/actualizar', [OficinaLocalController::class, 'update']);
 
 Route::get('api/ofiLoc/getOfiLoc',[OficinaLocalController::class,'getOfiLoc']);
 
-//::::::::: ROUTES OFICINASLOCALES FILTROS >>>>>>>
-Route::get('api/ofiLoc/getNumOf',[OficinaLocalController::class,'getNumOf']);
-Route::get('api/ofiLoc/getRaSo',[OficinaLocalController::class,'getRaSo']);
-Route::get('api/ofiLoc/getProp',[OficinaLocalController::class,'getProp']);
+//::::::::: ROUTES OFICINASLOCALES FILTRO >>>>>>>
+Route::get('api/ofiLoc/getfiltro',[OficinaLocalController::class,'getFiltro']);
+// Route::get('api/ofiLoc/getNumOf',[OficinaLocalController::class,'getNumOf']);
+// Route::get('api/ofiLoc/getProp',[OficinaLocalController::class,'getProp']);
 
 Route::get('api/ofiLoc/getdisp',[OficinaLocalController::class,'getAlqVent']);
 
@@ -50,18 +50,25 @@ Route::get('api/persona',[PersonaController::class,'index']);
 Route::post('api/persona/registrar',[PersonaController::class,'store']);
 Route::put('/api/persona/actualizar', [PersonaController::class, 'update']);
 
+//::::::::: ROUTES PERSONA FILTROS >>>>>>>
+Route::get('api/persona/getfiltro',[PersonaController::class,'getFiltro']);
+
 
 //::::::::: ROUTES PARQUEADEROS >>>>>>>
 Route::get('api/parqueadero',[ParqueaderoController::class,'index']);
 Route::post('api/parqueadero/registrar',[ParqueaderoController::class,'store']);
 Route::put('/api/parqueadero/actualizar', [ParqueaderoController::class, 'update']);
 
+//::::::::: ROUTE PARQUEADEROS ALL >>>>>>>
 Route::get('api/parqueadero/getParq',[ParqueaderoController::class,'getParq']);
 
+//::::::::: ROUTE PARQUEADEROS DISPONIBLES >>>>>>>
+Route::get('api/parqueadero/getdisp',[ParqueaderoController::class,'getAlqVent']);
+
 //::::::::: ROUTES PARQUEADEROS FILTROS >>>>>>>
-Route::get('api/parqueadero/getNumPar',[ParqueaderoController::class,'getNumPar']);
-Route::get('api/parqueadero/getRaSo',[ParqueaderoController::class,'getRaSoc']);
-Route::get('api/parqueadero/getOfLoc',[ParqueaderoController::class,'getNumOf']);
+Route::get('api/parqueadero/getfiltro',[ParqueaderoController::class,'getFiltro']);
+// Route::get('api/parqueadero/getRaSo',[ParqueaderoController::class,'getRaSoc']);
+// Route::get('api/parqueadero/getOfLoc',[ParqueaderoController::class,'getNumOf']);
 
 
 
@@ -71,12 +78,18 @@ Route::get('api/deposito',[DepositoController::class,'index']);
 Route::post('api/deposito/registrar',[DepositoController::class,'store']);
 Route::put('/api/deposito/actualizar', [DepositoController::class, 'update']);
 
+Route::get('api/deposito/getdisp',[DepositoController::class,'getAlqVent']);
+
+//::::::::: ROUTES DEPOSITOS FILTRO >>>>>>>
+Route::get('api/deposito/getfiltro',[DepositoController::class,'getFiltro']);
+
 
 //::::::::: ROUTES AUTORIZACIONES >>>>>>>
 Route::get('api/autorizacion',[AutorizacionController::class,'index']);
 Route::post('api/autorizacion/registrar',[AutorizacionController::class,'store']);
 Route::put('api/autorizacion/actualizar', [AutorizacionController::class, 'update']);
 
+Route::get('api/autorizacion/getfiltro',[AutorizacionController::class,'getFiltro']);
 
 //::::::::: ROUTES VEHICULOS >>>>>>>
 Route::get('api/vehiculo',[VehiculoController::class,'index']);
@@ -84,6 +97,7 @@ Route::post('api/vehiculo/registrar',[VehiculoController::class,'store']);
 Route::put('api/vehiculo/actualizar', [VehiculoController::class, 'update']);
 Route::post('api/vehiculo/eliminar', [VehiculoController::class, 'destroy']);
 
+Route::get('api/vehiculo/getfiltro',[VehiculoController::class,'getFiltro']);
 
 //::::::::: ROUTES DETALLEVP >>>>>>>
 Route::get('api/detalleVp',[DetVehiParqController::class,'index']);

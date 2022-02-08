@@ -43,4 +43,25 @@ class DepositoController extends Controller
 
         $deposito->save();
     }
+    public function getFiltro(Request $request){
+        $num=$request->num;
+        $repre=$request->repre;
+        $deposito=Deposito::select(
+        'id','numero','repre_propie','ubicacion','estado')
+        ->where('numero',$num)
+        ->orwhere('repre_propie',$repre)
+        ->get();
+        return[
+            'deposito'=>$deposito
+        ];
+    }
+    public function getAlqVent(){
+        $deposito= Deposito::select('id','numero','disp_venta','disp_alquiler')
+        ->where('disp_alquiler',1)
+        ->orwhere('disp_venta',1)
+        ->get();
+        return[
+            'deposito'=>$deposito
+        ];
+    }
 }

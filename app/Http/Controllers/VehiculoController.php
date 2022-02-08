@@ -48,4 +48,19 @@ class VehiculoController extends Controller
         $vehiculo=Vehiculo::FIndOrFail($request->id);
         $vehiculo->delete();
     }
+    public function getFiltro(Request $request,){
+        $placa=$request->placa;
+        $vehiculo= Vehiculo::join(
+        'tipo_vehiculos','vehiculos.id_tpVehi',
+        '=','tipo_vehiculos.id')
+        ->join('personas','vehiculos.id_persona','=','personas.id')
+        ->select(
+        'vehiculos.id','placa','tipo_vehiculos.descripcion as Tipo','vehiculos.marca',
+        'personas.nombre as Titular','vehiculos.estado')
+        ->where('vehiculos.placa',$placa)
+        ->get();
+        return[
+            'vehiculo'=>$vehiculo
+        ];
+    }
 }

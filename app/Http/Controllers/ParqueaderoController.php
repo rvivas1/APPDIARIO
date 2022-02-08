@@ -9,13 +9,17 @@ class ParqueaderoController extends Controller
 {
     //
     public function index(){
-        $parqueadero=Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
+        $parqueadero=Parqueadero::join(
+        'oficina_locals',
+        'parqueaderos.id_ofLoc',
+        '=','oficina_locals.id')
         ->select(
         'parqueaderos.numero','parqueaderos.tipo','parqueaderos.ubicacion',
         'parqueaderos.repre_propie as Representante','parqueaderos.propio_arrendado',
         'parqueaderos.permite_carro as Carro','parqueaderos.permite_moto as Moto',
         'parqueaderos.disp_venta as Venta','parqueaderos.disp_alquiler as Alquiler',
-        'oficina_locals.numero as Oficina','parqueaderos.estado')->get();
+        'oficina_locals.numero as Oficina','parqueaderos.estado')
+        ->get();
         return['parqueadero'=>$parqueadero]; 
     }
 
@@ -56,43 +60,60 @@ class ParqueaderoController extends Controller
             'parqueadero'=>$parqueadero
         ];
     }
-    public function getNumPar(Request $request){
+    public function getFiltro(Request $request){
         $num=$request->num;
-        $parq= Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
-        ->select('parqueaderos.numero','oficina_locals.nit as Nit',
-        'oficina_locals.razon_social as Razon social',
+        $raSocial=$request->raSocial;
+        $ofi=$request->ofi;
+        $parq= Parqueadero::join(
+        'oficina_locals',
+        'parqueaderos.id_ofLoc',
+        '=','oficina_locals.id')
+        ->select(
+        'parqueaderos.numero','oficina_locals.nit',
+        'oficina_locals.razon_social',
         'oficina_locals.repre_propie as Titular',
         'parqueaderos.ubicacion','parqueaderos.estado')
         ->where('parqueaderos.numero',$num)
+        ->orwhere('oficina_locals.razon_social',$raSocial)
+        ->orwhere('oficina_locals.numero',$ofi)
         ->get();
         return[
             'parq'=>$parq
         ];
     }
-    public function getRaSoc(Request $request){
-        $titular=$request->titular;
-        $parq= Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
-        ->select('parqueaderos.numero','oficina_locals.nit',
-        'oficina_locals.razon_social',
-        'oficina_locals.repre_propie as Titular',
-        'parqueaderos.ubicacion','parqueaderos.estado')
-        ->where('oficina_locals.razon_social',$titular)
+    public function getAlqVent(){
+        $parq= Parqueadero::select('id','numero','disp_venta','disp_alquiler')
+        ->where('disp_alquiler',1)
+        ->orwhere('disp_venta',1)
         ->get();
         return[
             'parq'=>$parq
         ];
     }
-    public function getNumOf(Request $request){
-        $ofi=$request->ofi;
-        $parq= Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
-        ->select('parqueaderos.numero','oficina_locals.nit',
-        'oficina_locals.razon_social',
-        'oficina_locals.repre_propie as Titular',
-        'parqueaderos.ubicacion','parqueaderos.estado')
-        ->where('oficina_locals.numero',$ofi)
-        ->get();
-        return[
-            'parq'=>$parq
-        ];
-    }
+    // public function getRaSoc(Request $request){
+    //     $titular=$request->titular;
+    //     $parq= Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
+    //     ->select('parqueaderos.numero','oficina_locals.nit',
+    //     'oficina_locals.razon_social',
+    //     'oficina_locals.repre_propie as Titular',
+    //     'parqueaderos.ubicacion','parqueaderos.estado')
+    //     ->where('oficina_locals.razon_social',$titular)
+    //     ->get();
+    //     return[
+    //         'parq'=>$parq
+    //     ];
+    // }
+    // public function getNumOf(Request $request){
+    //     $ofi=$request->ofi;
+    //     $parq= Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
+    //     ->select('parqueaderos.numero','oficina_locals.nit',
+    //     'oficina_locals.razon_social',
+    //     'oficina_locals.repre_propie as Titular',
+    //     'parqueaderos.ubicacion','parqueaderos.estado')
+    //     ->where('oficina_locals.numero',$ofi)
+    //     ->get();
+    //     return[
+    //         'parq'=>$parq
+    //     ];
+    // }
 }

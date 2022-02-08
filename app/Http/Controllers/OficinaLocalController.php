@@ -64,31 +64,15 @@ class OficinaLocalController extends Controller
             'ofiLoc'=>$ofiLoc
         ];
     }
-    public function getNumOf(Request $request,){
+    public function getFiltro(Request $request,){
+        $nom=$request->nom;
+        $prop=$request->prop;
         $num=$request->num;
         $ofiLoc= OficinaLocal::select('id','numero','nit','razon_social',
         'ubicacion','tel','estado')
-        ->where('numero',$num)
-        ->get();
-        return[
-            'ofiLoc'=>$ofiLoc
-        ];
-    }
-    public function getRaSo(Request $request,){
-        $nom=$request->nom;
-        $ofiLoc= OficinaLocal::select('id','numero','nit','razon_social',
-        'ubicacion','tel','estado')
         ->where('razon_social',$nom)
-        ->get();
-        return[
-            'ofiLoc'=>$ofiLoc
-        ];
-    }
-    public function getProp(Request $request){
-        $prop=$request->prop;
-        $ofiLoc= OficinaLocal::select('id','numero','nit','razon_social',
-        'ubicacion','tel','estado')
-        ->where('repre_propie',$prop)
+        ->orwhere('repre_propie',$prop)
+        ->orwhere('numero',$num)
         ->get();
         return[
             'ofiLoc'=>$ofiLoc
@@ -96,10 +80,32 @@ class OficinaLocalController extends Controller
     }
     public function getAlqVent(){
         $ofiLoc= OficinaLocal::select('id','numero','disp_venta','disp_alquiler')
-        ->where('disp_alquiler',1 || 'disp_venta',1)
+        ->where('disp_alquiler',1)
+        ->orwhere('disp_venta',1)
         ->get();
         return[
             'ofiLoc'=>$ofiLoc
         ];
     }
+    // public function getNumOf(Request $request,){
+    //     $num=$request->num;
+    //     $ofiLoc= OficinaLocal::select('id','numero','nit','razon_social',
+    //     'ubicacion','tel','estado')
+    //     ->where('numero',$num)
+    //     ->get();
+    //     return[
+    //         'ofiLoc'=>$ofiLoc
+    //     ];
+    // }
+    // public function getProp(Request $request){
+    //     $prop=$request->prop;
+    //     $ofiLoc= OficinaLocal::select('id','numero','nit','razon_social',
+    //     'ubicacion','tel','estado')
+    //     ->where('repre_propie',$prop)
+    //     ->get();
+    //     return[
+    //         'ofiLoc'=>$ofiLoc
+    //     ];
+    // }
+    
 }
