@@ -19,7 +19,6 @@ class CreateParqueaderosTable extends Migration
             $table->string('tipo');
             $table->string('ubicacion');
             $table->string('repre_propie',30);
-            $table->string('repre_propie',30);
             $table->char('propio_arrendado',2);
             $table->char('estado',2);
             $table->char('permite_moto',2);

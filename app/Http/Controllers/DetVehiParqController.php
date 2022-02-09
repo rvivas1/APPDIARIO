@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\DetVehiParq;
 
 use Illuminate\Http\Request;
+// use Inertia\Inertia;
 
 class DetVehiParqController extends Controller
 {

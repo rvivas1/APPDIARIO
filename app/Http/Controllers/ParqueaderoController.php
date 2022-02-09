@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Parqueadero;
 
 use Illuminate\Http\Request;
+// use Inertia\Inertia;
 
 class ParqueaderoController extends Controller
 {

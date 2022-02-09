@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\ActividadEconomica;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+
 
 class ActividadEconomicaController extends Controller
 {

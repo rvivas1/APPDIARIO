@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposito;
 
 use Illuminate\Http\Request;
+// use Inertia\Inertia;
 
 class DepositoController extends Controller
 {
