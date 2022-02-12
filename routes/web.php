@@ -41,7 +41,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 //::::::::: ROUTES OFICINASLOCALES >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/ofiLoc',[OficinaLocalController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/ofiLoc',[OficinaLocalController::class,'index'])->name('ofiLoc');
+
 Route::middleware(['auth:sanctum'])->get('api/ofiLoc/data',[OficinaLocalController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/ofiLoc/registrar',[OficinaLocalController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/ofiLoc/actualizar', [OficinaLocalController::class, 'update']);
@@ -56,7 +57,9 @@ Route::middleware(['auth:sanctum'])->get('api/ofiLoc/getfiltro',[OficinaLocalCon
 Route::middleware(['auth:sanctum'])->get('api/ofiLoc/getdisp',[OficinaLocalController::class,'getAlqVent']);
 
 //::::::::: ROUTES PERSONAS >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/persona',[PersonaController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/persona',[PersonaController::class,'index'])->name('persona');
+
+Route::middleware(['auth:sanctum'])->get('api/persona/data',[PersonaController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/persona/registrar',[PersonaController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/persona/actualizar', [PersonaController::class, 'update']);
 
@@ -65,7 +68,9 @@ Route::middleware(['auth:sanctum'])->get('api/persona/getfiltro',[PersonaControl
 
 
 //::::::::: ROUTES PARQUEADEROS >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/parqueadero',[ParqueaderoController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/parqueadero',[ParqueaderoController::class,'index'])->name('parqueadero');
+
+Route::middleware(['auth:sanctum'])->get('api/parqueadero/data',[ParqueaderoController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/parqueadero/registrar',[ParqueaderoController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/parqueadero/actualizar', [ParqueaderoController::class, 'update']);
 
@@ -82,7 +87,9 @@ Route::middleware(['auth:sanctum'])->get('api/parqueadero/getfiltro',[Parqueader
 
 
 //::::::::: ROUTES DEPOSITOS >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/deposito',[DepositoController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/deposito',[DepositoController::class,'index'])->name('deposito');
+
+// Route::middleware(['auth:sanctum'])->get('api/deposito/data',[DepositoController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/deposito/registrar',[DepositoController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/deposito/actualizar', [DepositoController::class, 'update']);
 
@@ -94,14 +101,18 @@ Route::middleware(['auth:sanctum'])->get('api/deposito/getfiltro',[DepositoContr
 
 
 //::::::::: ROUTES AUTORIZACIONES >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/autorizacion',[AutorizacionController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/autorizacion',[AutorizacionController::class,'index'])->name('autorizacion');
+
+Route::middleware(['auth:sanctum'])->get('api/autorizacion/data',[AutorizacionController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/autorizacion/registrar',[AutorizacionController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('api/autorizacion/actualizar', [AutorizacionController::class, 'update']);
 
 Route::middleware(['auth:sanctum'])->get('api/autorizacion/getfiltro',[AutorizacionController::class,'getFiltro']);
 
 //::::::::: ROUTES VEHICULOS >>>>>>>
-Route::middleware(['auth:sanctum'])->get('api/vehiculo',[VehiculoController::class,'index']);
+Route::middleware(['auth:sanctum'])->get('api/vehiculo',[VehiculoController::class,'index'])->name('vehiculo');
+
+Route::middleware(['auth:sanctum'])->get('api/vehiculo/data',[VehiculoController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('api/vehiculo/registrar',[VehiculoController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('api/vehiculo/actualizar', [VehiculoController::class, 'update']);
 Route::middleware(['auth:sanctum'])->post('api/vehiculo/eliminar', [VehiculoController::class, 'destroy']);

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 use App\Models\Vehiculo;
 
 use Illuminate\Http\Request;
-// use Inertia\Inertia;
+use Inertia\Inertia;
 
 class VehiculoController extends Controller
 {
     //
     
-    public function index(){
+    public function indexData(){
         $vehiculo=Vehiculo::join('tipo_vehiculos','vehiculos.id_tpVehi','=','tipo_vehiculos.id')
         ->join('personas','vehiculos.id_persona','=','personas.id')
         ->select('vehiculos.placa','vehiculos.marca','vehiculos.color',
@@ -18,6 +18,11 @@ class VehiculoController extends Controller
         'personas.nombre as Nombre titular','personas.apellido as Apellido titular')
         ->get();
         return['vehiculo'=>$vehiculo];
+    }
+    public function index(){
+        $vehiculo=Vehiculo::all();
+        return Inertia::render('Vehiculos',['vehiculo'=>$vehiculo]);
+        // return['vehiculo'=>$vehiculo];
     }
 
     public function store(request $request){

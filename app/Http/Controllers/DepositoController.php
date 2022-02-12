@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Deposito;
 
 use Illuminate\Http\Request;
-// use Inertia\Inertia;
+use Inertia\Inertia;
 
 class DepositoController extends Controller
 {
@@ -12,7 +12,8 @@ class DepositoController extends Controller
 
     public function index(){
         $deposito=Deposito::all();
-        return['deposito'=>$deposito];
+        return Inertia:: render('Depositos',['deposito'=>$deposito]);
+        // return['deposito'=>$deposito];
     }
 
     public function store(Request $request){

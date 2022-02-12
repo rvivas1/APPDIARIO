@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\OficinaLocal;
 
 use Illuminate\Http\Request;
-// use Inertia\Inertia;
+use Inertia\Inertia;
 
 class OficinaLocalController extends Controller
 {
@@ -19,7 +19,8 @@ class OficinaLocalController extends Controller
     }
     public function index(){
         $ofiLoc=OficinaLocal::all();
-        return['ofiLoc'=>$ofiLoc];
+        return Inertia::render('OficinasLocales',['ofiLoc'=>$ofiLoc]);
+        // return['ofiLoc'=>$ofiLoc];
     }
     
     public function store(Request $request){

@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Parqueadero;
 
 use Illuminate\Http\Request;
-// use Inertia\Inertia;
+use Inertia\Inertia;
 
 class ParqueaderoController extends Controller
 {
     //
-    public function index(){
+    public function indexData(){
         $parqueadero=Parqueadero::join(
         'oficina_locals',
         'parqueaderos.id_ofLoc',
@@ -22,6 +22,11 @@ class ParqueaderoController extends Controller
         'oficina_locals.numero as Oficina','parqueaderos.estado')
         ->get();
         return['parqueadero'=>$parqueadero]; 
+    }
+    public function index(){
+        $parqueadero=Parqueadero::all();
+        return Inertia::render('Parqueaderos',['parqueadero'=>$parqueadero]);
+        // return['parqueadero'=>$parqueadero];
     }
 
     public function store(Request $request){

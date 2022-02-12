@@ -28,12 +28,9 @@ class CreateParqueaderosTable extends Migration
 
             $table->foreignId('id_ofLoc')->constrained('oficina_locals');
 
-
-
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -9,7 +9,7 @@ use Inertia\Inertia;
 class PersonaController extends Controller
 {
     //
-    public function index(){
+    public function indexData(){
         $persona=Persona::join(
         'tipo_documentos','personas.id_tpDoc','=','tipo_documentos.id')
         ->join('oficina_locals','personas.id_ofLoc','=','oficina_locals.id')
@@ -19,6 +19,11 @@ class PersonaController extends Controller
         'oficina_locals.numero as Oficina','personas.estado')
         ->get();
         return['persona'=>$persona];
+    }
+    public function index(){
+        $persona=Persona::all();
+        return Inertia::render('Personas',['persona'=>$persona]);
+        // return['ofiLoc'=>$ofiLoc];
     }
     public function store(request $request){
         $persona= new Persona();

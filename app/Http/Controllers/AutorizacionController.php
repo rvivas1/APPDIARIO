@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\Autorizacion;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AutorizacionController extends Controller
 {
     //
-    public function index(){
+    public function indexData(){
         $autorizacion=Autorizacion::join(
         'tipo_autorizacions','autorizacions.id_tpAuto','=','tipo_autorizacions.id')
         ->join('oficina_locals','autorizacions.id_ofLoc','=','oficina_locals.id')
@@ -16,6 +17,11 @@ class AutorizacionController extends Controller
         'tipo_autorizacions.descripcion as Tipo','oficina_locals.numero as Oficina')
         ->get();
         return ['autorizacion'=>$autorizacion];
+    }
+    public function index(){
+        $autorizacion=Autorizacion::all();
+        return Inertia::render('Autorizaciones',['autorizacion'=>$autorizacion]);
+        // return['vehiculo'=>$vehiculo];
     }
 
     public function store(Request $request){
