@@ -13,53 +13,73 @@
                     <!-- Sidebar ends -->
                     <!-- Remove class [ h-64 ] when adding a card block -->    
     <div class="overflow-x-auto mb-4">
-                  
-        <div class=" bg-gray-200 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+        <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
              <sidebar />
-             <div>
-                 ->
-             </div>
-            <div class="w-full lg:w-5/6">
-         <h1 class="font-semibold text-xl text-red-800 leading-tight">
-                GESTIONAR OFICINAS Y LOCALES
-            </h1>
-                <div class="bg-white shadow-md rounded my-6">
-                  
-             
-            
-                
-                    <table class="min-w-max w-full table-auto bg-green-100">
+        <div class="lg:w-5/6">
+         <div class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
+             <h1>gestionar oficinas y locales</h1>
+            </div>
+    <div class="bg-grey-200 shadow-md rounded my-6">
+        <div class="grid justify-items-end ..." >
+            <button type="button d-grid gap-1 d-md-flex"
+            @click="crearPer"
+             class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-100 hover:text-grey-300 focus:border-3">
+                <div class="flex sm:flex-cols- gap-2">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-6 text-Rred-800"
+                    viewBox="0 0 24 24 "
+                        stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  <div class="col-span-2 mt-1">CREAR</div>
+                </div>
+            </button>
+                </div>           
+                    <table class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                         <thead>
-                            <tr class="bg-gray-300 text-red-800 uppercase text-normal leading-normal">
-                                <th class="py-3 px-6 text-center">N° Oficina/Local</th>
+                            <tr class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal">
+                                <th class="py-3 px-6 text-left">N° Oficina/Local</th>
                                 <th class="py-3 px-6 text-left">Nit</th>
-                                <th class="py-3 px-6 text-center">Nombre</th>
-                                <th class="py-3 px-6 text-center">Ubicación</th>
-                                <th class="py-3 px-6 text-center">Tel</th>
+                                <th class="py-3 px-6 text-left">Nombre</th>
+                                <th class="py-3 px-6 text-left">Ubicación</th>
+                                <th class="py-3 px-6 text-left">Tel</th>
                                 <th class="py-3 px-6 text-center">Estado</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="text-red-800 text-sm font-light">
+                        <tbody class="text-red-800 text-base font-light">
                             <tr v-for="(objeto,index) in ofiLoc" :key="index" class="border-b border-gray-200 hover:bg-gray-200">
-                                <td class="py-3 px-6 text-center ">
+                                <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <span class="font-medium text-right">{{objeto.numero}}</span>
+                                        <span class="font-medium">{{objeto.numero}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex items-center">
-                                        <span class="font-medium text-left">{{objeto.nit}}</span>
+                                        <span class="font-medium">{{objeto.nit}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left">
+                                    <div class="flex items-center">
+                                         <span class="font-medium">{{objeto.razon_social}}</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-6 text-left">
+                                   <div class="flex items-center">
+                                         <span class="font-medium">{{objeto.ubicacion}}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <h1 class="py-3 px-6 text-center">{{objeto.razon_social}}</h1>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="py-3 px-6 text-center">{{objeto.ubicacion}}</span>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="py-1 px-3 text-center">{{objeto.tel}}</span>
+                                   <div class="flex items-center">
+                                         <span class="font-medium">{{objeto.tel}}</span>
+                                    </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <span v-if="objeto.estado==1" class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-xs">Activo</span>
@@ -109,6 +129,10 @@
         props:['ofiLoc'],
 
         methods:{
+            crearPer(){
+                alert('Botón agregar ok');
+
+            },
             verOfiLoc(){
                 alert('Botón ver ok');
 

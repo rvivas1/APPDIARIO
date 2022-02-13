@@ -22,12 +22,12 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </jet-nav-link>
-                                <jet-nav-link :href="route('ofiLoc')" :active="route().current('ofiLoc')">
+                                <!-- <jet-nav-link :href="route('ofiLoc')" :active="route().current('ofiLoc')">
                                     Oficinas y Locales
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('parqueadero')" :active="route().current('parqueadero')">
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link :href="route('parqueadero')" :active="route().current('parqueadero')">
                                     Parqueaderos
-                                </jet-nav-link>
+                                </jet-nav-link> -->
                                 <jet-nav-link :href="route('deposito')" :active="route().current('deposito')">
                                     depósitos
                                 </jet-nav-link>

@@ -1,35 +1,56 @@
 <template>
     <app-layout title="Parqueaderos">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Parqueaderos
-            </h2>
+            
         </template>
-
-   
-          
-           
                      <!-- <h1 v-for="(objeto,index) in parqueadero" :key="index">
                         {{objeto.numero}}
                     </h1> -->
     <div class="overflow-x-auto mb-4">
-        <div class="bg-violet-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+        <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
                  <sidebar />
-            <div class="w-full lg:w-5/6">
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto bg-green-100">
+                 <div class="lg:w-5/6">
+            <div class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
+             <h1>
+               gestionar parqueaderos
+            </h1>
+            </div>
+            <div class="bg-grey-200 shadow-md rounded my-6">
+                <div class="grid justify-items-end ..." >
+            <button type="button d-grid gap-1 d-md-flex"
+            @click="crearPer"
+             class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 text-lg rounded-lg hover:bg-gray-400 hover:text-gray-100 focus:border-3">
+                <div class="flex sm:flex-cols- gap-2">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-6 text-Rred-800"
+                    viewBox="0 0 24 24 "
+                        stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  <div class="col-span-2">CREAR</div>
+                </div>
+            </button>
+                </div>
+                    <table class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                         <thead>
-                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-center">N° Parqueadero</th>
+                            <tr class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal">
+                                <th class="py-3 px-6 text-left">N° Parqueadero</th>
                                 <th class="py-3 px-6 text-left">Nit</th>
-                                <th class="py-3 px-6 text-center">Oficina</th>
-                                <th class="py-3 px-6 text-center">Titular</th>
-                                <th class="py-3 px-6 text-center">Ubicación</th>
+                                <th class="py-3 px-6 text-left">Oficina</th>
+                                <th class="py-3 px-6 text-left">Titular</th>
+                                <th class="py-3 px-6 text-left">Ubicación</th>
                                 <th class="py-3 px-6 text-center">Estado</th>
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
+                        <tbody class="text-red-800 text-base font-light">
                             <tr v-for="(objeto,index) in parqueadero" :key="index" class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
@@ -57,7 +78,8 @@
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{{objeto.estado}}</span>
+                                    <span v-if="objeto.estado==1" class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-xs">Activo</span>
+                                    <span v-else class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-xs">Inactivo</span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
@@ -82,8 +104,10 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
             </div>
+            
+                 </div>
+                
         </div>
     </div>
                
