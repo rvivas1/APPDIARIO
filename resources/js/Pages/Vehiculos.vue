@@ -15,28 +15,28 @@
              <h1>gestionar vehículos</h1>
             </div>
              <div class="bg-grey-200 shadow-md rounded my-6">
-                 <div class="grid justify-items-end ..." >
-            <button type="button d-grid gap-1 d-md-flex"
-            @click="crearPer"
-             class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-100 hover:text-grey-300 focus:border-3">
-                <div class="flex sm:flex-cols- gap-2">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-6 text-Rred-800"
-                    viewBox="0 0 24 24 "
-                        stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                  <div class="col-span-2 mt-1">CREAR</div>
-                </div>
-            </button>
-                </div>
+                    <div class="grid justify-items-end ..." >
+                        <button type="button d-grid gap-1 d-md-flex"
+                        @click="crearPer"
+                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3">
+                            <div class="flex sm:flex-cols- gap-2">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-8 w-6 text-Rred-800"
+                                viewBox="0 0 24 24 "
+                                    stroke="currentColor"
+                                >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                />
+                                </svg>
+                            <div class="col-span-2 mt-1">CREAR</div>
+                            </div>
+                        </button>
+                    </div>
                  <table class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                         <thead>
                             <tr class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal">

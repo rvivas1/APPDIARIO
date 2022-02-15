@@ -6,7 +6,7 @@
                     <!-- <h1 v-for="(objeto,index) in deposito" :key="index">
                         {{objeto.numero}}
                     </h1> -->
-     <div class="overflow-x-auto">
+     <div v-if="tpAccion==0" class="overflow-x-auto">
         <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
             <sidebar />
             <div class="w-full lg:w-5/6">
@@ -18,8 +18,8 @@
                 <div class="bg-grey-200 shadow-md rounded my-6">
                     <div class="grid justify-items-end ..." >
             <button type="button d-grid gap-1 d-md-flex"
-            @click="crearPer"
-             class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-gray-400 hover:text-gray-100 focus:border-3">
+            @click="crearDep"
+                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3">
                 <div class="flex sm:flex-cols- gap-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@
                         d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                       />
                     </svg>
-                  <div class="col-span-2">CREAR</div>
+                  <div class="col-span-2 mt-1">CREAR</div>
                 </div>
             </button>
                 </div>
@@ -48,7 +48,7 @@
                                 <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
+                        <tbody class="text-gray-600 text-base font-light">
                             <tr v-for="(objeto,index) in deposito" :key="index" class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
@@ -72,18 +72,18 @@
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" @click="verDep">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                             </svg>
                                         </div>
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" @click="actualizarDep">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                             </svg>
                                         </div>
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" @click="inactDep">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </div>
@@ -96,6 +96,136 @@
             </div>
         </div>
     </div>
+    <div v-if="tpAccion==1" class="overflow-x-auto mb-4">
+     
+                <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                    <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <!-- This is an example component -->
+                         <div class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                            <!-- This is an example component -->
+<div class="max-w-5xl mt-12 mx-auto">
+		<div class="grid xl:grid-cols-2 xl:gap-6">
+            
+			<div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Número
+									</label>
+									<input
+										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id="firstName"
+										type="text"
+										placeholder="Número de depósito"
+									/>
+								</div>
+			<div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Ubicación
+									</label>
+									<input
+										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id="firstName"
+										type="text"
+										placeholder="Ingrese la ubicación"
+									/>
+								</div>
+		</div>
+		<div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+            
+			<div class="mb-2 md:mb-0">
+									
+                                       <div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Titular
+									</label>
+									<input
+										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id="firstName"
+										type="text"
+										placeholder="Representante legal"
+									/>
+								</div>
+			</div>
+			<div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Medidas
+									</label>
+									<input
+										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id="firstName"
+										type="text"
+										placeholder="Medidas en M2"
+									/>
+			</div>
+		</div>
+		<div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+            
+			<div class="mb-2  md:mb-0">
+									
+                                       <div class="mb-1 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Estado del depósito
+									</label>
+									<textarea 
+                                    name="body" 
+                                    cols="40" 
+                                    rows="3" 
+                                    placeholder="Contenido del depósito" 
+                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
+                                    maxlength="600">
+                                    </textarea>
+								</div>
+								</div>
+			<div class="mb-2  md:mb-0">
+									
+                                       <div class="mb-1 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Contenido
+									</label>
+									<textarea 
+                                    name="body" 
+                                    cols="40" 
+                                    rows="3" 
+                                    placeholder="Contenido del depósito" 
+                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
+                                    maxlength="600">
+                                    </textarea>
+								</div>
+								</div>
+		</div>
+		<div class="grid xl:grid-cols-2  xl:gap-6">
+            
+			
+			<div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+										Disponible para:
+									</label>
+									<div class="main flex mt-1 border rounded-full overflow-hidden select-none">
+                            <label class="flex radio  p-2 cursor-pointer font-extralight text-xs">
+                                <input class="my-auto transform scale-125" type="checkbox" name="sfg" checked />
+                                <div class="title px-2 my-auto">Alquiler</div>
+                            </label>
+                            <label class="flex radio p-2 cursor-pointer font-extralight text-xs">
+                                <input class="my-auto transform scale-125" type="checkbox" name="sfg" checked />
+                                <div class="title px-2 my-auto">Venta</div>
+                            </label>
+                      </div>
+                         </div>
+                               
+                    </div>
+       
+        </div>
+        <div class="flex justify-center mt-9 ...">
+        <button @click="cerrarReg" type="buttom" class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-7 mt-2 text-lg rounded-lg hover:bg-red-400 hover:text-grey-300 focus:border-3">Cancelar</button>
+		<button type="buttom" class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-grey-300 focus:border-3">Guardar</button>
+        </div>
+</div>
+                    </div>
+                    </div>
+            </div>
     </app-layout>
 </template>
 
@@ -110,6 +240,34 @@
             AppLayout,
             Sidebar,
         },
+         data(){
+            return{
+                tpAccion: 0,
+                tittle: "",
+
+            };
+        },
         props:['deposito'],
+         methods:{
+            crearDep(){
+                this.tittle="Crear Depósito";
+                this.tpAccion = 1;
+
+            },
+            actualizarDep(){
+                this.tpAccion=1;
+                this.tittle="Actualizar Depósito"
+
+            },
+            verDep(){
+                alert('Botón ver ok');
+            },
+            inactDep(){
+                alert('Botón inactivar ok');
+            },
+            cerrarReg(){
+                this.tpAccion=0;
+            },
+        },
     })
 </script>

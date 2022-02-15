@@ -12,35 +12,35 @@
                
                     <!-- Sidebar ends -->
                     <!-- Remove class [ h-64 ] when adding a card block -->    
-    <div class="overflow-x-auto mb-4">
+    <div v-if="tpAccion==0" class="overflow-x-auto mb-4">
         <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
              <sidebar />
         <div class="lg:w-5/6">
          <div class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
              <h1>gestionar oficinas y locales</h1>
             </div>
-    <div class="bg-grey-200 shadow-md rounded my-6">
-        <div class="grid justify-items-end ..." >
-            <button type="button d-grid gap-1 d-md-flex"
-            @click="crearPer"
-             class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-100 hover:text-grey-300 focus:border-3">
-                <div class="flex sm:flex-cols- gap-2">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-6 text-Rred-800"
-                    viewBox="0 0 24 24 "
-                        stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                  <div class="col-span-2 mt-1">CREAR</div>
-                </div>
-            </button>
+                <div class="bg-grey-200 shadow-md rounded my-6">
+                <div class="grid justify-items-end ..." >
+                    <button type="button d-grid gap-1 d-md-flex"
+                    @click="regrOfiLoc"
+                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3">
+                        <div class="flex sm:flex-cols- gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-8 w-6 text-Rred-800"
+                            viewBox="0 0 24 24 "
+                                stroke="currentColor"
+                            >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                            />
+                            </svg>
+                        <div class="col-span-2 mt-1">CREAR</div>
+                        </div>
+                    </button>
                 </div>           
                     <table class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                         <thead>
@@ -109,9 +109,183 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
         </div>
-    </div>
+        </div>
+   </div>
+   <div v-if="tpAccion==1" class="overflow-x-auto mb-4">
+     
+                <div class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                    <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <!-- This is an example component -->
+                         <div class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                            <div class="max-w-5xl mt-9 mb-12 mx-auto">
+                                    <div class="grid xl:grid-cols-3 xl:gap-6">
+                                        <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                        <div class="w-full md:mr-2">
+                                        <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                            Tipo
+                                            </label>
+                                        <select value="2" class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline" name="estado" >
+                                            <option value="1">Oficina</option>
+                                            <option value="0">Local</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Número
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Número de oficina o local"
+                                                                />
+                                                            </div>
+                                                            <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700">
+                                                                    Teléfono
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Ingrese número de teléfono"
+                                                                />
+                                                            </div>
+                                    </div>
+                                    <div class="grid xl:grid-cols-3 xl:gap-6">
+                                        
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Nit
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Ingrese Nit"
+                                                                />
+                                                            </div>
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Razón social
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Ingrese razón social"
+                                                                />
+                                                            </div>
+                                                            <div class="mb-2 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Actividad económica
+                                                                </label>
+                                                                    <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                            <div class="w-full ">
+                                            
+                                            <select class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline" name="estado">
+                                                <option value="1">Abogados</option>
+                                                <option value="0">Contadores</option>
+                                            </select>
+                                            </div>
+                                        </div>
+                                                            </div>
+                                    </div>
+                                    <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
+                                        
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Horario
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Ingrese horario de atención"
+                                                                />
+                                                            </div>
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Representante
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Nombre representante legal"
+                                                                />
+                                                            </div>
+                                                            <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Propio / Arrendado
+                                                                </label>
+                                                                <div class="flex sm:flex-row items-center mb-1 sm:space-x-5">
+                                        <div class="w-full">
+                                        
+                                        <select class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline" name="estado">
+                                            <option value="1">Propio</option>
+                                            <option value="0">Arrendado</option>
+                                        </select>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                    </div>
+                                    <div class="grid xl:grid-cols-3  xl:gap-6">
+                                        
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Ubicación
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Ingrese la ubicación"
+                                                                />
+                                                            </div>
+                                        <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Medidas
+                                                                </label>
+                                                                <input
+                                                                    class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                                                    id="firstName"
+                                                                    type="text"
+                                                                    placeholder="Medidas en M2"
+                                                                />
+                                                            </div>
+                                                            <div class="mb-4 md:mr-2 md:mb-0">
+                                                                <label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                                                    Disponible para:
+                                                                </label>
+                                                                <div class="main flex mt-1 border rounded-full overflow-hidden select-none">
+                                                        <label class="flex radio  p-2 cursor-pointer font-extralight text-xs">
+                                                            <input class="my-auto transform scale-125" type="checkbox" name="sfg" checked />
+                                                            <div class="title px-2 my-auto">Alquiler</div>
+                                                        </label>
+                                                        <label class="flex radio p-2 cursor-pointer font-extralight text-xs">
+                                                            <input class="my-auto transform scale-125" type="checkbox" name="sfg" checked />
+                                                            <div class="title px-2 my-auto">Venta</div>
+                                                        </label>
+                                                </div>
+                                                    </div>
+                                                </div>
+                                
+                   <div class="flex justify-center mt-9 ...">
+                        <button @click="cerrarReg" type="buttom" class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-6 mt-2 text-lg rounded-lg hover:bg-red-600 hover:text-white focus:border-3">Cancelar</button>
+                         <button type="buttom" class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-600 hover:text-white focus:border-3">Guardar</button>
+                   </div>
+                            </div>
+                    </div>
+                    </div>
+            </div>
+   </div>
     </app-layout>
      
 </template>
@@ -126,24 +300,36 @@
             AppLayout,
             Sidebar,
         },
+        data(){
+            return{
+                tpAccion: 0,
+                tittle: "",
+
+            };
+        },
         props:['ofiLoc'],
 
         methods:{
-            crearPer(){
-                alert('Botón agregar ok');
+            regrOfiLoc(){
+                this.tittle="Crear Oficina o Local";
+                this.tpAccion = 1;
+
+            },
+            actOfiLoc(){
+                this.tpAccion=1;
+                this.tittle="Actualizar Oficina / Local"
+
+                alert('Botón actualizar ok');
 
             },
             verOfiLoc(){
                 alert('Botón ver ok');
-
-            },
-            actOfiLoc(){
-                alert('Botón actualizar ok');
-
             },
             inacOfiLoc(){
                 alert('Botón inactivar ok');
-
+            },
+            cerrarReg(){
+                this.tpAccion=0;
             },
         },
     })

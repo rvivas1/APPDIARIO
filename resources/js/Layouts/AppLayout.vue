@@ -4,7 +4,7 @@
 
         <jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,24 +22,24 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Inicio
                                 </jet-nav-link>
-                                <!-- <jet-nav-link :href="route('ofiLoc')" :active="route().current('ofiLoc')">
-                                    Oficinas y Locales
-                                </jet-nav-link> -->
+                                <jet-nav-link :href="route('ofiLoc')" :active="route().current('ofiLoc')">
+                                    Gestiones
+                                </jet-nav-link>
                                 <!-- <jet-nav-link :href="route('parqueadero')" :active="route().current('parqueadero')">
                                     Parqueaderos
                                 </jet-nav-link> -->
-                                <jet-nav-link :href="route('deposito')" :active="route().current('deposito')">
+                                <!-- <jet-nav-link :href="route('deposito')" :active="route().current('deposito')">
                                     depósitos
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('vehiculo')" :active="route().current('vehiculo')">
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link :href="route('vehiculo')" :active="route().current('vehiculo')">
                                     vehículos
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('persona')" :active="route().current('persona')">
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link :href="route('persona')" :active="route().current('persona')">
                                     Personas
-                                </jet-nav-link>
-                                <jet-nav-link :href="route('autorizacion')" :active="route().current('autorizacion')">
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link :href="route('autorizacion')" :active="route().current('autorizacion')">
                                     Autorizaciones
-                                </jet-nav-link>
+                                </jet-nav-link> -->
                             </div>
                         </div>
 

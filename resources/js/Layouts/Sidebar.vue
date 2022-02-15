@@ -3,12 +3,12 @@
                 <div class="flex flex-no-wrap">
                     <!-- Sidebar starts -->
                     <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-                    <div style="min-height: 716px" class="w-64 absolute sm:relative bg-gray-300 shadow md:h-full flex-col justify-between hidden sm:flex">
+                    <div style="min-height: 716px" class="w-64 absolute sm:relative bg-gray-500 shadow md:h-full flex-col justify-between hidden sm:flex">
                         <div class="px-8">
                             <div class="h-16 w-full flex items-center">
                               <!-- <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/light_with_icons_at_bottom-svg1.svg" alt="Logo"> -->
                             </div>
-                            <ul class="mt-12 mr-6">
+                            <ul class="mt-15 mr-6 mb-8">
                                 <!-- <li class="flex w-full justify-between text-gray-800 cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-grid" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -30,43 +30,61 @@
                                         <span class="text-lg ml-2">Inicio</span>
                                     </jet-nav-link>
                                 </li>
-                                <li class="flex w-full justify-between text-red-800  cursor-pointer items-center mb-6">
+                                <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
+                                    <jet-nav-link  :href="route('persona')" :active="route().current('persona')" class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                                            <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                                        </svg>
+                                        <span class="text-xl ml-2">Funcionarios</span>
+                                    </jet-nav-link>
+                                </li>
+                                <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
                                     <jet-nav-link  :href="route('ofiLoc')" :active="route().current('ofiLoc')" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
                                         </svg>
-                                        <span class="text-lg ml-2">Oficinas/Locales</span>
+                                        <span class="text-xl ml-2">Oficinas/Locales</span>
                                     </jet-nav-link>
                                 </li>
-                                <li class="flex w-full justify-between text-red-800  cursor-pointer items-center mb-6">
+                                <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
                                      <jet-nav-link  :href="route('parqueadero')" :active="route().current('parqueadero')" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
                                         </svg>
-                                        <span class="text-lg ml-2">Parqueaderos</span>
+                                        <span class="text-xl ml-2">Parqueaderos</span>
                                     </jet-nav-link>
                                 </li>
-                                <li class="flex w-full justify-between text-red-800  cursor-pointer items-center mb-6">
+                                <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
                                      <jet-nav-link :href="route('vehiculo')" :active="route().current('vehiculo')" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
                                         </svg>
-                                        <span class="text-lg ml-2">Vehículos</span>
+                                        <span class="text-xl ml-2">Vehículos</span>
                                     </jet-nav-link>
                                 </li>
-                                <li class="flex w-full justify-between text-red-800  cursor-pointer items-center mb-6">
+                                <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
                                      <jet-nav-link  :href="route('deposito')" :active="route().current('deposito')" class="flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
                                             <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
                                         </svg>
-                                        <span class="text-lg ml-2">Depósitos</span>
+                                        <span class="text-xl ml-2">Depósitos</span>
                                     </jet-nav-link>
                                 </li>
                                 <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
+                                     <jet-nav-link  :href="route('autorizacion')" :active="route().current('autorizacion')" class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z"></path>
+                                            <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
+                                        </svg>
+                                        <span class="text-xl ml-2">Autorizaciones</span>
+                                    </jet-nav-link>
+                                </li>
+                                <!-- <li class="flex w-full justify-between text-white  cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white" >
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
@@ -76,8 +94,8 @@
                                         </svg>
                                         <span class="text-sm ml-2">Deliverables</span>
                                     </a>
-                                </li>
-                                <li class="flex w-full justify-between text-red-800 hover:text-white cursor-pointer items-center mb-6">
+                                </li> -->
+                                <!-- <li class="flex w-full justify-between text-red-800 hover:text-white cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z"></path>
@@ -86,8 +104,8 @@
                                         <span class="text-sm ml-2">Invoices</span>
                                     </a>
                                     <div class="py-1 px-3 bg-gray-600 rounded text-gray-300 flex items-center justify-center text-xs">25</div>
-                                </li>
-                                <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
+                                </li> -->
+                                <!-- <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center mb-6">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" />
@@ -97,8 +115,8 @@
                                         </svg>
                                         <span class="text-sm ml-2">Inventory</span>
                                     </a>
-                                </li>
-                                <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center">
+                                </li> -->
+                                <!-- <li class="flex w-full justify-between text-gray-400 hover:text-gray-300 cursor-pointer items-center">
                                     <a href="javascript:void(0)" class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings" width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" />
@@ -107,18 +125,18 @@
                                         </svg>
                                         <span class="text-sm ml-2">Settings</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
-                            <div class="flex justify-center mt-48 mb-4 w-full">
+                            <!-- <div class="flex justify-center mt-48 mb-4 w-full">
                                 <div class="relative">
                                     <div class="text-gray-300 absolute ml-4 inset-0 m-auto w-4 h-4">
                                       <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/light_with_icons_at_bottom-svg2.svg" alt="Search">
                                     </div>
                                     <input class="bg-gray-700 focus:outline-none focus:ring-1 focus:ring-gray-100 rounded w-full text-sm text-gray-300 placeholder-gray-400 bg-gray-100 pl-10 py-2" type="text" placeholder="Search" />
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="px-8 border-t border-gray-700">
+                        <!-- <div class="px-8 border-t border-gray-700">
                             <ul class="w-full flex items-center justify-between bg-gray-800">
                                 <li class="cursor-pointer text-white pt-5 pb-3">
                                     <button aria-label="show notifications" class="focus:outline-none focus:ring-2 rounded focus:ring-gray-300">
@@ -141,9 +159,9 @@
                                     </button>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="w-64 z-40 absolute bg-gray-800 shadow md:h-full flex-col justify-between sm:hidden transition duration-150 ease-in-out" id="mobile-nav">
+                    <!-- <div class="w-64 z-40 absolute bg-gray-800 shadow md:h-full flex-col justify-between sm:hidden transition duration-150 ease-in-out" id="mobile-nav">
                         <button aria-label="toggle sidebar" id="openSideBar" class="h-10 w-10 bg-gray-800 absolute right-0 mt-16 -mr-10 flex items-center shadow rounded-tr rounded-br justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 rounded focus:ring-gray-800" onclick="sidebarHandler(true)">
                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/light_with_icons_at_bottom-svg7.svg" alt="toggler">
                         </button>
@@ -264,7 +282,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- Sidebar ends -->
                     <!-- Remove class [ h-64 ] when adding a card block -->
             
@@ -278,7 +296,7 @@
 
 <style scoped>
     .bg-gray-100 {
-        background-color: #f7fafc;
+        background-color: #828383;
         background-color: rgba(247, 250, 252, var(--tw-bg-opacity));
     }
 
@@ -344,7 +362,7 @@
     import { defineComponent } from 'vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
     import JetNavLink from '@/Jetstream/NavLink.vue'
-import { Method } from '@inertiajs/inertia';
+    import { Method } from '@inertiajs/inertia';
 
 
     export default defineComponent({
