@@ -25,7 +25,7 @@ class PersonaController extends Controller
         return Inertia::render('Personas',['persona'=>$persona]);
         // return['ofiLoc'=>$ofiLoc];
     }
-    public function store(request $request){
+    public function store(Request $request){
         $persona= new Persona();
         $persona->num_doc=$request->numDoc;
         $persona->nombre=$request->nombre;
@@ -41,7 +41,7 @@ class PersonaController extends Controller
 
         $persona->save();
     }
-    public function update(request $request){
+    public function update(Request $request){
         $persona=Persona::findOrFail($request->id);
         $persona->num_doc=$request->numDoc;
         $persona->nombre=$request->nombre;

@@ -19,7 +19,7 @@
                     <div class="grid justify-items-end ..." >
             <button type="button d-grid gap-1 d-md-flex"
             @click="crearDep"
-                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3">
+                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3">
                 <div class="flex sm:flex-cols- gap-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -107,74 +107,84 @@
                             <h2 v-text="tittle"></h2>
                         </div>
                             <!-- This is an example component -->
-<div class="max-w-5xl mt-12 mx-auto">
-		<div class="grid xl:grid-cols-2 xl:gap-6">
-            
-			<div class="mb-4 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+            <div class="max-w-5xl mt-12 mx-auto">
+                    <div class="grid xl:grid-cols-3 xl:gap-6">
+                        <div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base rounded font-bold text-rojito" for="">
 										Número
 									</label>
 									<input
-										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="firstName"
+										class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id=""
 										type="text"
-										placeholder="Número de depósito"
+										placeholder="Ingrese el número de depósito"
 									/>
 								</div>
-			<div class="mb-4 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+			                <div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
 										Ubicación
 									</label>
 									<input
-										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="firstName"
+										class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id=""
 										type="text"
-										placeholder="Ingrese la ubicación"
+										placeholder="Ingrese la ubicación del depósito"
 									/>
 								</div>
-		</div>
-		<div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
-            
-			<div class="mb-2 md:mb-0">
+			                <div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
+										Medidas
+									</label>
+									<input
+										class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id=""
+										type="text"
+										placeholder="Ingrese medidas en M2"
+									/>
+								</div>
+                        </div>
+                        <div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+                            
+                            <div class="mb-2 md:mb-0">
 									
                                        <div class="mb-4 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
 										Titular
 									</label>
 									<input
-										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="firstName"
+										class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+										id=""
 										type="text"
 										placeholder="Representante legal"
 									/>
 								</div>
-			</div>
-			<div class="mb-4 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
-										Medidas
-									</label>
-									<input
-										class="w-full px-3 py-2 text-base leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-										id="firstName"
-										type="text"
-										placeholder="Medidas en M2"
-									/>
-			</div>
-		</div>
-		<div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
-            
-			<div class="mb-2  md:mb-0">
+                        </div>
+                        <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                        <div class="w-full md:mr-2">
+                        <label class="block mt-2 text-base font-bold text-rojito" for="">
+                                                    N° Oficina / Local
+                                                </label>
+                        <select class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline" name="estado">
+                            <option value="1">Oficina</option>
+                            <option value="0">Local</option>
+                        </select>
+                        </div>
+                    </div>
+                        </div>
+                        <div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+                        
+                        <div class="mb-2  md:mb-0">
 									
-                                       <div class="mb-1 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
+                                       <div class="mb-1 md:mr-1 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
 										Estado del depósito
 									</label>
 									<textarea 
                                     name="body" 
-                                    cols="40" 
+                                    cols="53" 
                                     rows="3" 
-                                    placeholder="Contenido del depósito" 
-                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
+                                    placeholder="Condiciones fisicas del depósito" 
+                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-rojito dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
                                     maxlength="600">
                                     </textarea>
 								</div>
@@ -182,26 +192,24 @@
 			<div class="mb-2  md:mb-0">
 									
                                        <div class="mb-1 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
-										Contenido
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
+										Contenido del depósito
 									</label>
 									<textarea 
                                     name="body" 
-                                    cols="40" 
+                                    cols="53" 
                                     rows="3" 
                                     placeholder="Contenido del depósito" 
-                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
+                                    class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-rojito dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto" 
                                     maxlength="600">
                                     </textarea>
 								</div>
 								</div>
 		</div>
 		<div class="grid xl:grid-cols-2  xl:gap-6">
-            
-			
 			<div class="mb-4 md:mr-2 md:mb-0">
-									<label class="block mt-2 text-base font-bold text-gray-700" for="firstName">
-										Disponible para:
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
+										Disponible para
 									</label>
 									<div class="main flex mt-1 border rounded-full overflow-hidden select-none">
                             <label class="flex radio  p-2 cursor-pointer font-extralight text-xs">
@@ -214,13 +222,28 @@
                             </label>
                       </div>
                          </div>
+			        <div class="mb-4 md:mr-2 md:mb-0">
+									<label class="block mt-2 text-base font-bold text-rojito" for="">
+										Estado
+									</label>
+									<div class="main flex border mt-0 rounded-full overflow-hidden select-none">
+                                    <label class="flex radio p-2 cursor-pointer">
+                                    <input v-model="edo" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-base font-medium">Activo</div>
+                                </label>
+                                <label class="flex radio p-2 cursor-pointer">
+                                    <input v-model="edo" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-base font-medium">Inactivo</div>
+                                </label>
+                                </div>
+                         </div>
                                
                     </div>
        
         </div>
         <div class="flex justify-center mt-9 ...">
-        <button @click="cerrarReg" type="buttom" class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-7 mt-2 text-lg rounded-lg hover:bg-red-400 hover:text-grey-300 focus:border-3">Cancelar</button>
-		<button type="buttom" class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-grey-300 focus:border-3">Guardar</button>
+        <button @click="cerrarReg" type="buttom" class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-7 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-grey-300 focus:border-3">Cancelar</button>
+		<button type="buttom" class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-grey-300 focus:border-3">Guardar</button>
         </div>
 </div>
                     </div>
