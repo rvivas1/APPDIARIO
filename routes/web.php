@@ -140,3 +140,6 @@ Route::middleware(['auth:sanctum'])->get('/api/tpDoc/getTpDoc',[TipoDocumentoCon
 //:::::::::TIPO VEHICULO >>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/tpVehi/getTpVehi',[TipoVehiculoController::class,'getTpVehi']);
 
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
