@@ -299,12 +299,8 @@
                                                 class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option v-for="(objeto,index) in arrayAct" :key="index" :value="objeto.id">
-                                                    
-                                                    {{objeto.descripcion}} </option> 
-                                                <!-- </option>
-                                                <option value="0">
-                                                    Contadores
-                                                </option> -->
+                                                    {{objeto.descripcion}}
+                                                    </option> 
                                             </select>
                                         </div>
                                     </div>
@@ -584,7 +580,6 @@ export default defineComponent({
             dispAlq: 0,
             pazSalv: 0,
             idActEco: 0,
-            idActEco: 0,
             arrayAct: [],
         };
     },
@@ -653,7 +648,7 @@ export default defineComponent({
         .catch(function (error) {
           console.log(error);
         });
-    },
+      },
     },
     mounted(){
         this.listarActEco();

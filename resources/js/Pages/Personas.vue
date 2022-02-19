@@ -203,11 +203,11 @@
                                             Tipo de identificación
                                         </label>
                                         <select
-                                            value="tipo"
+                                        v-model="idTpDoc"
                                             class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="none">
-                                            <option value="1">
-                                                Cédula de ciudadanía
+                                            <option v-for="(objeto,index) in arraytpDoc" :key="index" :value="objeto.id">
+                                                {{objeto.descripcion}}
                                             </option>
                                         </select>
                                     </div>
@@ -312,16 +312,15 @@
                                     >
                                         <div class="w-full">
                                             <select
+                                            v-model="idOfLoc"
                                                 class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
-                                                name="estado"
-                                            >
-                                                <option value="1">603</option>
-                                                <option value="0">
-                                                    308 - Datacenter
-                                                </option>
-                                                <option value="0">
-                                                    Heinsohn business technology
-                                                </option>
+                                                name="estado">
+                                                <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
+                                                    {{objeto.numero}}
+                                                    {{objeto.razon_social}}
+                                                    </option>
+                                                
+                                                
                                             </select>
                                         </div>
                                     </div>
@@ -387,7 +386,11 @@ export default defineComponent({
             tel: 0,
             telAlter: "",
             correo: "",
-            edo: ""
+            edo: "",
+            idTpDoc: "",
+            idOfLoc: "",
+            arraytpDoc: [],
+            arrayOfiLoc: [],
         };
     },
     props: ["persona"],
@@ -402,13 +405,15 @@ export default defineComponent({
             var url="/api/persona/registrar";
             axios.post(url,
             {
+                idTpDoc: this.idTpDoc,
                 numDoc: this.numDoc,
                 nombre: this.nombre,
                 apellido: this.apellido,
                 tel: this.tel,
-                tel_alter: this.telAlter,
+                telAlter: this.telAlter,
                 correo: this.correo,
-                estado: this.edo
+                edo: this.edo,
+                idOfLoc: this.idOfLoc
             }
             ).then(function(response)
             {
@@ -431,6 +436,38 @@ export default defineComponent({
         cerrarReg() {
             this.tpAccion = 0;
         },
+        listartpDoc() {
+      let me = this;
+      var url = "/api/tpDoc/getTpDoc";
+
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arraytpDoc = respuesta.tpDoc;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      },
+        listarOfiLoc() {
+      let me = this;
+      var url = "/api/ofiLoc/getOfiLoc";
+
+      axios
+        .get(url)
+        .then(function (response) {
+          var respuesta = response.data;
+          me.arrayOfiLoc = respuesta.ofiLoc;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      },
     },
+    mounted(){
+        this.listartpDoc();
+        this.listarOfiLoc();
+    }
 });
 </script>
