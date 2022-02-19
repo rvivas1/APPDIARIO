@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ActividadEconomica extends Seeder
 {
@@ -16,8 +17,8 @@ class ActividadEconomica extends Seeder
         //
         DB::table('actividad_economicas')->insert(
             [
-                'descripcion'=>'Abogados',
-                'codigo'=>'1020'
+                'descripcion'=>'Abogados 2',
+                'codigo'=>'1020',
             ]
             );
     }
