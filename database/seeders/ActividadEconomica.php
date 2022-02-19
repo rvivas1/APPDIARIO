@@ -14,7 +14,7 @@ class ActividadEconomica extends Seeder
     public function run()
     {
         //
-        DB::table('ActividadEconomica')->insert(
+        DB::table('actividad_economicas')->insert(
             [
                 'descripcion'=>'Abogados',
                 'codigo'=>'1020'
