@@ -25,7 +25,7 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-rojito text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
@@ -317,7 +317,7 @@
                                                 name="estado">
                                                 <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
                                                     {{objeto.numero}}
-                                                    {{objeto.razon_social}}
+                                                    <!-- {{objeto.nombre}} -->
                                                     </option>
                                                 
                                                 
@@ -383,7 +383,7 @@ export default defineComponent({
             numDoc: "",
             nombre: "",
             apellido: "",
-            tel: 0,
+            tel: "",
             telAlter: "",
             correo: "",
             edo: "",
@@ -418,6 +418,8 @@ export default defineComponent({
             ).then(function(response)
             {
                 alert("Registro guardado exitosamente!");
+                me.tpAccion=0;
+                me.borrar();
             })
             .catch(function(error){
                 console.log(error.message);
@@ -449,7 +451,7 @@ export default defineComponent({
         .catch(function (error) {
           console.log(error);
         });
-      },
+        },
         listarOfiLoc() {
       let me = this;
       var url = "/api/ofiLoc/getOfiLoc";
@@ -463,7 +465,19 @@ export default defineComponent({
         .catch(function (error) {
           console.log(error);
         });
-      },
+        },
+      borrar() {
+            this.numDoc="",
+            this.nombre= "",
+            this.apellido= "",
+            this.raSocial= "",
+            this.tel= "",
+            this.telAlter= "",
+            this.correo= 0,
+            this.edo= "",
+            this.idTpDoc= "",
+            this.idOfLoc= 1
+        },
     },
     mounted(){
         this.listartpDoc();

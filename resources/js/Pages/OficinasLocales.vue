@@ -51,7 +51,7 @@
                         >
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-rojito uppercase text-normal text-base leading-normal"
+                                    class="bg-gray-300 text-rojito uppercase text-normal text-lg leading-normal"
                                 >
                                     <th class="py-3 px-6 text-left">
                                         N° Oficina/Local
@@ -64,7 +64,7 @@
                                     <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-rojito text-base font-light">
+                            <tbody class="text-rojito text-lg font-light">
                                 <tr
                                     v-for="(objeto, index) in ofiLoc"
                                     :key="index"
@@ -219,7 +219,7 @@
                                         <select
                                             value="2"
                                             class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="estado">
+                                            name="">
                                             <option value="1">Oficina</option>
                                             <option value="0">Local</option>
                                         </select>
@@ -297,7 +297,7 @@
                                             <select
                                             v-model="idActEco"  
                                                 class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                                name="estado">
+                                                name="">
                                                 <option v-for="(objeto,index) in arrayAct" :key="index" :value="objeto.id">
                                                     {{objeto.descripcion}}
                                                     </option> 
@@ -349,7 +349,7 @@
                                             <select
                                             v-model="propArren"
                                                 class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                                name="estado">
+                                                name="">
                                                 <option value="1">
                                                     Propio
                                                 </option>
@@ -445,7 +445,7 @@
                                     <input v-model="pazSalv" type="checkbox" id="toggle-example" class="sr-only">
                                     <div class="toggle-bg bg-gray-400 border-2 border-gray-300 h-7 w-12 rounded-full"></div>
                                     <span v-if="pazSalv==1" class="ml-3 text-rojito text-base font-medium">Si</span>
-                                    <span v-else class="ml-3 text-rojito text-base font-medium">No</span>
+                                    <span v-else class="ml-3 text-rojito text-lg font-medium">No</span>
                                     </label>
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
@@ -456,12 +456,12 @@
                                     </label>
                                     <div class="main flex border mt-0 rounded-full overflow-hidden select-none">
                                     <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" class="my-auto transform scale-125" type="radio" name="sfg" />
-                                    <div class="ml-3 text-rojito text-base font-medium">Activo</div>
+                                    <input v-model="edo" value="1" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-lg font-medium">Activo</div>
                                 </label>
                                 <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" class="my-auto transform scale-125" type="radio" name="sfg" />
-                                    <div class="ml-3 text-rojito text-base font-medium">Inactivo</div>
+                                    <input v-model="edo" value="0" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-lg font-medium">Inactivo</div>
                                 </label>
                                 </div>
                                 </div>
@@ -476,7 +476,7 @@
                                 <button
                                    @click="regOfiLoc"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-600 hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Guardar
                                 </button>
                             </div>
@@ -536,11 +536,11 @@
                                     </div>
                                     <button
                                         @click="cerrar"
-                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-base shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
                                         Cancelar
                                     </button>
                                     <button
-                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-base shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
+                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
                                         Aceptar
                                     </button>
                                 </div>
@@ -575,7 +575,7 @@ export default defineComponent({
             propArren: 0,
             ubic: "",
             medidas: "",
-            edo: 1,
+            edo: "",
             dispVen: 0,
             dispAlq: 0,
             pazSalv: 0,
@@ -613,6 +613,8 @@ export default defineComponent({
             ).then(function(response)
             {
                 alert("Registro guardado exitosamente!");
+                me.tpAccion=0;
+                me.borrar();
             })
             .catch(function(error){
                 console.log(error.message);
@@ -635,6 +637,22 @@ export default defineComponent({
         cerrar() {
             this.tpAccion = 0;
         },
+        borrar() {
+            this.num="",
+            this.tel= "",
+            this.nit= "",
+            this.raSocial= "",
+            this.horario= "",
+            this.repProp= "",
+            this.propArren= 0,
+            this.ubic= "",
+            this.medidas= "",
+            this.edo= 1,
+            this.dispVen= 0,
+            this.dispAlq= 0,
+            this.pazSalv= 0,
+            this.idActEco= 0
+        },
         listarActEco() {
       let me = this;
       var url = "/api/actEco/getActv";
@@ -648,7 +666,7 @@ export default defineComponent({
         .catch(function (error) {
           console.log(error);
         });
-      },
+        },
     },
     mounted(){
         this.listarActEco();

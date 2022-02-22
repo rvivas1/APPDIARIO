@@ -28,7 +28,7 @@ class DepositoController extends Controller
         $deposito->disp_venta=$request->dispVent;
         $deposito->disp_alquiler=$request->dispAlq;
 
-        $deposito->id_ofLoc=$request->id_ofLoc;
+        $deposito->id_ofLoc=$request->idOfLoc;
 
         $deposito->save();
     }
@@ -41,7 +41,7 @@ class DepositoController extends Controller
         $deposito->disp_venta=$request->dispVent;
         $deposito->disp_alquiler=$request->dispAlq;
 
-        $deposito->id_ofLoc=$request->id_ofLoc;
+        $deposito->id_ofLoc=$request->idOfLoc;
 
         $deposito->save();
     }

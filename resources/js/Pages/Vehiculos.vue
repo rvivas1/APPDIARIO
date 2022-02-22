@@ -5,7 +5,7 @@
         <!-- <h1 v-for="(objeto,index) in vehiculo" :key="index">
                         {{objeto.placa}}
                     </h1> -->
-        <div v-if="tpAccion == 1" class="overflow-x-auto">
+        <div v-if="tpAccion == 0" class="overflow-x-auto">
             <div
                 class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
             >
@@ -21,7 +21,7 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="crearVehi"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
@@ -182,30 +182,26 @@
         </div>
         <div v-if="tpAccion == 1" class="overflow-x-auto mb-4">
             <div
-                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
-            >
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
-                        >
+                            class="font-semibold mt-5 text-lg ml-2 text-red-800 uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
-                        <!-- This is an example component -->
-                        <div class="max-w-2xl mx-auto">
+                        <div class="max-w-5xl mx-auto mt-12">
                             <div class="grid xl:grid-cols-2 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-sm font-bold text-gray-700"
-                                        for="firstName"
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for=""
                                     >
                                         Placa
                                     </label>
                                     <input
-                                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="firstName"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
                                         type="text"
                                         placeholder="Ingrese placa del vehículo"
                                     />
@@ -215,13 +211,13 @@
                                 >
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for="firstName"
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for=""
                                         >
                                             Tipo de vehículo
                                         </label>
                                         <select
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado"
                                             v-model="fr"
                                         >
@@ -234,14 +230,14 @@
                                 <div class="mb-2 md:mb-0">
                                     <div class="mb-4 md:mr-2 md:mb-0">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for="firstName"
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for=""
                                         >
                                             Marca
                                         </label>
                                         <input
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                            id="firstName"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id=""
                                             type="text"
                                             placeholder="Ingrese la marca del vehículo"
                                         />
@@ -249,14 +245,14 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-sm font-bold text-gray-700"
-                                        for="firstName"
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for=""
                                     >
                                         Color
                                     </label>
                                     <input
-                                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="firstName"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
                                         type="text"
                                         placeholder="Ingrese el color del vehículo"
                                     />
@@ -266,20 +262,20 @@
                                 <div class="mb-2 md:mb-0">
                                     <div class="mb-4 md:mr-2 md:mb-0">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for="firstName"
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for=""
                                         >
                                             Propietario
                                         </label>
                                         <input
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                            id="firstName"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id=""
                                             type="text"
                                             placeholder="Titular del vehículo"
                                         />
                                     </div>
                                 </div>
-                                <h1 class="font-size ml-12 mb-2 text-lg py-5">
+                                <h1 class="font-size ml-12 mt-2 text-lg py-5">
                                     Parqueaderos seleccionados
                                 </h1>
                             </div>
@@ -287,14 +283,13 @@
                                 <div class="mb-2 md:mb-0">
                                     <div class="mb-1 md:mr-2 md:mb-0">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for="firstName"
-                                        >
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
                                             Estado del vehículo
                                         </label>
                                         <textarea
                                             name="body"
-                                            cols="37"
+                                            cols="53"
                                             rows="4"
                                             class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto"
                                             maxlength="600"
@@ -304,7 +299,7 @@
                                 </div>
 
                                 <div
-                                    class="mx-auto h-full flex flex-col-2 max-w-3xl items-center justify-center bg-gray-400 rounded-xl p-4"
+                                    class="mx-auto h-full flex flex-col-2 max-w-sm items-center justify-center bg-gray-400 rounded-xl p-4"
                                 >
                                     
                                     <form
@@ -317,7 +312,7 @@
                                         <select
                                             name="perm"
                                             id="poragregar"
-                                            class="p-3 h-75 border-4 rounded border-one w-53 capitalize min-w-full min-w-max"
+                                            class="p-1 h-85 border-4 rounded border-one w-10 capitalize w-[8rem] ml-2"
                                             multiple
                                         >
                                             <option value="1">Uno</option>
@@ -346,7 +341,7 @@
                                         <select
                                             name="permissions[]"
                                             id="agregados"
-                                            class="p-3 h-70 border-4 rounded border-two w-53 capitalize min-w-full min-w-max"
+                                            class="p-1 h-85 border-4 rounded border-one w-10 capitalize w-[8rem]"
                                             multiple
                                         >
                                             <option value="6">Seis</option>
@@ -361,15 +356,14 @@
                         </div>
                         <div class="flex justify-center mt-9 ...">
                             <button
+                                @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-6 mt-2 text-lg rounded-lg hover:bg-red-400 hover:text-grey-300 focus:border-3"
-                            >
+                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-green-400 hover:text-grey-300 focus:border-3"
-                            >
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
                             </button>
                         </div>
@@ -382,38 +376,7 @@
 </template>
 
 <script>
- $(document).ready(function() {
-             '#add on'.click, function() {
-                 '#poragregar'.find('option:selected').each(function() {
-                     '#agregados'.append( '<option>', {
-                        value:  this.val(),
-                        text:  this.text()
-                    });
-                     this.remove();
-                });
-            }
-             '#remove'.on('click', function() {
-                 '#agregados'.find('option:selected').each(function() {
-                     '#poragregar'.append( '<option>', {
-                        value:  this.val(),
-                        text:  this.text()
-                    });
-                     this.remove();
-                });
-            })
-
-             '#save'.on('click', function() {
-                /* Selecciona todos los permisos del segundo select antes de enviar el formulario */
-                 '#agregados option'.prop('selected', true);
-
-                /* En el back, uso $user->synPermissionsTo($request->permissions) 
-                De esa forma borra todos los permisos del usuario y le asigna sólo los que haya enviado
-                por el form.
-                */
-           
-            })
-
-        })
+        
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Sidebar from "@/Layouts/Sidebar.vue";
@@ -431,11 +394,11 @@ export default defineComponent({
     },
     props: ["vehiculo"],
     methods: {
-        regOfiLoc() {
+        crearVehi() {
             this.tittle = "Crear vehículo";
             this.tpAccion = 1;
         },
-        actOfiLoc() {
+        actVehi() {
             this.tpAccion = 1;
             this.tittle = "Actualizar Vehículo";
         },
