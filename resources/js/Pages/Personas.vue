@@ -61,18 +61,16 @@
                             </thead>
                             <tbody class="text-red-800 text-base font-light">
                                 <tr
-                                    v-for="(objeto, index) in persona"
+                                    v-for="(objeto, index) in arrayData"
                                     :key="index"
-                                    class="border-b border-gray-200 hover:bg-gray-100"
-                                >
+                                    class="border-b border-gray-200 hover:bg-gray-100">
                                     <td
-                                        class="py-3 px-6 text-left whitespace-nowrap"
-                                    >
+                                        class="py-3 px-6 text-left whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <span class="font-medium"
-                                                >{{ objeto.tipo_documento }}
-                                                {{ objeto.num_doc }}</span
-                                            >
+                                            <span class="font-medium">
+                                                <!-- {{ objeto.tipo_documento }} -->
+                                                {{ objeto.num_doc }}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
@@ -97,77 +95,66 @@
                                     <td class="py-3 px-6 text-center">
                                         <span
                                             v-if="objeto.estado == 1"
-                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-base"
                                             >Activo</span
                                         >
                                         <span
                                             v-else
-                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-base"
                                             >Inactivo</span
                                         >
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div
-                                            class="flex item-center justify-center"
-                                        >
+                                            class="flex item-center justify-center">
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
-                                            >
+                                                class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verPersona"
-                                                >
+                                                    @click="verPersona">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
+                                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                                    />
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
-                                            >
+                                                class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarper"
-                                                >
+                                                    @click="actualizarper(objeto)">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                                    />
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
-                                            >
+                                                class="w-4 mr-2 transform hover:text-rojito hover:scale-110">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="inactPersona"
-                                                >
+                                                    @click="inactPersona">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
                                                         stroke-width="2"
-                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                                    />
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                                 </svg>
                                             </div>
                                         </div>
@@ -203,10 +190,13 @@
                                             Tipo de identificación
                                         </label>
                                         <select
-                                        v-model="idTpDoc"
-                                            class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow focus:outline-none focus:shadow-outline"
+                                            v-model="idTpDoc"
+                                            value=""
+                                            placeholder="Seleccione el tipo"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                             name="none">
                                             <option v-for="(objeto,index) in arraytpDoc" :key="index" :value="objeto.id">
+                                                {{objeto.codigo}}.
                                                 {{objeto.descripcion}}
                                             </option>
                                         </select>
@@ -219,7 +209,7 @@
                                         Número
                                     </label>
                                     <input
-                                    v-model="numDoc"
+                                        v-model="numDoc"
                                         class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
                                         type="text"
@@ -303,24 +293,20 @@
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
                                         class="block mt-2 text-lg text-rojito font-bold "
-                                        for=""
-                                    >
+                                        for="">
                                         Oficina / Local
                                     </label>
                                     <div
-                                        class="flex sm:flex-row items-center mb-1 sm:space-x-5"
-                                    >
+                                        class="flex sm:flex-row items-center mb-1 sm:space-x-5">
                                         <div class="w-full">
                                             <select
                                             v-model="idOfLoc"
                                                 class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
-                                                    {{objeto.numero}}
-                                                    <!-- {{objeto.nombre}} -->
+                                                     <!-- {{objeto.numero}}  -->
+                                                     {{objeto.razon_social}}
                                                     </option>
-                                                
-                                                
                                             </select>
                                         </div>
                                     </div>
@@ -391,14 +377,27 @@ export default defineComponent({
             idOfLoc: "",
             arraytpDoc: [],
             arrayOfiLoc: [],
+            arrayData: [],
         };
     },
     props: ["persona"],
     methods: {
+        listarDatos(){
+            let me = this;
+            var url="/api/persona/main"
+
+            axios.get(url)
+            .then(function(response) {
+                var respuesta=response.data;
+                me.arrayData = respuesta.persona;
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+        },
         abrirReg(){
             this.tittle = "Registrar funcionario";
             this.tpAccion = 1;
-
         },
         regPersona() {
             let me= this;
@@ -417,6 +416,7 @@ export default defineComponent({
             }
             ).then(function(response)
             {
+                me.listarDatos();
                 alert("Registro guardado exitosamente!");
                 me.tpAccion=0;
                 me.borrar();
@@ -425,9 +425,18 @@ export default defineComponent({
                 console.log(error.message);
             })
         },
-        actualizarper() {
+        actualizarper(data=[]) {
             this.tpAccion = 1;
             this.tittle = "Actualizar Funcionario";
+            this.numDoc = data["num_doc"];
+            this.nombre = data["num_doc"];
+            this.apellido = data["num_doc"];
+            this.tel = data["num_doc"];
+            this.telAlter = data["num_doc"];
+            this.correo = data["num_doc"];
+            this.edo = data["num_doc"];
+            this.numDoc = data["num_doc"];
+            this.numDoc = data["num_doc"];
         },
         verPersona() {
             alert("Botón ver ok");
@@ -482,6 +491,7 @@ export default defineComponent({
     mounted(){
         this.listartpDoc();
         this.listarOfiLoc();
+        this.listarDatos();
     }
 });
 </script>

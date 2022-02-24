@@ -21,7 +21,7 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-rojito text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
@@ -95,12 +95,12 @@
                                     <td class="py-3 px-6 text-center">
                                         <span
                                             v-if="objeto.estado == 1"
-                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-base"
                                             >Activo</span
                                         >
                                         <span
                                             v-else
-                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-base"
                                             >Inactivo</span
                                         >
                                     </td>
@@ -109,7 +109,7 @@
                                             class="flex item-center justify-center"
                                         >
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-green-500 hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-rojito hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -313,26 +313,28 @@
                                     <div
                                         class="main flex mt-1 border rounded-full overflow-hidden select-none">
                                         <label
-                                            class="flex radio p-2 cursor-pointer font-extralight text-xs">
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                                 v-model="dispAlq"
+                                                value="1"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
                                                 checked/>
-                                            <div class="title px-2 my-auto">
+                                            <div class="title text-rojito px-2 my-auto">
                                                 Alquiler
                                             </div>
                                         </label>
                                         <label
-                                            class="flex radio p-2 cursor-pointer font-extralight text-xs">
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
-                                                v-model="dispVen"
+                                                v-model="dispVent"
+                                                value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
                                                 checked/>
-                                            <div class="title px-2 my-auto">
+                                            <div class="title text-rojito px-2 my-auto">
                                                 Venta
                                             </div>
                                         </label>
@@ -350,6 +352,7 @@
                                             class="flex radio p-2 cursor-pointer">
                                             <input
                                                 v-model="edo"
+                                                value="1"
                                                 class="my-auto transform scale-125"
                                                 type="radio"
                                                 name="sfg"/>
@@ -362,6 +365,7 @@
                                             class="flex radio p-2 cursor-pointer">
                                             <input
                                                 v-model="edo"
+                                                value="0"
                                                 class="my-auto transform scale-125"
                                                 type="radio"
                                                 name="sfg"/>

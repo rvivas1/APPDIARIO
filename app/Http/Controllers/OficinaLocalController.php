@@ -22,6 +22,10 @@ class OficinaLocalController extends Controller
         return Inertia::render('OficinasLocales',['ofiLoc'=>$ofiLoc]);
         // return['ofiLoc'=>$ofiLoc];
     }
+    public function indexMain(){
+        $ofiLoc=OficinaLocal::all();
+        return['ofiLoc'=>$ofiLoc];
+    }
     
     public function store(Request $request){
         $ofiLoc= new OficinaLocal();
@@ -61,7 +65,7 @@ class OficinaLocalController extends Controller
         $ofiLoc->save();
     }
     public function getOfiLoc(){
-        $ofiLoc= OficinaLocal::select('numero','id')->get();
+        $ofiLoc= OficinaLocal::select('numero','id','razon_social')->get();
         return[
             'ofiLoc'=>$ofiLoc
         ];

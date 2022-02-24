@@ -28,6 +28,10 @@ class ParqueaderoController extends Controller
         return Inertia::render('Parqueaderos',['parqueadero'=>$parqueadero]);
         // return['parqueadero'=>$parqueadero];
     }
+    public function indexMain(){
+        $parqueadero=Parqueadero::all();
+        return['parqueadero'=>$parqueadero];
+    }
 
     public function store(Request $request){
         $parqueadero= new Parqueadero();

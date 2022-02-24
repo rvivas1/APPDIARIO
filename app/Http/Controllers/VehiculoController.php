@@ -14,7 +14,7 @@ class VehiculoController extends Controller
         $vehiculo=Vehiculo::join('tipo_vehiculos','vehiculos.id_tpVehi','=','tipo_vehiculos.id')
         ->join('personas','vehiculos.id_persona','=','personas.id')
         ->select('vehiculos.placa','vehiculos.marca','vehiculos.color',
-        'vehiculos.estado as Observaciones','tipo_vehiculos.descripcion as Tipo',
+        'vehiculos.edo as Observaciones','tipo_vehiculos.descripcion as Tipo',
         'personas.nombre as Nombre titular','personas.apellido as Apellido titular')
         ->get();
         return['vehiculo'=>$vehiculo];
@@ -30,7 +30,7 @@ class VehiculoController extends Controller
         $vehiculo->placa=$request->placa;
         $vehiculo->marca=$request->marca;
         $vehiculo->color=$request->color;
-        $vehiculo->estado=$request->edo;
+        $vehiculo->edo=$request->edo;
 
         $vehiculo->id_tpVehi=$request->idTpVehi;
         $vehiculo->id_persona=$request->idPers;
@@ -42,7 +42,7 @@ class VehiculoController extends Controller
         $vehiculo->placa=$request->placa;
         $vehiculo->marca=$request->marca;
         $vehiculo->color=$request->color;
-        $vehiculo->estado=$request->edo;
+        $vehiculo->edo=$request->edo;
 
         $vehiculo->id_tpVehi=$request->idTpVehi;
         $vehiculo->id_persona=$request->idPers;

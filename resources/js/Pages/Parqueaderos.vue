@@ -66,7 +66,7 @@
                             </thead>
                             <tbody class="text-red-800 text-base font-light">
                                 <tr
-                                    v-for="(objeto, index) in parqueadero"
+                                    v-for="(objeto, index) in arrayData"
                                     :key="index"
                                     class="border-b border-gray-200 hover:bg-gray-100"
                                 >
@@ -79,11 +79,6 @@
                                             }}</span>
                                         </div>
                                     </td>
-                                    <!-- <td class="py-3 px-6 text-left">
-                                    <div class="flex items-center">
-                                         <span class="font-medium">{{objeto.nit}}</span>
-                                    </div>
-                                </td> -->
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex items-center">
                                             <span class="font-medium">{{
@@ -108,12 +103,12 @@
                                     <td class="py-3 px-6 text-center">
                                         <span
                                             v-if="objeto.estado == 1"
-                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-lg"
+                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-base"
                                             >Activo</span
                                         >
                                         <span
                                             v-else
-                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-lg"
+                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-base"
                                             >Inactivo</span
                                         >
                                     </td>
@@ -122,7 +117,7 @@
                                             class="flex item-center justify-center"
                                         >
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-blue-500 hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -146,14 +141,14 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-green-500 hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarParq"
+                                                    @click="actualizarParq(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -164,7 +159,7 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-rojito hover:scale-110"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -470,11 +465,25 @@ export default defineComponent({
             dispVen: 0,
             dispAlq: 0,
             idOfLoc: "",
-            arrayOfiLoc: []
+            arrayOfiLoc: [],
+            arrayData: []
         };
     },
     props: ["parqueadero"],
     methods: {
+        listarDatos(){
+            let me = this;
+            var url = "/api/parqueadero/main"
+
+            axios.get(url)
+            .then(function(response){
+                var respuesta = response.data;
+                me.arrayData = respuesta.parqueadero;
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+        },
         abrirReg() {
             this.tittle = "Crear Parqueadero";
             this.tpAccion = 1;
@@ -497,6 +506,7 @@ export default defineComponent({
                     idOfLoc: this.idOfLoc,
                 })
                 .then(function (response) {
+                    me.listarDatos();
                     alert("Registro guardado exitosamente!");
                     me.tpAccion = 0;
                     me.borrar();
@@ -508,6 +518,7 @@ export default defineComponent({
         actualizarParq() {
             this.tpAccion = 1;
             this.tittle = "Actualizar Parqueadero";
+
 
             alert("Botón actualizar ok");
         },
@@ -537,6 +548,7 @@ export default defineComponent({
     },
     mounted() {
         this.listarOfiLoc();
+        this.listarDatos();
     },
 });
 </script>

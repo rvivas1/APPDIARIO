@@ -17,8 +17,7 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-xl ml-2 text-rojito uppercase leading-tight"
-                    >
+                        class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                         <h1>gestionar oficinas y locales</h1>
                     </div>
                     <div class="bg-grey-200 shadow-md rounded my-6">
@@ -31,7 +30,7 @@
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-Rred-800"
+                                        class="h-8 w-6 text-rojito"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -66,7 +65,7 @@
                             </thead>
                             <tbody class="text-rojito text-lg font-light">
                                 <tr
-                                    v-for="(objeto, index) in ofiLoc"
+                                    v-for="(objeto, index) in arrayData"
                                     :key="index"
                                     class="border-b border-gray-200 hover:bg-gray-200"
                                 >
@@ -110,12 +109,12 @@
                                     <td class="py-3 px-6 text-center">
                                         <span
                                             v-if="objeto.estado == 1"
-                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-base"
                                             >Activo</span
                                         >
                                         <span
                                             v-else
-                                            class="bg-purple-200 text-rojito py-1 px-3 rounded-full text-xs"
+                                            class="bg-purple-200 text-rojito py-1 px-3 rounded-full text-base"
                                             >Inactivo</span
                                         >
                                     </td>
@@ -150,7 +149,7 @@
                                             <div
                                                 class="w-4 mr-2 transform hover:text-green-500 hover:scale-110"
                                                 title="Actualizar"
-                                                @click="actOfiLoc"
+                                                @click="actOfiLoc(objeto)"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -203,7 +202,7 @@
                     <div class="bg-grey-600 shadow-md rounded my-6">
                         <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-rojito uppercase leading-tight">
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
                         <div class="max-w-5xl mt-9 mb-12 mx-auto">
@@ -217,11 +216,12 @@
                                             Tipo
                                         </label>
                                         <select
+                                            v-model="tipo"
                                             value="2"
                                             class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="">
-                                            <option value="1">Oficina</option>
-                                            <option value="0">Local</option>
+                                            <option value="o">Oficina</option>
+                                            <option value="l">Local</option>
                                         </select>
                                     </div>
                                 </div>
@@ -494,8 +494,7 @@
                     <div class="bg-grey-200 shadow-md rounded my-6">
                         <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-rojito uppercase leading-tight"
-                        >
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
                         <div
@@ -522,12 +521,12 @@
                                         </svg>
                                         <div class="flex flex-col ml-3">
                                             <div
-                                                class="font-medium leading-none text-xl text-gray-100"
+                                                class="font-medium leading-none text-xl text-white"
                                             >
                                                 Inactivar?
                                             </div>
                                             <p
-                                                class="text-sm text-gray-300 leading-none mt-1"
+                                                class="text-lg text-white leading-none mt-1"
                                             >
                                                 Para inactivar, click en el
                                                 botón aceptar
@@ -569,6 +568,7 @@ export default defineComponent({
             num: "",
             tel: "",
             nit: "",
+            tipo: "",
             raSocial: "",
             horario: "",
             repProp: "",
@@ -581,11 +581,24 @@ export default defineComponent({
             pazSalv: 0,
             idActEco: 0,
             arrayAct: [],
+            arrayData: [],
         };
     },
     props: ["ofiLoc"],
 
     methods: {
+        listarDatos(){
+            let me =this;
+            var url= "/api/ofiLoc/main"
+            axios.get(url)
+            .then(function (response) {
+            var respuesta = response.data;
+            me.arrayData = respuesta.ofiLoc;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        },
         openReg() {
             this.tittle = "Crear Oficina o Local";
             this.tpAccion = 1;
@@ -612,17 +625,34 @@ export default defineComponent({
             }
             ).then(function(response)
             {
+                me.listarDatos();
                 alert("Registro guardado exitosamente!");
-                me.tpAccion=0;
+                me.cerrar();
                 me.borrar();
             })
             .catch(function(error){
                 console.log(error.message);
             })
         },
-        actOfiLoc() {
+        actOfiLoc(data = []) {
             this.tpAccion = 1;
             this.tittle = "Actualizar Oficina / Local";
+            this.idOfiLoc = data["id"];
+            this.num = data["numero"];
+            this.tel = data["tel"];
+            this.nit = data["nit"];
+            //this.tipo = data["tipo"];
+            this.raSocial = data["razon_social"];
+            this.horario = data["horario"];
+            this.repProp = data["repre_propie"];
+            this.propArren = data["propio_arrendado"];
+            this.ubic = data["ubicacion"];
+            this.medidas = data["medidas"];
+            this.edo = data["estado"];
+            this.dispVen = data["disp_venta"];
+            this.dispAlq = data["disp_alquiler"];
+            this.pazSalv = data["paz_y_salvo"];
+            this.idActEco = data["id_actEco"];
         },
         verOfiLoc() {
             alert("Botón ver ok");
@@ -670,6 +700,7 @@ export default defineComponent({
     },
     mounted(){
         this.listarActEco();
+        this.listarDatos();
     }
 });
 </script>

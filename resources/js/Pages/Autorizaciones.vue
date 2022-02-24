@@ -20,7 +20,7 @@
                         <div class="grid justify-items-end ...">
                             <button
                                 type="button d-grid gap-1 d-md-flex"
-                                @click="regAuto"
+                                @click="abrirRegAuto"
                                 class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
@@ -42,18 +42,14 @@
                             </button>
                         </div>
                         <table
-                            class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid"
-                        >
+                            class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal"
-                                >
+                                    class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal">
                                     <th class="py-3 px-6 text-left">Tipo</th>
                                     <th class="py-3 px-6 text-left">Área</th>
                                     <th class="py-3 px-6 text-left">Fecha</th>
-                                    <th class="py-3 px-6 text-center">
-                                        Acciones
-                                    </th>
+                                    <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="text-red-800 text-base font-light">
@@ -134,7 +130,7 @@
                                                 </svg>
                                             </div>
                                             <div
-                                                class="w-4 mr-2 transform hover:text-red-500 hover:scale-110"
+                                                class="w-4 mr-2 transform hover:text-rojito hover:scale-110"
                                                 title="Inactivar"
                                             >
                                                 <svg
@@ -168,102 +164,99 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
-                        >
+                            class="font-semibold mt-5 text-xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
-                        <!-- This is an example component -->
                         <div class="max-w-5xl mt-9 mb-12 mx-auto">
-                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                            <div class="grid xl:grid-cols-2 xl:gap-6">
                                 <div
-                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5"
-                                >
+                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for=""
-                                        >
+                                            class="block mt-2 text-xl font-bold text-rojito"
+                                            for="">
                                             Área
                                         </label>
                                         <select
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="estado"
-                                        >
-                                            <option value="1">Área 1</option>
-                                            <option value="0">Área 2</option>
+                                            v-model="idAreatrab"
+                                            class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayareaTrab" :key="index" :value="objeto.id">
+                                                {{objeto.descripcion}}
+                                                </option>
                                         </select>
                                     </div>
                                 </div>
-                                <div
-                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5"
-                                >
-                                    <div class="w-full md:mr-2">
-                                        <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for=""
-                                        >
-                                            Tipo de autorización
-                                        </label>
-                                        <select
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="estado"
-                                        >
-                                            <option value="1">tipo 1</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5"
-                                >
-                                    <div class="w-full md:mr-2">
-                                        <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for=""
-                                        >
-                                            Oficina / Local
-                                        </label>
-                                        <select
-                                            class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="estado"
-                                        >
-                                            <option value="1">Oficina</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-sm font-bold text-gray-700"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-xl font-bold text-rojito"
+                                        for="">
                                         Fecha
                                     </label>
                                     <input
-                                        class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="fecha"
+                                        class="w-full px-3 py-2 text-xl mb-0 leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
                                         type="date"
-                                        placeholder="Medidas en M2"
-                                    />
+                                        placeholder="Medidas en M2"/>
+                                </div>
+                            </div>
+                             <div class="grid xl:grid-cols-1 xl:gap-6">
+                                <div
+                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-xl font-bold text-rojito"
+                                            for="">
+                                            Tipo de autorización
+                                        </label>
+                                        <select
+                                            v-model="idTpAuto"
+                                            class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayTpAut" :key="index" :value="objeto.id">
+                                                {{objeto.descripcion}}
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="grid xl:grid-cols-2 mb-4 xl:gap-6">
+                                <div
+                                    class="flex sm:flex-row mb-2 sm:space-x-5">
+                                    <div class="w-full mt-2 md:mr-2">
+                                        <label
+                                            class="block text-xl font-bold text-rojito"
+                                            for="">
+                                            Oficina / Local
+                                        </label>
+                                        <select
+                                            v-model="idOfLoc"
+                                            class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
+                                                {{objeto.numero }} -
+                                                {{objeto.razon_social}}
+                                                </option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="mb-2 md:mb-0">
-                                    <div class="mb-1 md:mr-2 md:mb-0">
+                                    <div class="mt-2 md:mr-2 md:mb-0">
                                         <label
-                                            class="block mt-2 text-sm font-bold text-gray-700"
-                                            for=""
-                                        >
+                                            class="block text-xl font-bold text-rojito"
+                                            for="">
                                             Descripción
                                         </label>
                                         <textarea
+                                            v-model="desc"
                                             name="body"
-                                            cols="52"
+                                            cols="75"
                                             rows="3"
-                                            placeholder="Descripción"
-                                            class="p-2 rounded border border-gray-8 bg-white dark:border-gray-700 text-gray-600 dark:text-gray-800 focus:bg-white focus:outline-none focus:ring-2 focus:gray-500 focus:border-gray-100 placeholder-red-800 text-base h-auto"
-                                            maxlength="600"
-                                        >
+                                            placeholder="Escriba aquí la descripcion de la autorización"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            maxlength="600">
                                         </textarea>
                                     </div>
                                 </div>
@@ -274,12 +267,13 @@
                         <button
                             @click="cerrarReg"
                             type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                            class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                             Cancelar
                         </button>
                         <button
+                            @click="regAutorizacion"
                             type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                            class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                             Guardar
                         </button>
                     </div>
@@ -303,13 +297,41 @@ export default defineComponent({
         return {
             tpAccion: 0,
             tittle: "",
+            fecha: "",
+            desc: "",
+            idOfLoc: "",
+            idTpAuto: "",
+            idAreatrab: "",
+            arrayTpAut: [],
+            arrayOfiLoc: [],
+            arrayareaTrab: [],
         };
     },
     props: ["autorizacion"],
     methods: {
-        regAuto() {
-            this.tittle = "Crear Oficina o Local";
+        abrirRegAuto() {
+            this.tittle = "Crear Autorización";
             this.tpAccion = 1;
+        },
+        regAutorizacion() {
+             let me= this;
+            var url="/api/autorizacion/registrar";
+            axios.post(url,
+            {
+                fecha: this.fecha,
+                desc: this.desc,
+                idTpAuto: this.idTpAuto,
+                idOfLoc: this.idOfLoc
+            }
+            ).then(function(response)
+            {
+                alert("Registro guardado exitosamente!");
+                me.tpAccion=0;
+                me.limpiar();
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
         },
         actualizarAut() {
             this.tpAccion = 1;
@@ -321,9 +343,63 @@ export default defineComponent({
         inactAut() {
             alert("Botón inactivar ok");
         },
+        listarOfiLoc() {
+        let me = this;
+        var url = "/api/ofiLoc/getOfiLoc";
+
+        axios
+            .get(url)
+            .then(function (response) {
+            var respuesta = response.data;
+            me.arrayOfiLoc = respuesta.ofiLoc;
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        },
+        listarTpAut() {
+        let me = this;
+        var url = "/api/tipoAut/getTpAuto";
+
+        axios
+            .get(url)
+            .then(function (response) {
+            var respuesta = response.data;
+            me.arrayTpAut = respuesta.tipoAut;
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        },
+        listarAreaTrab() {
+        let me = this;
+        var url = "/api/areaTrab/getArea";
+
+        axios
+            .get(url)
+            .then(function (response) {
+            var respuesta = response.data;
+            me.arrayareaTrab = respuesta.areaTrab;
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        },
         cerrarReg() {
             this.tpAccion = 0;
         },
+        limpiar() {
+            this.fecha="";
+            this.desc="";
+            this.idOfLoc="";
+            this.idTpAuto="";
+        },
+    },
+    mounted(){
+        this.listarOfiLoc();
+        this.listarTpAut();
+        this.listarAreaTrab();
+
     },
 });
 </script>

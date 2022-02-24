@@ -18,7 +18,7 @@ class CreateVehiculosTable extends Migration
             $table->string('placa',10);
             $table->string('marca',20);
             $table->string('color',10);
-            $table->string('condicion',100);
+            $table->string('edo',500);
 
             $table->foreignId('id_tpVehi')->constrained('tipo_vehiculos');
             $table->foreignId('id_persona')->constrained('personas');

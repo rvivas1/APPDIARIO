@@ -23,7 +23,10 @@ class PersonaController extends Controller
     public function index(){
         $persona=Persona::all();
         return Inertia::render('Personas',['persona'=>$persona]);
-        // return['ofiLoc'=>$ofiLoc];
+    }
+    public function indexMain(){
+        $persona=Persona::all();
+        return['persona'=>$persona];
     }
     public function store(Request $request){
         $persona= new Persona();
@@ -55,6 +58,12 @@ class PersonaController extends Controller
         $persona->id_ofLoc=$request->idOfLoc;
 
         $persona->save();
+    }
+    public function getPersonas(){
+        $persona= Persona::select('id','nombre','apellido')->get();
+        return[
+            'persona'=>$persona
+        ];
     }
     public function getFiltro(Request $request){
         $nom=$request->nom;

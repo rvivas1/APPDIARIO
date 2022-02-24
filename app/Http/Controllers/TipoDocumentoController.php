@@ -10,7 +10,7 @@ class TipoDocumentoController extends Controller
 {
     //
     public function getTpDoc(){
-        $tpDoc= TipoDocumento::select('descripcion', 'id')->get();
+        $tpDoc= TipoDocumento::select('descripcion','id','codigo')->get();
         return[
             'tpDoc'=>$tpDoc
         ];
