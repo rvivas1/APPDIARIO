@@ -25,12 +25,12 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="openReg"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-rojito"
+                                        class="h-8 w-6"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -50,7 +50,7 @@
                         >
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-rojito uppercase text-normal text-lg leading-normal"
+                                    class="bg-gray-300 text-rojito uppercase text-normal text-xl leading-normal"
                                 >
                                     <th class="py-3 px-6 text-left">
                                         N° Oficina/Local

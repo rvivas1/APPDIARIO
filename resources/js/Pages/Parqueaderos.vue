@@ -11,7 +11,7 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
+                        class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
                     >
                         <h1>gestionar parqueaderos</h1>
                     </div>
@@ -20,12 +20,12 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-Rred-800"
+                                        class="h-8 w-6"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -45,23 +45,16 @@
                         >
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal"
+                                    class="bg-gray-300 text-rojito uppercase text-normal text-xl leading-normal"
                                 >
                                     <th class="py-3 px-6 text-left">
                                         N° Parqueadero
                                     </th>
-                                    <!-- <th class="py-3 px-6 text-left">Nit</th> -->
                                     <th class="py-3 px-6 text-left">Oficina</th>
                                     <th class="py-3 px-6 text-left">Titular</th>
-                                    <th class="py-3 px-6 text-left">
-                                        Ubicación
-                                    </th>
-                                    <th class="py-3 px-6 text-center">
-                                        Estado
-                                    </th>
-                                    <th class="py-3 px-6 text-center">
-                                        Acciones
-                                    </th>
+                                    <th class="py-3 px-6 text-left"> Ubicación</th>
+                                    <th class="py-3 px-6 text-center">Estado</th>
+                                    <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="text-red-800 text-base font-light">
@@ -194,7 +187,7 @@
                     <div class="bg-grey-200 shadow-md rounded my-6">
                         <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
                         >
                             <h2 v-text="tittle"></h2>
                         </div>
@@ -455,7 +448,7 @@ export default defineComponent({
             tpAccion: 0,
             tittle: "",
             num: "",
-            tipo: 0,
+            tipo: "",
             ubic: "",
             repProp: "",
             propArren: "",
@@ -515,12 +508,20 @@ export default defineComponent({
                     console.log(error.message);
                 });
         },
-        actualizarParq() {
+        actualizarParq(data=[]) {
             this.tpAccion = 1;
             this.tittle = "Actualizar Parqueadero";
-
-
-            alert("Botón actualizar ok");
+            this.num = data['numero'];
+            this.tipo = data['tipo'];
+            this.ubic = data['ubicacion'];
+            this.repProp = data['repre_propie'];
+            this.propArren = data['propio_arrendado'];
+            this.edo = data['estado'];
+            this.moto = data['permite_moto'];
+            this.carro = data['permite_carro'];
+            this.dispVen = data['disp_venta'];
+            this.dispAlq = data['disp_alquiler'];
+            this.idOfLoc = data['id_ofLoc'];
         },
         verParq() {
             alert("Botón ver ok");

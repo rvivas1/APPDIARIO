@@ -2,7 +2,6 @@
     <app-layout title="Personas">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Personas
             </h2>
         </template>
         <!-- <h1 v-for="(objeto,index) in persona" :key="index">
@@ -16,7 +15,7 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
+                        class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
                     >
                         <h1>gestionar Funcionarios</h1>
                     </div>
@@ -25,12 +24,12 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-Rred-800"
+                                        class="h-8 w-6"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -50,7 +49,7 @@
                         >
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-red-800 uppercase text-normal text-base text-rojito leading-normal">
+                                    class="bg-gray-300 text-red-800 uppercase text-normal text-xl text-rojito leading-normal">
                                     <th class="py-3 px-6 text-left">Tipo y N° Documento</th>
                                     <th class="py-3 px-6 text-left">Nombres y apellidos</th>
                                     <th class="py-3 px-6 text-left">Celular</th>
@@ -173,12 +172,10 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
-                            class="font-bold mt-5 text-xl ml-2 text-rojito uppercase leading-tight">
+                            class="font-bold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
-                        <!-- This is an example component -->
                         <div class="max-w-5xl mt-10 mx-auto">
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div
@@ -396,7 +393,7 @@ export default defineComponent({
             })
         },
         abrirReg(){
-            this.tittle = "Registrar funcionario";
+            this.tittle = "Crear funcionario";
             this.tpAccion = 1;
         },
         regPersona() {
@@ -429,14 +426,14 @@ export default defineComponent({
             this.tpAccion = 1;
             this.tittle = "Actualizar Funcionario";
             this.numDoc = data["num_doc"];
-            this.nombre = data["num_doc"];
-            this.apellido = data["num_doc"];
-            this.tel = data["num_doc"];
-            this.telAlter = data["num_doc"];
-            this.correo = data["num_doc"];
-            this.edo = data["num_doc"];
-            this.numDoc = data["num_doc"];
-            this.numDoc = data["num_doc"];
+            this.nombre = data["nombre"];
+            this.apellido = data["apellido"];
+            this.tel = data["tel"];
+            this.telAlter = data["tel_alter"];
+            this.correo = data["correo"];
+            this.edo = data["estado"];
+            this.idTpDoc = data["id_tpDoc"];
+            this.idOfLoc = data["id_ofLoc"];
         },
         verPersona() {
             alert("Botón ver ok");

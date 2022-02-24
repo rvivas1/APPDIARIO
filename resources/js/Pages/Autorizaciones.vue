@@ -12,7 +12,7 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
+                        class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
                     >
                         <h1>gestionar autorizaciones</h1>
                     </div>
@@ -21,12 +21,12 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirRegAuto"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-Rred-800"
+                                        class="h-8 w-6"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -45,14 +45,14 @@
                             class="border-l-4 border-white mt-2 min-w-max w-full margin-3 table-auto bg-gray-100 border-solid">
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-red-800 uppercase text-normal text-base leading-normal">
+                                    class="bg-gray-300 text-red-800 uppercase text-normal text-xl leading-normal">
                                     <th class="py-3 px-6 text-left">Tipo</th>
                                     <th class="py-3 px-6 text-left">Área</th>
                                     <th class="py-3 px-6 text-left">Fecha</th>
                                     <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-red-800 text-base font-light">
+                            <tbody class="text-rojito text-base font-light">
                                 <tr
                                     v-for="(objeto, index) in autorizacion"
                                     :key="index"
@@ -69,16 +69,16 @@
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.area_trabajo
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.area_trabajo}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.fecha
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.fecha}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
@@ -165,7 +165,7 @@
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-rojito uppercase leading-tight">
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
                         <div class="max-w-5xl mt-9 mb-12 mx-auto">

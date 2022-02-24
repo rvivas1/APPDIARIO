@@ -12,7 +12,7 @@
                 <sidebar />
                 <div class="w-full lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight"
+                        class="font-semibold mt-5 text-3xl ml-2 text-red-800 uppercase leading-tight"
                     >
                         <h1>gestionar depósitos</h1>
                     </div>
@@ -21,12 +21,12 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-rojito text-rojito mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3"
+                                class="pl-5 pr-6 bg-white border-2 border-rojito text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
                             >
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-8 w-6 text-Rred-800"
+                                        class="h-8 w-6"
                                         viewBox="0 0 24 24 "
                                         stroke="currentColor"
                                     >
@@ -46,24 +46,16 @@
                         >
                             <thead>
                                 <tr
-                                    class="bg-gray-300 text-red-800 uppercase text-normal text-lg leading-normal"
+                                    class="bg-gray-300 text-rojito uppercase text-normal text-xl leading-normal"
                                 >
-                                    <th class="py-3 px-6 text-left">
-                                        N° Depósito
-                                    </th>
+                                    <th class="py-3 px-6 text-left">N° Depósito</th>
                                     <th class="py-3 px-6 text-left">Titular</th>
-                                    <th class="py-3 px-6 text-left">
-                                        Ubicación
-                                    </th>
-                                    <th class="py-3 px-6 text-center">
-                                        Estado
-                                    </th>
-                                    <th class="py-3 px-6 text-center">
-                                        Acciones
-                                    </th>
+                                    <th class="py-3 px-6 text-left">Ubicación</th>
+                                    <th class="py-3 px-6 text-center">Estado</th>
+                                    <th class="py-3 px-6 text-center">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-gray-600 text-lg font-light">
+                            <tbody class="text-rojito text-lg font-light">
                                 <tr
                                     v-for="(objeto, index) in deposito"
                                     :key="index"
@@ -183,12 +175,10 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
-                            class="font-semibold mt-5 text-xl ml-2 text-red-800 uppercase leading-tight">
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
                         </div>
-                        <!-- This is an example component -->
                         <div class="max-w-5xl mt-12 mx-auto">
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
