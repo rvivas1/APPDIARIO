@@ -15,6 +15,10 @@ class DepositoController extends Controller
         return Inertia:: render('Depositos',['deposito'=>$deposito]);
         // return['deposito'=>$deposito];
     }
+    public function indexMain(){
+        $deposito=Deposito::all();
+        return['deposito'=>$deposito];
+    }
 
     public function store(Request $request){
         $deposito= new Deposito();
@@ -34,10 +38,13 @@ class DepositoController extends Controller
     }
     public function update(Request $request){
         $deposito= Deposito::FindOrFail($request->id);
+        $deposito->numero=$request->numero;
+        $deposito->ubicacion=$request->ubic;
         $deposito->repre_propie=$request->repProp;
         $deposito->condicion=$request->cond;
         $deposito->contenido=$request->cont;
         $deposito->estado=$request->edo;
+        $deposito->medidas=$request->medidas;
         $deposito->disp_venta=$request->dispVent;
         $deposito->disp_alquiler=$request->dispAlq;
 

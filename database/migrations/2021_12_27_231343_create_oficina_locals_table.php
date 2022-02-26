@@ -15,6 +15,7 @@ class CreateOficinaLocalsTable extends Migration
     {
         Schema::create('oficina_locals', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo',15);
             $table->string('numero',5);
             $table->string('tel',15);
             $table->string('nit',15);

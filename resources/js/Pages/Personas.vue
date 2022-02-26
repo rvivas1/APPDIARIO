@@ -67,16 +67,15 @@
                                         class="py-3 px-6 text-left whitespace-nowrap">
                                         <div class="flex items-center">
                                             <span class="font-medium">
-                                                <!-- {{ objeto.tipo_documento }} -->
-                                                {{ objeto.num_doc }}
+                                                {{ objeto.cod + "-" + objeto.num_doc}}
                                                 </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
                                             <span
-                                                >{{ objeto.nombre }}
-                                                {{ objeto.apellido }}</span
+                                                >{{ objeto.nombre + " " +  objeto.apellido }}
+                                                </span
                                             >
                                             <!-- <span>{{objeto.apellido}}</span> -->
                                         </div>
@@ -88,7 +87,7 @@
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex items-center">
-                                            <span>{{ objeto.ofiLoc }}</span>
+                                            <span>{{ objeto.oficina}}</span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
@@ -113,7 +112,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verPersona">
+                                                    @click="verPersona(objeto)">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -133,7 +132,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarper(objeto)">
+                                                    @click="abrirActualizar(objeto)">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -301,7 +300,7 @@
                                                 class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
-                                                     <!-- {{objeto.numero}}  -->
+                                                     {{objeto.numero}}-
                                                      {{objeto.razon_social}}
                                                     </option>
                                             </select>
@@ -332,14 +331,255 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-rojito text-rojito mr-6 mt-2 mb-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
+                                v-if="boton"
                                @click="regPersona"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-2 mt-2 mb-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
+                            </button>
+                            <button
+                                v-if="boton==false"
+                               @click="actPersona"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-2 mt-2 mb-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 2" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <!-- This is an example component -->
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-transparent">
+                            <div
+                                class="flex flex-col p-8 bg-gray-800 shadow-md hover:shodow-lg rounded-2xl">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-16 h-16 rounded-2xl p-3 border border-gray-800 text-blue-400 bg-gray-900"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                        <div class="flex flex-col ml-3">
+                                            <div
+                                                class="font-medium leading-none text-xl text-white">
+                                                Inactivar?
+                                            </div>
+                                            <p
+                                                class="text-lg text-white leading-none mt-1">
+                                                Para inactivar, click en el
+                                                botón aceptar
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        @click="cerrarReg"
+                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 3" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
+            >
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-bold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div class="max-w-5xl mt-10 mx-auto">
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div
+                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Tipo de identificación
+                                        </label>
+                                        <select
+                                            v-model="idTpDoc"
+                                            value=""
+                                            placeholder="Seleccione el tipo"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            name="none">
+                                            <option v-for="(objeto,index) in arraytpDoc" :key="index" :value="objeto.id">
+                                                {{objeto.codigo}}.
+                                                {{objeto.descripcion}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold"
+                                        for="">
+                                        Número
+                                    </label>
+                                    <input
+                                        v-model="numDoc"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Número de identificación"
+                                        required="required"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold">
+                                        Nombre
+                                    </label>
+                                    <input
+                                    v-model="nombre"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese nombres"
+                                    />
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        for="">
+                                        Apellido
+                                    </label>
+                                    <input
+                                    v-model="apellido"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese apellidos"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        for="">
+                                        Teléfono celular
+                                    </label>
+                                    <input
+                                    v-model="tel"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="number"
+                                        placeholder="Ingrese número de teléfono"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        for="">
+                                        Teléfono alterno
+                                    </label>
+                                    <input
+                                    v-model="telAlter"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese número de teléfono"
+                                    />
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        for="">
+                                        Correo
+                                    </label>
+                                    <input
+                                    v-model="correo"
+                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese correo electrónico"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        for="">
+                                        Oficina / Local
+                                    </label>
+                                    <div
+                                        class="flex sm:flex-row items-center mb-1 sm:space-x-5">
+                                        <div class="w-full">
+                                            <select
+                                            v-model="idOfLoc"
+                                                class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
+                                                name="estado">
+                                                <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
+                                                     {{objeto.numero}}-
+                                                     {{objeto.razon_social}}
+                                                    </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 mb-1 text-xl text-rojito font-bold"
+                                        for="">
+                                        Estado
+                                    </label>
+                                    <div class="main flex border mt-0 rounded-full overflow-hidden select-none">
+                                    <label class="flex radio p-2 cursor-pointer">
+                                    <input v-model="edo" :value="1" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-base font-medium">Activo</div>
+                                </label>
+                                <label class="flex radio p-2 cursor-pointer">
+                                    <input v-model="edo" :value="0" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-base font-medium">Inactivo</div>
+                                </label>
+                                </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="flex justify-center mt-9 ...">
+                            <button
+                                @click="cerrarReg"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                SALIR
                             </button>
                         </div>
                     </div>
@@ -363,6 +603,7 @@ export default defineComponent({
         return {
             tpAccion: 0,
             tittle: "",
+            boton: "",
             numDoc: "",
             nombre: "",
             apellido: "",
@@ -371,6 +612,7 @@ export default defineComponent({
             correo: "",
             edo: "",
             idTpDoc: "",
+            idPers: 0,
             idOfLoc: "",
             arraytpDoc: [],
             arrayOfiLoc: [],
@@ -381,7 +623,7 @@ export default defineComponent({
     methods: {
         listarDatos(){
             let me = this;
-            var url="/api/persona/main"
+            var url="/api/persona/data"
 
             axios.get(url)
             .then(function(response) {
@@ -395,6 +637,8 @@ export default defineComponent({
         abrirReg(){
             this.tittle = "Crear funcionario";
             this.tpAccion = 1;
+            this.boton=true;
+            this.borrar();
         },
         regPersona() {
             let me= this;
@@ -422,9 +666,11 @@ export default defineComponent({
                 console.log(error.message);
             })
         },
-        actualizarper(data=[]) {
+        abrirActualizar(data=[]) {
             this.tpAccion = 1;
             this.tittle = "Actualizar Funcionario";
+            this.boton=false;
+            this.idPers=data["idper"];
             this.numDoc = data["num_doc"];
             this.nombre = data["nombre"];
             this.apellido = data["apellido"];
@@ -432,13 +678,52 @@ export default defineComponent({
             this.telAlter = data["tel_alter"];
             this.correo = data["correo"];
             this.edo = data["estado"];
-            this.idTpDoc = data["id_tpDoc"];
-            this.idOfLoc = data["id_ofLoc"];
+            this.idTpDoc = data["idtd"];
+            this.idOfLoc = data["idof"];
         },
-        verPersona() {
-            alert("Botón ver ok");
+        actPersona() {
+            let me= this;
+            var url="/api/persona/actualizar";
+            axios.put(url,
+            {
+                id: this.idPers,
+                idTpDoc: this.idTpDoc,
+                numDoc: this.numDoc,
+                nombre: this.nombre,
+                apellido: this.apellido,
+                tel: this.tel,
+                telAlter: this.telAlter,
+                correo: this.correo,
+                edo: this.edo,
+                idOfLoc: this.idOfLoc
+            }
+            ).then(function(response)
+            {
+                alert("Registro Actualizado exitosamente!");
+                me.listarDatos();
+                me.tpAccion=0;
+                me.borrar();
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
+        },
+        verPersona(data=[]) {
+            this.tpAccion = 3;
+            this.tittle = "información del funcionario";
+            this.numDoc = data["num_doc"];
+            this.nombre = data["nombre"];
+            this.apellido = data["apellido"];
+            this.tel = data["tel"];
+            this.telAlter = data["tel_alter"];
+            this.correo = data["correo"];
+            this.edo = data["estado"];
+            this.idTpDoc = data["idtd"];
+            this.idOfLoc = data["idof"];
         },
         inactPersona() {
+            this.tpAccion=2;
+            this.tittle="inactivar persona";
             alert("Botón inactivar ok");
         },
         cerrarReg() {
@@ -472,17 +757,17 @@ export default defineComponent({
           console.log(error);
         });
         },
-      borrar() {
-            this.numDoc="",
-            this.nombre= "",
-            this.apellido= "",
-            this.raSocial= "",
-            this.tel= "",
-            this.telAlter= "",
-            this.correo= 0,
-            this.edo= "",
-            this.idTpDoc= "",
-            this.idOfLoc= 1
+        borrar() {
+                this.numDoc="",
+                this.nombre= "",
+                this.apellido= "",
+                this.raSocial= "",
+                this.tel= "",
+                this.telAlter= "",
+                this.correo= 0,
+                this.edo= "",
+                this.idTpDoc= "",
+                this.idOfLoc= 1
         },
     },
     mounted(){

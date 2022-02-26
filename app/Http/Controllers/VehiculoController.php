@@ -13,9 +13,10 @@ class VehiculoController extends Controller
     public function indexData(){
         $vehiculo=Vehiculo::join('tipo_vehiculos','vehiculos.id_tpVehi','=','tipo_vehiculos.id')
         ->join('personas','vehiculos.id_persona','=','personas.id')
-        ->select('vehiculos.placa','vehiculos.marca','vehiculos.color',
-        'vehiculos.edo as Observaciones','tipo_vehiculos.descripcion as Tipo',
-        'personas.nombre as Nombre titular','personas.apellido as Apellido titular')
+        // ->join('det_vehi_parqs','vehiculos.id_persona','=','personas.id')
+        ->select('vehiculos.placa','vehiculos.marca','vehiculos.color','vehiculos.id as idVehi',
+        'vehiculos.edo','tipo_vehiculos.descripcion as tipo','tipo_vehiculos.id as idtpv',
+        'personas.nombre as nombre','personas.id as idper','personas.apellido as apellido')
         ->get();
         return['vehiculo'=>$vehiculo];
     }
@@ -23,6 +24,10 @@ class VehiculoController extends Controller
         $vehiculo=Vehiculo::all();
         return Inertia::render('Vehiculos',['vehiculo'=>$vehiculo]);
         // return['vehiculo'=>$vehiculo];
+    }
+    public function indexMain(){
+        $vehiculo=Vehiculo::all();
+        return['vehiculo'=>$vehiculo];
     }
 
     public function store(request $request){

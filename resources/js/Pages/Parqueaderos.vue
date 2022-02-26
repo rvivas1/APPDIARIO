@@ -64,7 +64,7 @@
                                     class="border-b border-gray-200 hover:bg-gray-100"
                                 >
                                     <td
-                                        class="py-3 px-6 text-left whitespace-nowrap"
+                                        class="py-3 px-6 text-center whitespace-nowrap"
                                     >
                                         <div class="flex items-center">
                                             <span class="font-medium">{{
@@ -74,15 +74,16 @@
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.razon_social
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.num}}-
+                                                {{objeto.nombre}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div class="flex items-center">
                                             <span class="font-medium">{{
-                                                objeto.repre_propie
+                                                objeto.titular
                                             }}</span>
                                         </div>
                                     </td>
@@ -117,7 +118,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verParq"
+                                                    @click="verParq(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -141,7 +142,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarParq(objeto)"
+                                                    @click="openActualizar(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -223,6 +224,7 @@
                                             name="estado">
                                             <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
                                                 {{objeto.numero}}
+                                                <!-- {{objeto.razon_social}} -->
                                                 </option>
                                         </select>
                                     </div>
@@ -237,11 +239,11 @@
                                         class="flex sm:flex-row items-center mb-2 sm:space-x-5" >
                                         <div class="w-full">
                                             <select
-                                            v-model="tipo"
+                                                v-model="tipo"
                                                 class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                                name="">
+                                                name="tipo">
                                                 <option value="1">Doble</option>
-                                                <option value="0"> Sencillo</option>
+                                                <option value="0">Sencillo</option>
                                             </select>
                                         </div>
                                     </div>
@@ -286,7 +288,7 @@
                                         class="flex sm:flex-row items-center mb-1 sm:space-x-5">
                                         <div class="w-full">
                                             <select
-                                            v-model="propArren"
+                                                v-model="propArren"
                                                 class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option value="1">
@@ -313,9 +315,10 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg" >
                                             <input
                                                 v-model="carro"
+                                                value=""
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
-                                                name="sfg"
+                                                name="carro"
                                                 checked/>
                                             <div
                                                 class="title text-rojito px-2 my-auto">
@@ -326,9 +329,10 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                                 v-model="moto"
+                                                value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
-                                                name="sfg"
+                                                name="moto"
                                                 checked />
                                             <div
                                                 class="title text-rojito px-2 my-auto">
@@ -348,7 +352,8 @@
                                         <label
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
-                                            v-model="dispAlq"
+                                                v-model="dispAlq"
+                                                value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
@@ -362,6 +367,7 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                             v-model="dispVen"
+                                                value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
@@ -415,14 +421,330 @@
                                 <button
                                     @click="cerrarReg"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-3 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                     Cancelar
                                 </button>
                                 <button
                                     @click="regParq"
+                                    v-if="boton"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-2 mt-3 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Guardar
+                                </button>
+                                <button
+                                    @click="actualizarParq"
+                                    v-if="boton==false"
+                                    type="buttom"
+                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-2 mt-3 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    Actualizar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 2" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-transparent">
+                            <div
+                                class="flex flex-col p-8 bg-gray-800 shadow-md hover:shodow-lg rounded-2xl">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-16 h-16 rounded-2xl p-3 border border-gray-800 text-blue-400 bg-gray-900"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                        <div class="flex flex-col ml-3">
+                                            <div
+                                                class="font-medium leading-none text-xl text-white">
+                                                Inactivar?
+                                            </div>
+                                            <p
+                                                class="text-lg text-white leading-none mt-1">
+                                                Para inactivar, click en el
+                                                botón aceptar
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        @click="cerrarReg"
+                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 3" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
+            >
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <!-- This is an example component -->
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
+                        >
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <!-- This is an example component -->
+                        <div class="max-w-5xl mt-12 mx-auto">
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for=""
+                                    >
+                                        Número
+                                    </label>
+                                    <input
+                                        v-model="num"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Número de parqueadero"/>
+                                </div>
+                                <div
+                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5"
+                                >
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Oficina / Local
+                                        </label>
+                                        <select
+                                            v-model="idOfLoc"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
+                                                {{objeto.numero}}
+                                                <!-- {{objeto.razon_social}} -->
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-2 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Tipo
+                                    </label>
+                                    <div
+                                        class="flex sm:flex-row items-center mb-2 sm:space-x-5" >
+                                        <div class="w-full">
+                                            <select
+                                                v-model="tipo"
+                                                class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                name="tipo">
+                                                <option value="1">Doble</option>
+                                                <option value="0">Sencillo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Ubicación
+                                    </label>
+                                    <input
+                                    v-model="ubic"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ubicación del parqueadero"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="" >
+                                        Titular
+                                    </label>
+                                    <input
+                                    v-model="repProp"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Nombre representante legal"
+                                    />
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Propio / Arrendado
+                                    </label>
+                                    <div
+                                        class="flex sm:flex-row items-center mb-1 sm:space-x-5">
+                                        <div class="w-full">
+                                            <select
+                                                v-model="propArren"
+                                                class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                name="estado">
+                                                <option value="1">
+                                                    Propio
+                                                </option>
+                                                <option value="0">
+                                                    Arrendado
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Permite:
+                                    </label>
+                                    <div
+                                        class="main flex mt-1 border overflow-hidden select-none">
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg" >
+                                            <input
+                                                v-model="carro"
+                                                value=""
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name="carro"
+                                                checked/>
+                                            <div
+                                                class="title text-rojito px-2 my-auto">
+                                                Carro
+                                            </div>
+                                        </label>
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
+                                            <input
+                                                v-model="moto"
+                                                value="0"
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name="moto"
+                                                checked />
+                                            <div
+                                                class="title text-rojito px-2 my-auto">
+                                                Moto
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Disponible para:
+                                    </label>
+                                    <div
+                                        class="main flex mt-1 border overflow-hidden select-none">
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
+                                            <input
+                                                v-model="dispAlq"
+                                                value="0"
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name="sfg"
+                                                checked/>
+                                            <div
+                                                class="title text-rojito px-2 my-auto">
+                                                Alquiler
+                                            </div>
+                                        </label>
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
+                                            <input
+                                            v-model="dispVen"
+                                                value="0"
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name="sfg"
+                                                checked/>
+                                            <div
+                                                class="title text-rojito px-2 my-auto">
+                                                Venta
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 mb-0 text-xl text-rojito font-bold"
+                                        for="">
+                                        Estado
+                                    </label>
+                                    <div
+                                        class="main flex border rounded-full overflow-hidden select-none">
+                                        <label
+                                            class="flex radio p-2 cursor-pointer">
+                                            <input
+                                                v-model="edo"
+                                                value="1"
+                                                class="my-auto transform scale-125"
+                                                type="radio"
+                                                name="sfg"/>
+                                            <div
+                                                class="ml-3 text-rojito text-lg font-medium">
+                                                Activo
+                                            </div>
+                                        </label>
+                                        <label
+                                            class="flex radio p-2 cursor-pointer" >
+                                            <input
+                                                v-model="edo"
+                                                value="0"
+                                                class="my-auto transform scale-125"
+                                                type="radio"
+                                                name="sfg"/>
+                                            <div
+                                                class="ml-3 text-rojito text-lg font-medium">
+                                                Inactivo
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center mt-9 ...">
+                                <button
+                                    @click="cerrarReg"
+                                    type="buttom"
+                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    Salir
                                 </button>
                             </div>
                         </div>
@@ -447,17 +769,20 @@ export default defineComponent({
         return {
             tpAccion: 0,
             tittle: "",
+            boton: true,
             num: "",
+            nom: "",
             tipo: "",
             ubic: "",
             repProp: "",
             propArren: "",
             edo: "",
-            moto: 0,
-            carro: 0,
-            dispVen: 0,
-            dispAlq: 0,
-            idOfLoc: "",
+            moto: "",
+            carro: "",
+            idParq: 0,
+            dispVen: "",
+            dispAlq: "",
+            idOfLoc: 0,
             arrayOfiLoc: [],
             arrayData: []
         };
@@ -466,7 +791,7 @@ export default defineComponent({
     methods: {
         listarDatos(){
             let me = this;
-            var url = "/api/parqueadero/main"
+            var url = "/api/parqueadero/data"
 
             axios.get(url)
             .then(function(response){
@@ -480,6 +805,7 @@ export default defineComponent({
         abrirReg() {
             this.tittle = "Crear Parqueadero";
             this.tpAccion = 1;
+            this.borrar();
         },
         regParq() {
             let me = this;
@@ -508,26 +834,71 @@ export default defineComponent({
                     console.log(error.message);
                 });
         },
-        actualizarParq(data=[]) {
+        openActualizar(data=[]) {
             this.tpAccion = 1;
             this.tittle = "Actualizar Parqueadero";
+            this.boton=false;
+            this.idParq = data['idParq'];
             this.num = data['numero'];
             this.tipo = data['tipo'];
             this.ubic = data['ubicacion'];
-            this.repProp = data['repre_propie'];
+            this.repProp = data['titular'];
             this.propArren = data['propio_arrendado'];
             this.edo = data['estado'];
-            this.moto = data['permite_moto'];
-            this.carro = data['permite_carro'];
-            this.dispVen = data['disp_venta'];
-            this.dispAlq = data['disp_alquiler'];
-            this.idOfLoc = data['id_ofLoc'];
+            this.moto = data['moto'];
+            this.carro = data['carro'];
+            this.dispVen = data['venta'];
+            this.dispAlq = data['alquiler'];
+            this.idOfLoc = data['idof'];
         },
-        verParq() {
-            alert("Botón ver ok");
+        actualizarParq() {
+            let me = this;
+            var url = "/api/parqueadero/actualizar";
+            axios
+                .put(url, {
+                    id: this.idParq,
+                    num: this.num,
+                    tipo: this.tipo,
+                    ubic: this.ubic,
+                    repProp: this.repProp,
+                    propArren: this.propArren,
+                    edo: this.edo,
+                    moto: this.moto,
+                    carro: this.carro,
+                    dispVen: this.dispVen,
+                    dispAlq: this.dispAlq,
+                    idOfLoc: this.idOfLoc,
+                })
+                .then(function (response) {
+                    me.listarDatos();
+                    alert("Registro guardado exitosamente!");
+                    me.tpAccion = 0;
+                    me.borrar();
+                })
+                .catch(function (error) {
+                    console.log(error.message);
+                });
+        },
+        verParq(data=[]) {
+            this.tpAccion = 3;
+            this.tittle = "información del Parqueadero";
+            this.boton=false;
+            this.idParq = data['idParq'];
+            this.num = data['numero'];
+            this.tipo = data['tipo'];
+            this.ubic = data['ubicacion'];
+            this.repProp = data['titular'];
+            this.propArren = data['propio_arrendado'];
+            this.edo = data['estado'];
+            this.moto = data['moto'];
+            this.carro = data['carro'];
+            this.dispVen = data['venta'];
+            this.dispAlq = data['alquiler'];
+            this.idOfLoc = data['idof'];
         },
         inactParq() {
-            alert("Botón inactivar ok");
+            this.tpAccion=2;
+            this.tittle="inactivar parqueadero"
         },
         listarOfiLoc() {
             let me = this;
@@ -542,6 +913,19 @@ export default defineComponent({
                 .catch(function (error) {
                     console.log(error);
                 });
+        },
+        borrar(){
+            this.num= "",
+            this.tipo= "",
+            this.ubic= "",
+            this.repProp= "",
+            this.propArren= "",
+            this.edo= "",
+            this.moto= "",
+            this.carro="",
+            this.dispVen= "",
+            this.dispAlq= "",
+            this.idOfLoc= ""
         },
         cerrarReg() {
             this.tpAccion = 0;

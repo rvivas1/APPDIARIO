@@ -49,31 +49,29 @@
                                     <th class="py-3 px-6 text-left">Placa</th>
                                     <th class="py-3 px-6 text-left">Tipo</th>
                                     <th class="py-3 px-6 text-left">Marca</th>
+                                    <th class="py-3 px-6 text-left">color</th>
                                     <th class="py-3 px-6 text-left">Propietario</th>
-                                    <th class="py-3 px-6 text-center">Estado</th>
                                     <th class="py-3 px-6 text-center"> Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-red-800 text-base font-light">
+                            <tbody class="text-red-800 text-lg font-light">
                                 <tr
-                                    v-for="(objeto, index) in vehiculo"
+                                    v-for="(objeto, index) in arrayData"
                                     :key="index"
-                                    class="border-b border-gray-200 hover:bg-gray-100"
-                                >
+                                    class="border-b border-gray-200 hover:bg-gray-100">
                                     <td
-                                        class="py-3 px-6 text-left whitespace-nowrap"
-                                    >
+                                        class="py-3 px-6 text-left whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.placa
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.placa}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.tipo_vehiculo
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.tipo}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
@@ -83,24 +81,20 @@
                                             }}</span>
                                         </div>
                                     </td>
-                                    <td class="py-3 px-6 text-center">
+                                    <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
-                                            <span class="font-medium">{{
-                                                objeto.repre_propie
-                                            }}</span>
+                                            <span class="font-medium">
+                                                {{objeto.color}}
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
-                                        <span
-                                            v-if="objeto.estado == 1"
-                                            class="bg-purple-200 text-green-600 py-1 px-3 rounded-full text-base"
-                                            >Activo</span
-                                        >
-                                        <span
-                                            v-else
-                                            class="bg-purple-200 text-red-600 py-1 px-3 rounded-full text-base"
-                                            >Inactivo</span
-                                        >
+                                        <div class="flex items-center">
+                                            <span class="font-medium">
+                                                {{objeto.nombre}}
+                                                {{objeto.apellido}}
+                                                </span>
+                                        </div>
                                     </td>
                                     <td class="py-3 px-6 text-center">
                                         <div
@@ -112,7 +106,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verVehi">
+                                                    @click="verVehi(objeto)">
                                                     
                                                     <path
                                                         stroke-linecap="round"
@@ -133,7 +127,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarVehi">
+                                                    @click="openActualizar(objeto)">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -147,7 +141,9 @@
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
-                                                    stroke="currentColor">
+                                                    stroke="currentColor"
+                                                    @click="eliminarVehi"
+                                                    >
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -296,21 +292,228 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
                                 @click="regVehiculo"
+                                v-if="boton"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
+                            </button>
+                            <button
+                                @click="actualizarVehi"
+                                v-if="boton==false"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                Actualizar
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- </div> -->
+        <div v-if="tpAccion == 2" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
+            >
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster fixed
+                             left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none
+                              opacity-10%">
+                            <div
+                                class="flex flex-col p-8 bg-gray-800 shadow-md hover:shodow-lg rounded-2xl">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-16 h-16 rounded-2xl p-3 border border-gray-800 text-blue-400 bg-gray-900"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                        <div class="flex flex-col ml-3">
+                                            <div
+                                                class="font-medium leading-none text-xl text-white">
+                                                Eliminar?
+                                            </div>
+                                            <p
+                                                class="text-lg text-white leading-none mt-1">
+                                                Para confirmar, click en el
+                                                botón aceptar
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        @click="cerrarReg"
+                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 3" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div class="max-w-5xl mx-auto mt-12">
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Placa
+                                    </label>
+                                    <input
+                                        v-model="placa"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese placa del vehículo"/>
+                                </div>
+                                <div class="mb-2 md:mb-0">
+                                    <div class="mb-4 md:mr-2 md:mb-0">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Marca
+                                        </label>
+                                        <input
+                                            v-model="marca"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id=""
+                                            type="text"
+                                            placeholder="Ingrese la marca del vehículo"/>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Color
+                                    </label>
+                                    <input
+                                        v-model="color"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese el color del vehículo"/>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
+                                <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Propietario
+                                        </label>
+                                        <select
+                                            v-model="idPers"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayPersona" :key="index" :value="objeto.id">
+                                                {{objeto.nombre}}
+                                                {{objeto.apellido}}
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Tipo de vehículo
+                                        </label>
+                                        <select
+                                            v-model="idTpVehi"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayTpVehi" :key="index" :value="objeto.id">
+                                                {{objeto.descripcion}}
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            N° de Parqueadero
+                                        </label>
+                                        <select
+                                            v-model="idParq"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="estado">
+                                            <option v-for="(objeto,index) in arrayParq" :key="index" :value="objeto.id">
+                                                {{objeto.numero}}
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-1 mt-1 xl:gap-6">
+                                <div class="mb-2 md:mb-0">
+                                    <div class="mb-1 md:mr-2 md:mb-0">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Observaciones
+                                        </label>
+                                         <textarea
+                                            v-model="edo"
+                                            cols="53"
+                                            rows="3"
+                                            placeholder="Estado o condiciones del vehículo"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            maxlength="600">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-9 ...">
+                            <button
+                                @click="cerrarReg"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                Salir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </app-layout>
 </template>
 
@@ -329,6 +532,7 @@ export default defineComponent({
         return {
             tpAccion: 0,
             tittle: "",
+            boton: "",
             placa: "",
             marca: "",
             color: "",
@@ -336,16 +540,33 @@ export default defineComponent({
             edo: "",
             idParq: "",
             idPers: "",
+            idVehi: 0,
             arrayTpVehi: [],
             arrayParq: [],
             arrayPersona: [],
+            arrayData: [],
         };
     },
     props: ["vehiculo"],
     methods: {
+        listarDatos(){
+            let me = this;
+            var url = "/api/vehiculo/data"
+
+            axios.get(url)
+            .then(function(response){
+                var respuesta = response.data;
+                me.arrayData = respuesta.vehiculo;
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+        },
         abrirRegVehi() {
             this.tittle = "Crear vehículo";
             this.tpAccion = 1;
+            this.boton = true;
+            this.borrar();
         },
         regVehiculo() {
             let me= this;
@@ -362,21 +583,67 @@ export default defineComponent({
             ).then(function(response)
             {
                 alert("Registro guardado exitosamente!");
+                me.listarDatos();
                 me.tpAccion=0;
-                // me.borrar();
+                me.borrar();
             })
             .catch(function(error){
                 console.log(error.message);
             })
         },
-        actualizarVehi() {
+        openActualizar(data=[]) {
             this.tpAccion = 1;
+            this.boton = false;
             this.tittle = "Actualizar Vehículo";
+            this.idVehi = data["idVehi"];
+            this.placa = data["placa"];
+            this.marca = data["marca"];
+            this.color = data["color"];
+            this.idTpVehi = data["idtpv"];
+            this.edo = data["edo"];
+            this.idParq = data["placa"];
+            this.idPers = data["idper"];
         },
-        verVehi() {
-            alert("Botón ver ok");
+        actualizarVehi() {
+            let me= this;
+            var url="/api/vehiculo/actualizar";
+            axios.put(url,
+            {
+                id:this.idVehi,
+                placa: this.placa,
+                marca: this.marca,
+                color: this.color,
+                edo: this.edo,
+                idTpVehi: this.idTpVehi,
+                idPers: this.idPers,
+            }
+            ).then(function(response)
+            {
+                alert("Registro guardado exitosamente!");
+                me.listarDatos();
+                me.tpAccion=0;
+                me.borrar();
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
+        },
+        verVehi(data=[]) {
+             this.tpAccion = 3;
+            this.boton = false;
+            this.tittle = "información del Vehículo";
+            this.idVehi = data["idVehi"];
+            this.placa = data["placa"];
+            this.marca = data["marca"];
+            this.color = data["color"];
+            this.idTpVehi = data["idtpv"];
+            this.edo = data["edo"];
+            this.idParq = data["placa"];
+            this.idPers = data["idper"];
         },
         eliminarVehi() {
+            this.tpAccion=2;
+            this.tittle="eliminar vehículo"
             alert("Botón inactivar ok");
         },
         listarTpVehi() {
@@ -424,11 +691,21 @@ export default defineComponent({
         cerrarReg() {
             this.tpAccion = 0;
         },
+        borrar(){
+            this.placa= "",
+            this.marca= "",
+            this.color= "",
+            this.idTpVehi= "",
+            this.edo= "",
+            this.idParq= "",
+            this.idPers= ""
+        },
     },
     mounted(){
         this.listarTpVehi();
         this.listarNumParq();
         this.listarPersonas();
+        this.listarDatos();
     },
 });
 

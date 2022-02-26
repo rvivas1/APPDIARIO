@@ -13,7 +13,7 @@ class OficinaLocalController extends Controller
     public function indexData(){
         $ofiLoc=OficinaLocal::join('actividad_economicas','oficina_locals.id_actEco','=','actividad_economicas.id')
         ->select('oficina_locals.numero','oficina_locals.tel','oficina_locals.razon_social as Nombre',
-        'oficina_locals.horario','oficina_locals.ubicacion','oficina_locals.estado',
+        'oficina_locals.horario','oficina_locals.ubicacion','oficina_locals.estado','oficina_locals.id as idOfiLoc',
         'actividad_economicas.descripcion as Actividad_económica')->get();
         return ['ofiLoc'=>$ofiLoc];
     }
@@ -29,6 +29,7 @@ class OficinaLocalController extends Controller
     
     public function store(Request $request){
         $ofiLoc= new OficinaLocal();
+        $ofiLoc->tipo=$request->tipo;
         $ofiLoc->numero=$request->num;
         $ofiLoc->tel=$request->tel;
         $ofiLoc->nit=$request->nit;
@@ -48,6 +49,8 @@ class OficinaLocalController extends Controller
     }
     public function update(Request $request){
         $ofiLoc= OficinaLocal::findOrFail($request->id);
+        $ofiLoc->numero=$request->num;
+        $ofiLoc->tipo=$request->tipo;
         $ofiLoc->tel=$request->tel;
         $ofiLoc->nit=$request->nit;
         $ofiLoc->razon_social=$request->raSocial;

@@ -10,16 +10,14 @@ class ParqueaderoController extends Controller
 {
     //
     public function indexData(){
-        $parqueadero=Parqueadero::join(
-        'oficina_locals',
-        'parqueaderos.id_ofLoc',
-        '=','oficina_locals.id')
+        $parqueadero=Parqueadero::join('oficina_locals','parqueaderos.id_ofLoc','=','oficina_locals.id')
         ->select(
-        'parqueaderos.numero','parqueaderos.tipo','parqueaderos.ubicacion',
-        'parqueaderos.repre_propie as Representante','parqueaderos.propio_arrendado',
-        'parqueaderos.permite_carro as Carro','parqueaderos.permite_moto as Moto',
-        'parqueaderos.disp_venta as Venta','parqueaderos.disp_alquiler as Alquiler',
-        'oficina_locals.numero as Oficina','parqueaderos.estado')
+        'parqueaderos.numero','parqueaderos.tipo','parqueaderos.ubicacion','parqueaderos.id as idParq',
+        'parqueaderos.repre_propie as titular','parqueaderos.propio_arrendado',
+        'parqueaderos.permite_carro as carro','parqueaderos.permite_moto as moto',
+        'parqueaderos.disp_venta as venta','parqueaderos.disp_alquiler as alquiler',
+        'oficina_locals.numero as num','oficina_locals.razon_social as nombre',
+        'oficina_locals.id as idof','parqueaderos.estado')
         ->get();
         return['parqueadero'=>$parqueadero]; 
     }
@@ -52,6 +50,9 @@ class ParqueaderoController extends Controller
     }
     public function update(Request $request){
         $parqueadero=Parqueadero::FindOrFail($request->id);
+        $parqueadero->numero=$request->num;
+        $parqueadero->tipo=$request->tipo;
+        $parqueadero->ubicacion=$request->ubic;
         $parqueadero->repre_propie=$request->repProp;
         $parqueadero->propio_arrendado=$request->propArren;
         $parqueadero->estado=$request->edo;
@@ -59,7 +60,6 @@ class ParqueaderoController extends Controller
         $parqueadero->permite_carro=$request->carro;
         $parqueadero->disp_venta=$request->dispVen;
         $parqueadero->disp_alquiler=$request->dispAlq;
-
         $parqueadero->id_ofLoc=$request->idOfLoc;
 
         $parqueadero->save();

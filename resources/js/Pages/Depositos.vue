@@ -12,8 +12,7 @@
                 <sidebar />
                 <div class="w-full lg:w-5/6">
                     <div
-                        class="font-semibold mt-5 text-3xl ml-2 text-red-800 uppercase leading-tight"
-                    >
+                        class="font-semibold mt-5 text-3xl ml-2 text-red-800 uppercase leading-tight">
                         <h1>gestionar depósitos</h1>
                     </div>
                     <div class="bg-grey-200 shadow-md rounded my-6">
@@ -57,7 +56,7 @@
                             </thead>
                             <tbody class="text-rojito text-lg font-light">
                                 <tr
-                                    v-for="(objeto, index) in deposito"
+                                    v-for="(objeto, index) in arrayData"
                                     :key="index"
                                     class="border-b border-gray-200 hover:bg-gray-100"
                                 >
@@ -108,7 +107,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verDep"
+                                                    @click="verDep(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -132,7 +131,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="actualizarDep"
+                                                    @click="openActualizar(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -203,7 +202,7 @@
                                     <input
                                         v-model="ubic"
                                         class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id=""
+                                        id="ubic"
                                         type="text"
                                         placeholder="Ingrese la ubicación del depósito"/>
                                 </div>
@@ -247,7 +246,7 @@
                                         <select
                                             v-model="idOfLoc"
                                             class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="estado">
+                                            name="">
                                             <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
                                                 {{objeto.numero}}
                                                 </option>
@@ -309,7 +308,7 @@
                                                 value="1"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
-                                                name="sfg"
+                                                name=""
                                                 checked/>
                                             <div class="title text-rojito px-2 my-auto">
                                                 Alquiler
@@ -319,10 +318,10 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                                 v-model="dispVent"
-                                                value="0"
+                                                value="1"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
-                                                name="sfg"
+                                                name=""
                                                 checked/>
                                             <div class="title text-rojito px-2 my-auto">
                                                 Venta
@@ -372,14 +371,290 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-red-800 mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
+                                v-if="boton"
                                 @click="regDeposito"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
+                            </button>
+                            <button
+                                v-if="boton==false"
+                                @click="actualizarDep"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                Actualizar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 2" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div
+                            class="flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-transparent">
+                            <div
+                                class="flex flex-col p-8 bg-gray-800 shadow-md hover:shodow-lg rounded-2xl">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="w-16 h-16 rounded-2xl p-3 border border-gray-800 text-blue-400 bg-gray-900"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                        <div class="flex flex-col ml-3">
+                                            <div
+                                                class="font-medium leading-none text-xl text-white">
+                                                Inactivar?
+                                            </div>
+                                            <p
+                                                class="text-lg text-white leading-none mt-1">
+                                                Para inactivar, click en el
+                                                botón aceptar
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <button
+                                        @click="cerrarReg"
+                                        class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
+                                        Aceptar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-if="tpAccion == 3" class="overflow-x-auto mb-4">
+            <div
+                class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden">
+                <sidebar />
+                <div class="lg:w-5/6">
+                    <div class="bg-grey-200 shadow-md rounded my-6">
+                        <div
+                            class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
+                            <h2 v-text="tittle"></h2>
+                        </div>
+                        <div class="max-w-5xl mt-12 mx-auto">
+                            <div class="grid xl:grid-cols-3 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg rounded font-bold text-rojito"
+                                        for="">
+                                        Número
+                                    </label>
+                                    <input
+                                        v-model="numero"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese el número de depósito"/>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Ubicación
+                                    </label>
+                                    <input
+                                        v-model="ubic"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id="ubic"
+                                        type="text"
+                                        placeholder="Ingrese la ubicación del depósito"/>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Medidas
+                                    </label>
+                                    <input
+                                        v-model="medidas"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        id=""
+                                        type="text"
+                                        placeholder="Ingrese medidas en M2"/>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+                                <div class="mb-2 md:mb-0">
+                                    <div class="mb-4 md:mr-2 md:mb-0">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito">
+                                            Titular
+                                        </label>
+                                        <input
+                                            v-model="repProp"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            id=""
+                                            type="text"
+                                            placeholder="Representante legal"/>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex sm:flex-row items-center mb-2 sm:space-x-5">
+                                    <div class="w-full md:mr-2">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            N° Oficina / Local
+                                        </label>
+                                        <select
+                                            v-model="idOfLoc"
+                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name="">
+                                            <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
+                                                {{objeto.numero}}
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-2 mb-1 xl:gap-6">
+                                <div class="mb-2 md:mb-0">
+                                    <div class="mb-1 md:mr-1 md:mb-0">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Estado del depósito
+                                        </label>
+                                        <textarea
+                                            v-model="cond"
+                                            name="body"
+                                            cols="53"
+                                            rows="3"
+                                            placeholder="Condiciones fisicas del depósito"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            maxlength="600">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="mb-2 md:mb-0">
+                                    <div class="mb-1 md:mr-2 md:mb-0">
+                                        <label
+                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            for="">
+                                            Contenido del depósito
+                                        </label>
+                                        <textarea
+                                            v-model="cont"
+                                            name="body"
+                                            cols="53"
+                                            rows="3"
+                                            placeholder="Contenido del depósito"
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            maxlength="600">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid xl:grid-cols-2 xl:gap-6">
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Disponible para
+                                    </label>
+                                    <div
+                                        class="main flex mt-1 border rounded-full overflow-hidden select-none">
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
+                                            <input
+                                                v-model="dispAlq"
+                                                value="1"
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name=""
+                                                checked/>
+                                            <div class="title text-rojito px-2 my-auto">
+                                                Alquiler
+                                            </div>
+                                        </label>
+                                        <label
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
+                                            <input
+                                                v-model="dispVent"
+                                                value="1"
+                                                class="my-auto transform scale-125"
+                                                type="checkbox"
+                                                name=""
+                                                checked/>
+                                            <div class="title text-rojito px-2 my-auto">
+                                                Venta
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-4 md:mr-2 md:mb-0">
+                                    <label
+                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        for="">
+                                        Estado
+                                    </label>
+                                    <div
+                                        class="main flex border mt-0 rounded-full overflow-hidden select-none">
+                                        <label
+                                            class="flex radio p-2 cursor-pointer">
+                                            <input
+                                                v-model="edo"
+                                                value="1"
+                                                class="my-auto transform scale-125"
+                                                type="radio"
+                                                name="sfg"/>
+                                            <div
+                                                class="ml-3 text-rojito text-lg font-medium">
+                                                Activo
+                                            </div>
+                                        </label>
+                                        <label
+                                            class="flex radio p-2 cursor-pointer">
+                                            <input
+                                                v-model="edo"
+                                                value="0"
+                                                class="my-auto transform scale-125"
+                                                type="radio"
+                                                name="sfg"/>
+                                            <div
+                                                class="ml-3 text-rojito text-lg font-medium">
+                                                Inactivo
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center mt-9 ...">
+                            <button
+                                @click="cerrarReg"
+                                type="buttom"
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                Salir
                             </button>
                         </div>
                     </div>
@@ -402,25 +677,44 @@ export default defineComponent({
     data() {
         return {
             tpAccion: 0,
+            tittle: "",
+            boton: true,
             numero: "",
             ubic: "",
             repProp: "",
             cond: "",
             cont: "",
-            edo: 0,
+            edo: "",
             medidas: "",
-            dispVent: 0,
-            dispAlq: 0,
-            idOfLoc: "",
+            dispVent: "",
+            dispAlq: "",
+            idOfLoc: 0,
+            idDep: 0,
             arrayOfiLoc: [],
+            arrayData: [],
 
         };
     },
     props: ["deposito"],
     methods: {
+        listarDatos(){
+            let me = this;
+            var url="/api/deposito/main"
+
+            axios.get(url)
+            .then(function(response) {
+                var respuesta=response.data;
+                me.arrayData = respuesta.deposito;
+            })
+            .catch(function(error){
+                console.log(error);
+            })
+        },
         abrirReg() {
             this.tittle = "Crear Depósito";
             this.tpAccion = 1;
+            this.boton = true;
+            this.borrar();
         },
         regDeposito() {
              let me= this;
@@ -441,6 +735,51 @@ export default defineComponent({
             ).then(function(response)
             {
                 alert("Registro guardado exitosamente!");
+                me.listarDatos();
+                me.tpAccion=0;
+                // me.borrar();
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
+        },
+        openActualizar(data=[]) {
+            this.tpAccion = 1;
+            this.tittle = "Actualizar Depósito";
+            this.boton=false;
+            this.idDep =data["id"];
+            this.numero = data["numero"];
+            this.ubic = data["ubicacion"];
+            this.repProp = data["repre_propie"];
+            this.cond = data["condicion"];
+            this.cont = data["contenido"];
+            this.edo = data["estado"];
+            this.medidas = data["medidas"];
+            this.dispVent = data["disp_venta"];
+            this.dispAlq = data["disp_alquiler"];
+            this.idOfLoc = data["id_ofLoc"];
+        },
+        actualizarDep() {
+             let me= this;
+            var url="/api/deposito/actualizar";
+            axios.put(url,
+            {
+                id: this.idDep,
+                numero: this.numero,
+                ubic: this.ubic,
+                repProp: this.repProp,
+                cond: this.cond,
+                cont: this.cont,
+                edo: this.edo,
+                medidas: this.medidas,
+                dispVent: this.dispVent,
+                dispAlq: this.dispAlq,
+                idOfLoc: this.idOfLoc,
+            }
+            ).then(function(response)
+            {
+                alert("Registro actualizado exitosamente!");
+                me.listarDatos();
                 me.tpAccion=0;
                 me.borrar();
             })
@@ -448,14 +787,25 @@ export default defineComponent({
                 console.log(error.message);
             })
         },
-        actualizarDep() {
-            this.tpAccion = 1;
-            this.tittle = "Actualizar Depósito";
-        },
-        verDep() {
-            alert("Botón ver ok");
+        verDep(data=[]) {
+             this.tpAccion = 3;
+            this.tittle = "Informacion del Depósito";
+            this.boton=false;
+            this.idDep =data["id"];
+            this.numero = data["numero"];
+            this.ubic = data["ubicacion"];
+            this.repProp = data["repre_propie"];
+            this.cond = data["condicion"];
+            this.cont = data["contenido"];
+            this.edo = data["estado"];
+            this.medidas = data["medidas"];
+            this.dispVent = data["disp_venta"];
+            this.dispAlq = data["disp_alquiler"];
+            this.idOfLoc = data["id_ofLoc"];
         },
         inactDep() {
+            this.tpAccion=2;
+            this.tittle="inactivar depósito"
             alert("Botón inactivar ok");
         },
         listarOfiLoc() {
@@ -478,10 +828,11 @@ export default defineComponent({
             this.cond= "",
             this.cont= "",
             this.edo= "",
-            this.medidas= 0,
+            this.medidas= "",
             this.dispVent= "",
             this.dispAlq= "",
-            this.idOfLoc= 1
+            this.idOfLoc= "",
+            this.idDep= 0
         },
         cerrarReg() {
             this.tpAccion = 0;
@@ -489,6 +840,7 @@ export default defineComponent({
     },
     mounted(){
         this.listarOfiLoc();
+        this.listarDatos();
     }
 });
 </script>

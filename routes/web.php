@@ -78,6 +78,7 @@ Route::middleware(['auth:sanctum'])->get('/api/persona/getpersona',[PersonaContr
 Route::middleware(['auth:sanctum'])->get('/api/parqueadero',[ParqueaderoController::class,'index'])->name('parqueadero');
 
 Route::middleware(['auth:sanctum'])->get('/api/parqueadero/main',[ParqueaderoController::class,'indexMain']);
+Route::middleware(['auth:sanctum'])->get('/api/parqueadero/data',[ParqueaderoController::class,'indexData']);
 
 Route::middleware(['auth:sanctum'])->post('/api/parqueadero/registrar',[ParqueaderoController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/parqueadero/actualizar', [ParqueaderoController::class, 'update']);
@@ -96,6 +97,7 @@ Route::middleware(['auth:sanctum'])->get('/api/parqueadero/getfiltro',[Parqueade
 
 //::::::::: ROUTES DEPOSITOS >>>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/deposito',[DepositoController::class,'index'])->name('deposito');
+Route::middleware(['auth:sanctum'])->get('/api/deposito/main',[DepositoController::class,'indexMain']);
 
 // Route::middleware(['auth:sanctum'])->get('/api/deposito/data',[DepositoController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/deposito/registrar',[DepositoController::class,'store']);
@@ -121,6 +123,8 @@ Route::middleware(['auth:sanctum'])->get('/api/autorizacion/getfiltro',[Autoriza
 Route::middleware(['auth:sanctum'])->get('/api/vehiculo',[VehiculoController::class,'index'])->name('vehiculo');
 
 Route::middleware(['auth:sanctum'])->get('/api/vehiculo/data',[VehiculoController::class,'indexData']);
+Route::middleware(['auth:sanctum'])->get('/api/vehiculo/main',[VehiculoController::class,'indexMain']);
+
 Route::middleware(['auth:sanctum'])->post('/api/vehiculo/registrar',[VehiculoController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/vehiculo/actualizar', [VehiculoController::class, 'update']);
 Route::middleware(['auth:sanctum'])->post('/api/vehiculo/eliminar', [VehiculoController::class, 'destroy']);

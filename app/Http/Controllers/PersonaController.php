@@ -14,9 +14,10 @@ class PersonaController extends Controller
         'tipo_documentos','personas.id_tpDoc','=','tipo_documentos.id')
         ->join('oficina_locals','personas.id_ofLoc','=','oficina_locals.id')
         ->select(
-        'personas.nombre','personas.apellido','tipo_documentos.codigo as Tipo_documento',
-        'personas.num_doc as Identificacion','personas.tel','personas.correo',
-        'oficina_locals.numero as Oficina','personas.estado')
+        'personas.nombre','personas.id as idper','personas.apellido','tipo_documentos.codigo as cod',
+        'tipo_documentos.id as idtd','tipo_documentos.descripcion as desc',
+        'personas.num_doc','personas.tel','personas.tel_alter','personas.correo',
+        'oficina_locals.numero as oficina','oficina_locals.id as idof','personas.estado')
         ->get();
         return['persona'=>$persona];
     }
