@@ -4,10 +4,6 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             </h2>
         </template>
-        <!-- <h1 v-for="(objeto,index) in persona" :key="index">
-                        {{objeto.nombre}}
-                        {{objeto.apellido}}
-                    </h1> -->
         <div v-if="tpAccion == 0" class="overflow-x-auto mb-4">
             <div
                 class="bg-grisFondo flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
@@ -24,15 +20,13 @@
                             <button
                                 type="button d-grid gap-1 d-md-flex"
                                 @click="abrirReg"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3"
-                            >
+                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 <div class="flex sm:flex-cols- gap-2">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         class="h-8 w-6"
                                         viewBox="0 0 24 24 "
-                                        stroke="currentColor"
-                                    >
+                                        stroke="currentColor">
                                         <path
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
@@ -75,9 +69,7 @@
                                         <div class="flex items-center">
                                             <span
                                                 >{{ objeto.nombre + " " +  objeto.apellido }}
-                                                </span
-                                            >
-                                            <!-- <span>{{objeto.apellido}}</span> -->
+                                                </span>
                                         </div>
                                     </td>
                                     <td class="py-3 px-6 text-left">
@@ -359,7 +351,6 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
                             class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>

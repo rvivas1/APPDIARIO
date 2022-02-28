@@ -58,6 +58,7 @@ Route::middleware(['auth:sanctum'])->get('/api/ofiLoc/getfiltro',[OficinaLocalCo
 
 Route::middleware(['auth:sanctum'])->get('/api/ofiLoc/getdisp',[OficinaLocalController::class,'getAlqVent']);
 
+
 //::::::::: ROUTES PERSONAS >>>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/persona',[PersonaController::class,'index'])->name('persona');
 
@@ -71,7 +72,6 @@ Route::middleware(['auth:sanctum'])->put('/api/persona/actualizar', [PersonaCont
 Route::middleware(['auth:sanctum'])->get('/api/persona/getfiltro',[PersonaController::class,'getFiltro']);
 
 Route::middleware(['auth:sanctum'])->get('/api/persona/getpersona',[PersonaController::class,'getPersonas']);
-
 
 
 //::::::::: ROUTES PARQUEADEROS >>>>>>>
@@ -110,6 +110,7 @@ Route::middleware(['auth:sanctum'])->get('/api/deposito/getdisp',[DepositoContro
 Route::middleware(['auth:sanctum'])->get('/api/deposito/getfiltro',[DepositoController::class,'getFiltro']);
 
 
+
 //::::::::: ROUTES AUTORIZACIONES >>>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/autorizacion',[AutorizacionController::class,'index'])->name('autorizacion');
 
@@ -119,6 +120,9 @@ Route::middleware(['auth:sanctum'])->put('/api/autorizacion/actualizar', [Autori
 Route::middleware(['auth:sanctum'])->post('/api/autorizacion/eliminar',[AutorizacionController::class,'destroy']);
 
 Route::middleware(['auth:sanctum'])->get('/api/autorizacion/getfiltro',[AutorizacionController::class,'getFiltro']);
+
+
+
 
 //::::::::: ROUTES VEHICULOS >>>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/vehiculo',[VehiculoController::class,'index'])->name('vehiculo');
@@ -136,7 +140,6 @@ Route::middleware(['auth:sanctum'])->get('/api/vehiculo/getfiltro',[VehiculoCont
 Route::middleware(['auth:sanctum'])->get('/api/detalleVp',[DetVehiParqController::class,'index']);
 Route::middleware(['auth:sanctum'])->post('/api/detalleVp/registrar',[DetVehiParqController::class, 'store']);
 Route::middleware(['auth:sanctum'])->put('/api/detalleVp/actualizar', [DetVehiParqController::class, 'update']);
-
 
 //:::::::::ACTIVIDAD ECONOMICA >>>>>>
 Route::middleware(['auth:sanctum'])->get('/api/actEco/getActv',[ActividadEconomicaController::class,'getActiv']);

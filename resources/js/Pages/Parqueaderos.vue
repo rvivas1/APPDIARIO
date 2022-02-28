@@ -186,13 +186,11 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
                             class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight"
                         >
                             <h2 v-text="tittle"></h2>
                         </div>
-                        <!-- This is an example component -->
                         <div class="max-w-5xl mt-12 mx-auto">
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
@@ -872,10 +870,7 @@ export default defineComponent({
             this.propArren = data['propio_arrendado'];
             this.edo = data['estado'];
             this.idOfLoc = data['idof'];
-            // this.moto = data['moto'];
-            // this.carro = data['carro'];
-            // this.dispVen = data['venta'];
-            // this.dispAlq = data['alquiler'];
+            
         },
         actualizarParq() {
             let me = this;
@@ -924,10 +919,6 @@ export default defineComponent({
             this.moto=true;
             else
             this.moto=false;
-            // this.dispVen="1" ? true : false;
-            // this.dispAlq="1" ? true : false;
-            // this.moto="1" ? true : false;
-            // this.carro="1" ? true : false;
 
             this.tpAccion = 3;
             this.tittle = "información del Parqueadero";
@@ -938,10 +929,6 @@ export default defineComponent({
             this.repProp = data['titular'];
             this.propArren = data['propio_arrendado'];
             this.edo = data['estado'];
-            // this.moto = data['moto'];
-            // this.carro = data['carro'];
-            // this.dispVen = data['venta'];
-            // this.dispAlq = data['alquiler'];
             this.idOfLoc = data['idof'];
         },
         inactParq() {

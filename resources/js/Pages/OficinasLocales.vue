@@ -1,15 +1,6 @@
 <template>
     <app-layout title="OficinasLocales">
         <template #header> </template>
-
-        <!-- <h1 v-for="(objeto,index) in ofiLoc" :key="index">
-                        {{objeto.razon_social}}
-                    </h1> -->
-        <!-- Sidebar starts -->
-        <!-- Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] -->
-
-        <!-- Sidebar ends -->
-        <!-- Remove class [ h-64 ] when adding a card block -->
         <div v-if="tpAccion == 0" class="overflow-x-auto mb-4">
             <div
                 class="bg-grisFondo flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
@@ -200,7 +191,6 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-600 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
                             class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
@@ -500,7 +490,6 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-200 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
                             class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>

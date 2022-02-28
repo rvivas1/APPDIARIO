@@ -1,10 +1,6 @@
 <template>
     <app-layout title="Depositos">
         <template #header> </template>
-
-        <!-- <h1 v-for="(objeto,index) in deposito" :key="index">
-                        {{objeto.numero}}
-                    </h1> -->
         <div v-if="tpAccion == 0" class="overflow-x-auto">
             <div
                 class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
@@ -770,8 +766,7 @@ export default defineComponent({
             this.edo = data["estado"];
             this.medidas = data["medidas"];
             this.idOfLoc = data["id_ofLoc"];
-            // this.dispVent = data["disp_venta"];
-            // this.dispAlq = data["disp_alquiler"];
+           
         },
         actualizarDep() {
              let me= this;

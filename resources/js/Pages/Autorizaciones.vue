@@ -1,10 +1,7 @@
 <template>
     <app-layout title="Autorizaciones">
         <template #header> </template>
-
-        <!-- <h1 v-for="(objeto,index) in autorizacion" :key="index">
-                        {{objeto.descripcion}}
-                    </h1> -->
+        
         <div v-if="tpAccion == 0" class="overflow-x-auto mb-4">
             <div
                 class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
@@ -470,12 +467,10 @@
         </div>
     </app-layout>
 </template>
-
 <script>
 import { defineComponent } from "vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 import Sidebar from "@/Layouts/Sidebar.vue";
-
 export default defineComponent({
     components: {
         AppLayout,
