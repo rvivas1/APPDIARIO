@@ -3,19 +3,22 @@
 
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <jet-application-logo />
+        <label class=" line-height:4rem uppercase text-justify-center">
+            <span class="ml-2 text-2xl text-verde">inicio de sesión</span>
+        </label>
         </template>
 
         <jet-validation-errors class="mb-4" />
+        
 
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+        <div v-if="status" class="mb-4 font-family text-xl text-verde">
             {{ status }}
         </div>
-
         <form @submit.prevent="submit">
             <div>
                 <jet-label for="email" value="Correo" />
-                <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus />
+                <jet-input id="email" type="email" class="text-lg text-rojito mt-1 block w-full" v-model="form.email" required autofocus />
             </div>
 
             <div class="mt-4">
@@ -46,7 +49,7 @@
 <script>
     import { defineComponent } from 'vue'
     import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
+    import JetApplicationLogo from '@/Jetstream/ApplicationLogo.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import JetInput from '@/Jetstream/Input.vue'
     import JetCheckbox from '@/Jetstream/Checkbox.vue'
@@ -58,7 +61,7 @@
         components: {
             Head,
             JetAuthenticationCard,
-            JetAuthenticationCardLogo,
+            JetApplicationLogo,
             JetButton,
             JetInput,
             JetCheckbox,

@@ -315,7 +315,7 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg" >
                                             <input
                                                 v-model="carro"
-                                                value=""
+                                                value="1"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="carro"
@@ -421,21 +421,21 @@
                                 <button
                                     @click="cerrarReg"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-3 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-rojito text-rojito mr-6 pt-1 pb-1 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                     Cancelar
                                 </button>
                                 <button
                                     @click="regParq"
                                     v-if="boton"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-2 mt-3 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde pt-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Guardar
                                 </button>
                                 <button
                                     @click="actualizarParq"
                                     v-if="boton==false"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-2 mt-3 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde  pt-1 pb-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Actualizar
                                 </button>
                             </div>
@@ -519,30 +519,30 @@
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-2xl font-bold text-rojito"
+                                        for="">
                                         Número
                                     </label>
                                     <input
                                         v-model="num"
+                                        disabled
                                         class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Número de parqueadero"/>
+                                        type="label"/>
                                 </div>
                                 <div
                                     class="flex sm:flex-row items-center mb-2 sm:space-x-5"
                                 >
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            class="block mt-2 text-2xl font-bold text-rojito"
                                             for="">
                                             Oficina / Local
                                         </label>
                                         <select
                                             v-model="idOfLoc"
-                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            disabled
+                                            class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado">
                                             <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
                                                 {{objeto.numero}}
@@ -553,7 +553,7 @@
                                 </div>
                                 <div class="mb-2 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Tipo
                                     </label>
@@ -562,7 +562,8 @@
                                         <div class="w-full">
                                             <select
                                                 v-model="tipo"
-                                                class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                disabled
+                                                class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="tipo">
                                                 <option value="1">Doble</option>
                                                 <option value="0">Sencillo</option>
@@ -574,35 +575,35 @@
                             <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Ubicación
                                     </label>
                                     <input
                                     v-model="ubic"
+                                    disabled
                                         class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ubicación del parqueadero"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="" >
                                         Titular
                                     </label>
                                     <input
                                     v-model="repProp"
+                                    disabled
                                         class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Nombre representante legal"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Propio / Arrendado
                                     </label>
@@ -611,7 +612,8 @@
                                         <div class="w-full">
                                             <select
                                                 v-model="propArren"
-                                                class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                disabled
+                                                class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option value="1">
                                                     Propio
@@ -627,7 +629,7 @@
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Permite:
                                     </label>
@@ -637,13 +639,14 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg" >
                                             <input
                                                 v-model="carro"
+                                                disabled
                                                 value=""
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="carro"
                                                 checked/>
                                             <div
-                                                class="title text-rojito px-2 my-auto">
+                                                class="title tex-xl text-rojito px-2 my-auto">
                                                 Carro
                                             </div>
                                         </label>
@@ -651,13 +654,14 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                                 v-model="moto"
+                                                disabled
                                                 value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="moto"
                                                 checked />
                                             <div
-                                                class="title text-rojito px-2 my-auto">
+                                                class="title text-xl text-rojito px-2 my-auto">
                                                 Moto
                                             </div>
                                         </label>
@@ -665,7 +669,7 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Disponible para:
                                     </label>
@@ -675,27 +679,29 @@
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
                                                 v-model="dispAlq"
+                                                disabled
                                                 value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
                                                 checked/>
                                             <div
-                                                class="title text-rojito px-2 my-auto">
+                                                class="title text-xl text-rojito px-2 my-auto">
                                                 Alquiler
                                             </div>
                                         </label>
                                         <label
                                             class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
-                                            v-model="dispVen"
+                                                v-model="dispVen"
+                                                disabled
                                                 value="0"
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
                                                 checked/>
                                             <div
-                                                class="title text-rojito px-2 my-auto">
+                                                class="title text-xl text-rojito px-2 my-auto">
                                                 Venta
                                             </div>
                                         </label>
@@ -703,7 +709,7 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 mb-0 text-xl text-rojito font-bold"
+                                        class="block mt-2 mb-0 text-2xl text-rojito font-bold"
                                         for="">
                                         Estado
                                     </label>
@@ -713,12 +719,13 @@
                                             class="flex radio p-2 cursor-pointer">
                                             <input
                                                 v-model="edo"
+                                                disabled
                                                 value="1"
                                                 class="my-auto transform scale-125"
                                                 type="radio"
                                                 name="sfg"/>
                                             <div
-                                                class="ml-3 text-rojito text-lg font-medium">
+                                                class="ml-3 text-rojito text-xl font-medium">
                                                 Activo
                                             </div>
                                         </label>
@@ -726,12 +733,13 @@
                                             class="flex radio p-2 cursor-pointer" >
                                             <input
                                                 v-model="edo"
+                                                disabled
                                                 value="0"
                                                 class="my-auto transform scale-125"
                                                 type="radio"
                                                 name="sfg"/>
                                             <div
-                                                class="ml-3 text-rojito text-lg font-medium">
+                                                class="ml-3 text-xl text-rojito text-lg font-medium">
                                                 Inactivo
                                             </div>
                                         </label>
@@ -743,8 +751,8 @@
                                 <button
                                     @click="cerrarReg"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
-                                    Salir
+                                    class="pl-5 pr-5 bg-white border-2 border-red-800 text-rojito pt-1 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    SALIR
                                 </button>
                             </div>
                         </div>
@@ -777,11 +785,11 @@ export default defineComponent({
             repProp: "",
             propArren: "",
             edo: "",
-            moto: "",
-            carro: "",
+            moto: false,
+            carro: false,
             idParq: 0,
-            dispVen: "",
-            dispAlq: "",
+            dispVen: false,
+            dispAlq: false,
             idOfLoc: 0,
             arrayOfiLoc: [],
             arrayData: []
@@ -835,6 +843,24 @@ export default defineComponent({
                 });
         },
         openActualizar(data=[]) {
+            if(data["venta"]=="1")
+            this.dispVen=true;
+            else
+            this.dispVen=false;
+
+            if(data["alquiler"]=="1")
+            this.dispAlq=true;
+            else
+            this.dispAlq=false;
+            if(data["carro"]=="1")
+            this.carro=true;
+            else
+            this.carro=false;
+
+            if(data["moto"]=="1")
+            this.moto=true;
+            else
+            this.moto=false;
             this.tpAccion = 1;
             this.tittle = "Actualizar Parqueadero";
             this.boton=false;
@@ -845,11 +871,11 @@ export default defineComponent({
             this.repProp = data['titular'];
             this.propArren = data['propio_arrendado'];
             this.edo = data['estado'];
-            this.moto = data['moto'];
-            this.carro = data['carro'];
-            this.dispVen = data['venta'];
-            this.dispAlq = data['alquiler'];
             this.idOfLoc = data['idof'];
+            // this.moto = data['moto'];
+            // this.carro = data['carro'];
+            // this.dispVen = data['venta'];
+            // this.dispAlq = data['alquiler'];
         },
         actualizarParq() {
             let me = this;
@@ -880,9 +906,31 @@ export default defineComponent({
                 });
         },
         verParq(data=[]) {
+            if(data["venta"]=="1")
+            this.dispVen=true;
+            else
+            this.dispVen=false;
+
+            if(data["alquiler"]=="1")
+            this.dispAlq=true;
+            else
+            this.dispAlq=false;
+            if(data["carro"]=="1")
+            this.carro=true;
+            else
+            this.carro=false;
+
+            if(data["moto"]=="1")
+            this.moto=true;
+            else
+            this.moto=false;
+            // this.dispVen="1" ? true : false;
+            // this.dispAlq="1" ? true : false;
+            // this.moto="1" ? true : false;
+            // this.carro="1" ? true : false;
+
             this.tpAccion = 3;
             this.tittle = "información del Parqueadero";
-            this.boton=false;
             this.idParq = data['idParq'];
             this.num = data['numero'];
             this.tipo = data['tipo'];
@@ -890,10 +938,10 @@ export default defineComponent({
             this.repProp = data['titular'];
             this.propArren = data['propio_arrendado'];
             this.edo = data['estado'];
-            this.moto = data['moto'];
-            this.carro = data['carro'];
-            this.dispVen = data['venta'];
-            this.dispAlq = data['alquiler'];
+            // this.moto = data['moto'];
+            // this.carro = data['carro'];
+            // this.dispVen = data['venta'];
+            // this.dispAlq = data['alquiler'];
             this.idOfLoc = data['idof'];
         },
         inactParq() {
@@ -921,14 +969,16 @@ export default defineComponent({
             this.repProp= "",
             this.propArren= "",
             this.edo= "",
-            this.moto= "",
-            this.carro="",
-            this.dispVen= "",
-            this.dispAlq= "",
-            this.idOfLoc= ""
+            this.moto= false,
+            this.carro=false,
+            this.dispVen= false,
+            this.dispAlq= false,
+            this.idOfLoc= 0,
+            this.idParq= 0
         },
         cerrarReg() {
             this.tpAccion = 0;
+            this.borrar();
         },
     },
     mounted() {

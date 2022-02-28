@@ -147,7 +147,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="inactPersona">
+                                                    @click="abrirInact(objeto)">
                                                     <path
                                                         stroke-linecap="round"
                                                         stroke-linejoin="round"
@@ -331,21 +331,21 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-rojito text-rojito mr-6 mt-2 mb-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-rojito text-rojito mr-6 pt-1 pb-1 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
                                 v-if="boton"
                                @click="regPersona"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-2 mt-2 mb-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde pt-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
                             </button>
                             <button
                                 v-if="boton==false"
                                @click="actPersona"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-2 mt-2 mb-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde  pt-1 pb-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Actualizar
                             </button>
                         </div>
@@ -428,15 +428,15 @@
                                     class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-lg font-bold text-rojito"
+                                            class="block mt-2 text-2xl font-bold text-rojito"
                                             for="">
                                             Tipo de identificación
                                         </label>
                                         <select
                                             v-model="idTpDoc"
                                             value=""
-                                            placeholder="Seleccione el tipo"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            disabled
+                                            class="w-full px-3 py-2 text-xl text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                             name="none">
                                             <option v-for="(objeto,index) in arraytpDoc" :key="index" :value="objeto.id">
                                                 {{objeto.codigo}}.
@@ -447,95 +447,95 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold"
+                                        class="block mt-2 text-2xl text-rojito font-bold"
                                         for="">
                                         Número
                                     </label>
                                     <input
                                         v-model="numDoc"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Número de identificación"
+                                        type="label"
                                         required="required"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold">
+                                        class="block mt-2 text-2xl text-rojito font-bold">
                                         Nombre
                                     </label>
                                     <input
-                                    v-model="nombre"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="nombre"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese nombres"
+                                        type="label"
                                     />
                                 </div>
                             </div>
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for="">
                                         Apellido
                                     </label>
                                     <input
-                                    v-model="apellido"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="apellido"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese apellidos"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for="">
                                         Teléfono celular
                                     </label>
                                     <input
                                     v-model="tel"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="number"
-                                        placeholder="Ingrese número de teléfono"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for="">
                                         Teléfono alterno
                                     </label>
                                     <input
                                     v-model="telAlter"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese número de teléfono"
+                                        type="label"
                                     />
                                 </div>
                             </div>
                             <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for="">
                                         Correo
                                     </label>
                                     <input
                                     v-model="correo"
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                    disabled
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight  border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese correo electrónico"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for="">
                                         Oficina / Local
                                     </label>
@@ -543,8 +543,9 @@
                                         class="flex sm:flex-row items-center mb-1 sm:space-x-5">
                                         <div class="w-full">
                                             <select
-                                            v-model="idOfLoc"
-                                                class="w-full px-3 py-2 text-base text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
+                                                v-model="idOfLoc"
+                                                disabled
+                                                class="w-full px-3 py-2 text-xl text-rojito leading-tight  border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="estado">
                                                 <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
                                                      {{objeto.numero}}-
@@ -556,18 +557,18 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 mb-1 text-xl text-rojito font-bold"
+                                        class="block mt-2 mb-1 text-2xl text-rojito font-bold"
                                         for="">
                                         Estado
                                     </label>
                                     <div class="main flex border mt-0 rounded-full overflow-hidden select-none">
                                     <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" :value="1" class="my-auto transform scale-125" type="radio" name="sfg" />
-                                    <div class="ml-3 text-rojito text-base font-medium">Activo</div>
+                                    <input v-model="edo" :value="1" disabled class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-lg font-medium">Activo</div>
                                 </label>
                                 <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" :value="0" class="my-auto transform scale-125" type="radio" name="sfg" />
-                                    <div class="ml-3 text-rojito text-base font-medium">Inactivo</div>
+                                    <input v-model="edo" :value="0" disabled class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <div class="ml-3 text-rojito text-lg font-medium">Inactivo</div>
                                 </label>
                                 </div>
                                 </div>
@@ -578,7 +579,7 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 border-red-800 text-rojito  pt-1 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 SALIR
                             </button>
                         </div>
@@ -721,10 +722,9 @@ export default defineComponent({
             this.idTpDoc = data["idtd"];
             this.idOfLoc = data["idof"];
         },
-        inactPersona() {
+        abrirInact(data=[]) {
             this.tpAccion=2;
             this.tittle="inactivar persona";
-            alert("Botón inactivar ok");
         },
         cerrarReg() {
             this.tpAccion = 0;

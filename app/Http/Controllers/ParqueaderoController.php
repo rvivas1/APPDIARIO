@@ -18,6 +18,7 @@ class ParqueaderoController extends Controller
         'parqueaderos.disp_venta as venta','parqueaderos.disp_alquiler as alquiler',
         'oficina_locals.numero as num','oficina_locals.razon_social as nombre',
         'oficina_locals.id as idof','parqueaderos.estado')
+        ->orderBy('parqueaderos.estado','desc')
         ->get();
         return['parqueadero'=>$parqueadero]; 
     }

@@ -25,21 +25,6 @@
                                 <jet-nav-link :href="route('ofiLoc')" :active="route().current('ofiLoc')">
                                     Gestiones
                                 </jet-nav-link>
-                                <!-- <jet-nav-link :href="route('parqueadero')" :active="route().current('parqueadero')">
-                                    Parqueaderos
-                                </jet-nav-link> -->
-                                <!-- <jet-nav-link :href="route('deposito')" :active="route().current('deposito')">
-                                    depósitos
-                                </jet-nav-link> -->
-                                <!-- <jet-nav-link :href="route('vehiculo')" :active="route().current('vehiculo')">
-                                    vehículos
-                                </jet-nav-link> -->
-                                <!-- <jet-nav-link :href="route('persona')" :active="route().current('persona')">
-                                    Personas
-                                </jet-nav-link> -->
-                                <!-- <jet-nav-link :href="route('autorizacion')" :active="route().current('autorizacion')">
-                                    Autorizaciones
-                                </jet-nav-link> -->
                             </div>
                         </div>
 

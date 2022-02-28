@@ -174,7 +174,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="openInact"
+                                                    @click="openInact(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -470,21 +470,21 @@
                                 <button
                                     @click="cerrar"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-rojito text-rojito mr-6 pt-1 pb-1 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                     Cancelar
                                 </button>
                                 <button
                                     @click="regOfiLoc"
                                     v-if="boton"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde pt-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Guardar
                                 </button>
                                 <button
                                     @click="actualizarOfiLoc"
                                     v-if="boton==false"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                    class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde  pt-1 pb-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                     Actualizar
                                 </button>
                             </div>
@@ -531,7 +531,7 @@
                                             <div
                                                 class="font-medium leading-none text-xl text-white"
                                             >
-                                                Inactivar?
+                                                Inactivar oficina/local {{num}}?
                                             </div>
                                             <p
                                                 class="text-lg text-white leading-none mt-1"
@@ -547,6 +547,7 @@
                                         Cancelar
                                     </button>
                                     <button
+                                        @click="inactOfiLoc"
                                         class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
                                         Aceptar
                                     </button>
@@ -564,7 +565,6 @@
                 <sidebar />
                 <div class="lg:w-5/6">
                     <div class="bg-grey-600 shadow-md rounded my-6">
-                        <!-- This is an example component -->
                         <div
                             class="font-semibold mt-5 text-3xl ml-2 text-rojito uppercase leading-tight">
                             <h2 v-text="tittle"></h2>
@@ -575,15 +575,18 @@
                                     class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-lg text-rojito font-bold"
+                                            disabled
+                                            class="block mt-2 text-2xl text-rojito font-bold"
                                             for="">
                                             Tipo
                                         </label>
                                         <select
                                             v-model="tipo"
                                             value="2"
-                                            class="disable w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
-                                            name="">
+                                            disabled
+                                            class="disable w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                            name=""
+                                            type="label">
                                             <option value="Oficina">Oficina</option>
                                             <option value="Local">Local</option>
                                         </select>
@@ -591,81 +594,77 @@
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Número
                                     </label>
                                     <input
                                         v-model="num"
                                         disabled
-                                        class="w-full px-3 py-2 text-base text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        class="w-full px-3 py-2 text-lg text-rojito leading-tight border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Número de oficina o local"
-                                    />
+                                        type="label"/>
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold"
-                                    >
+                                        class="block mt-2 text-2xl text-rojito font-bold">
                                         Teléfono
                                     </label>
                                     <input
                                     v-model="tel"
+                                        disabled
                                         class="w-full px-3 py-2 text-base leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese número de teléfono"
-                                    />
+                                        type="label"/>
                                 </div>
                             </div>
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold"
+                                        class="block mt-2 text-2xl text-rojito font-bold"
                                         for="">
                                         Nit
                                     </label>
                                     <input
-                                    v-model="nit"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="nit"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese Nit"
+                                        type="lable"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold "
+                                        class="block mt-2 text-2xl text-rojito font-bold "
                                         for=""
                                     >
                                         Razón social
                                     </label>
                                     <input
-                                    v-model="raSocial"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="raSocial"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese razón social"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-2 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
+                                        for="">
                                         Actividad económica
                                     </label>
                                     <div
                                         class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                         <div class="w-full">
                                             <select
-                                            v-model="idActEco"  
-                                                class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                v-model="idActEco"
+                                                disabled 
+                                                class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="">
                                                 <option v-for="(objeto,index) in arrayAct" :key="index" :value="objeto.id">
                                                     {{objeto.descripcion}}
-                                                    </option> 
+                                                </option> 
                                             </select>
                                         </div>
                                     </div>
@@ -674,36 +673,34 @@
                             <div class="grid xl:grid-cols-3 mb-1 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
                                         for="">
                                         Horario
                                     </label>
                                     <input
-                                    v-model="horario"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="horario"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese horario de atención"
-                                    />
+                                        type="label"/>
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
+                                        for="">
                                         Representante
                                     </label>
                                     <input
-                                    v-model="repProp"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="repProp"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Nombre representante legal"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
                                         for="">
                                         Propio / Arrendado
                                     </label>
@@ -712,8 +709,9 @@
                                     >
                                         <div class="w-full">
                                             <select
-                                            v-model="propArren"
-                                                class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
+                                                v-model="propArren"
+                                                disabled
+                                                class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                                 name="">
                                                 <option value="1">
                                                     Propio
@@ -729,47 +727,45 @@
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
                                         for="firstName">
                                         Ubicación
                                     </label>
                                     <input
-                                    v-model="ubic"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="ubic"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Ingrese la ubicación"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
+                                        for="">
                                         Medidas
                                     </label>
                                     <input
-                                    v-model="medidas"
-                                        class="w-full px-3 py-2 text-sm leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                        v-model="medidas"
+                                        disabled
+                                        class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="text"
-                                        placeholder="Medidas en M2"
+                                        type="label"
                                     />
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-lg text-rojito font-bold text-rojito"
-                                        for=""
-                                    >
+                                        class="block mt-2 text-2xl text-rojito font-bold text-rojito"
+                                        for="">
                                         Disponible para:
                                     </label>
                                     <div
-                                        class="main flex mt-1 border  overflow-hidden select-none"
-                                    >
+                                        class="main flex mt-1 border  overflow-hidden select-none">
                                         <label
-                                            class="flex radio p-2 cursor-pointer font-extralight text-xs">
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
-                                            v-model="dispAlq"
+                                                v-model="dispAlq"
+                                                disabled
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
@@ -780,10 +776,10 @@
                                             </div>
                                         </label>
                                         <label
-                                            class="flex radio p-2 cursor-pointer font-extralight text-xs"
-                                        >
+                                            class="flex radio p-2 cursor-pointer font-extralight text-lg">
                                             <input
-                                            v-model="dispVen"
+                                                v-model="dispVen"
+                                                disabled
                                                 class="my-auto transform scale-125"
                                                 type="checkbox"
                                                 name="sfg"
@@ -799,31 +795,31 @@
                             <div class="grid xl:grid-cols-3 xl:gap-6">
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 mb-3 text-lg text-rojito font-bold text-rojito"
+                                        class="block mt-2 mb-3 text-2xl text-rojito font-bold text-rojito"
                                         for="">
                                         Paz y Salvo
                                     </label>
                                     <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.1.0/dist/flowbite.min.css" />
                                     <label for="toggle-example" class="flex items-center cursor-pointer relative mb-4">
-                                    <input v-model="pazSalv" type="checkbox" id="toggle-example" class="sr-only">
+                                    <input v-model="pazSalv" value="1" type="checkbox" disabled id="toggle-example" class="sr-only">
                                     <div class="toggle-bg bg-gray-400 border-2 border-gray-300 h-7 w-12 rounded-full"></div>
-                                    <span v-if="pazSalv==1" class="ml-3 text-rojito text-base font-medium">Si</span>
+                                    <span v-if="pazSalv==1" class="ml-3 text-rojito text-lg font-medium">Si</span>
                                     <span v-else class="ml-3 text-rojito text-lg font-medium">No</span>
                                     </label>
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 mb-1 text-xl text-rojito font-bold"
+                                        class="block mt-2 mb-1 text-2xl text-rojito font-bold"
                                         for="">
                                         Estado
                                     </label>
                                     <div class="disabled:opacity-75 main flex border mt-0 rounded-full overflow-hidden select-none">
                                     <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" value="1" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <input v-model="edo" value="1" disabled class="my-auto transform scale-125" type="radio" name="sfg" />
                                     <div class="ml-3 text-rojito text-lg font-medium">Activo</div>
                                 </label>
                                 <label class="flex radio p-2 cursor-pointer">
-                                    <input v-model="edo" value="0" class="my-auto transform scale-125" type="radio" name="sfg" />
+                                    <input v-model="edo" value="0" disabled class="my-auto transform scale-125" type="radio" name="sfg" />
                                     <div class="ml-3 text-rojito text-lg font-medium">Inactivo</div>
                                 </label>
                                 </div>
@@ -833,8 +829,8 @@
                                 <button
                                     @click="cerrar"
                                     type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
-                                    Salir
+                                    class="pl-5 pr-5 bg-white border-2 border-red-800 text-rojito  pt-1 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                    SALIR
                                 </button>
                             </div>
                         </div>
@@ -855,6 +851,7 @@ export default defineComponent({
         AppLayout,
         Sidebar,
     },
+
     data() {
         return {
             tpAccion: 0,
@@ -870,10 +867,10 @@ export default defineComponent({
             propArren: 0,
             ubic: "",
             medidas: "",
-            edo: "",
-            dispVen: 0,
-            dispAlq: 0,
-            pazSalv: 0,
+            edo: "1",
+            dispVen: false,
+            dispAlq: false,
+            pazSalv: false,
             idOfiLoc: 0,
             idActEco: 0,
             arrayAct: [],
@@ -909,6 +906,7 @@ export default defineComponent({
                 num: this.num,
                 tel: this.tel,
                 nit: this.nit,
+                tipo: this.tipo,
                 raSocial: this.raSocial,
                 horario: this.horario,
                 repProp: this.repProp,
@@ -933,6 +931,22 @@ export default defineComponent({
             })
         },
         abreActualizar(data = []) {
+
+            if(data["disp_venta"]=="1")
+            this.dispVen=true;
+            else
+            this.dispVen=false;
+
+            if(data["disp_alquiler"]=="1")
+            this.dispAlq=true;
+            else
+            this.dispAlq=false;
+
+            if(data["paz_y_salvo"]=="1")
+            this.pazSalv=true;
+            else
+            this.pazSalv=false;
+
             this.tpAccion = 1;
             this.boton=false;
             this.tittle = "Actualizar Oficina / Local";
@@ -948,9 +962,6 @@ export default defineComponent({
             this.ubic = data["ubicacion"];
             this.medidas = data["medidas"];
             this.edo = data["estado"];
-            this.dispVen = data["disp_venta"];
-            this.dispAlq = data["disp_alquiler"];
-            this.pazSalv = data["paz_y_salvo"];
             this.idActEco = data["id_actEco"];
         },
         actualizarOfiLoc() {
@@ -987,6 +998,17 @@ export default defineComponent({
             })
         },
         verDatos(data = []) {
+
+            if(data["disp_venta"]=="1")
+            this.dispVen=true;
+            else
+            this.dispVen=false;
+
+            if(data["disp_alquiler"]=="1")
+            this.dispAlq=true;
+            else
+            this.dispAlq=false;
+
             this.tpAccion = 3;
             this.boton=false;
             this.tittle = "Información de Oficina / Local";
@@ -1002,20 +1024,57 @@ export default defineComponent({
             this.ubic = data["ubicacion"];
             this.medidas = data["medidas"];
             this.edo = data["estado"];
-            this.dispVen = data["disp_venta"];
-            this.dispAlq = data["disp_alquiler"];
             this.pazSalv = data["paz_y_salvo"];
             this.idActEco = data["id_actEco"];
         },
-        openInact() {
+        openInact(data = []) {
             this.tittle = "Inactivar Oficina / Local";
             this.tpAccion = 2;
+            this.idOfiLoc = data["id"];
+            this.num = data["numero"];
+            this.tipo = data["tipo"];
+            this.propArren = data["propio_arrendado"];
+            this.ubic = data["ubicacion"];
+            this.medidas = data["medidas"];
         },
         inactOfiLoc() {
             this.tpAccion=0;
+            this.edo = "0";
+            let me= this;
+            var url="/api/ofiLoc/actualizar"
+            axios.put(url,
+            {
+                id: this.idOfiLoc,
+                num: this.num,
+                tel: this.tel = null,
+                nit: this.nit = null,
+                tipo: this.tipo,
+                raSocial: this.raSocial = null,
+                horario: this.horario = null,
+                repProp: this.repProp = null,
+                propArren: this.propArren,
+                ubic: this.ubic,
+                medidas: this.medidas,
+                edo: this.edo = "0",
+                dispVen: this.dispVen = "0",
+                dispAlq: this.dispAlq = "0",
+                pazSalv: this.pazSalv = "1",
+                idActEco: this.idActEco = null
+            }
+            ).then(function(response)
+            {
+                me.listarDatos();
+                alert("Registro inactivado exitosamente!");
+                me.cerrar();
+                me.borrar();
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
         },
         cerrar() {
             this.tpAccion = 0;
+            this.borrar();
         },
         borrar() {
             this.num="",
@@ -1027,10 +1086,6 @@ export default defineComponent({
             this.propArren= "",
             this.ubic= "",
             this.medidas= "",
-            this.edo= "",
-            this.dispVen= "",
-            this.dispAlq= "",
-            this.pazSalv= "",
             this.idActEco= 0
         },
         listarActEco() {

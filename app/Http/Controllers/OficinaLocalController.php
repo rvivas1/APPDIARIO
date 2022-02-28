@@ -14,7 +14,9 @@ class OficinaLocalController extends Controller
         $ofiLoc=OficinaLocal::join('actividad_economicas','oficina_locals.id_actEco','=','actividad_economicas.id')
         ->select('oficina_locals.numero','oficina_locals.tel','oficina_locals.razon_social as Nombre',
         'oficina_locals.horario','oficina_locals.ubicacion','oficina_locals.estado','oficina_locals.id as idOfiLoc',
-        'actividad_economicas.descripcion as Actividad_económica')->get();
+        'actividad_economicas.descripcion as Actividad_económica')
+        ->orderBy('oficina_locals.estado','asc')
+        ->get();
         return ['ofiLoc'=>$ofiLoc];
     }
     public function index(){
@@ -23,7 +25,11 @@ class OficinaLocalController extends Controller
         // return['ofiLoc'=>$ofiLoc];
     }
     public function indexMain(){
-        $ofiLoc=OficinaLocal::all();
+        $ofiLoc=OficinaLocal::select('id','estado','numero','nit','ubicacion','tel','tipo',
+        'razon_social','id_actEco','horario','repre_propie','propio_arrendado','medidas',
+        'disp_venta','disp_alquiler','paz_y_salvo','estado')
+        ->orderBy('estado','desc')
+        ->get();
         return['ofiLoc'=>$ofiLoc];
     }
     

@@ -116,6 +116,7 @@ Route::middleware(['auth:sanctum'])->get('/api/autorizacion',[AutorizacionContro
 Route::middleware(['auth:sanctum'])->get('/api/autorizacion/data',[AutorizacionController::class,'indexData']);
 Route::middleware(['auth:sanctum'])->post('/api/autorizacion/registrar',[AutorizacionController::class,'store']);
 Route::middleware(['auth:sanctum'])->put('/api/autorizacion/actualizar', [AutorizacionController::class, 'update']);
+Route::middleware(['auth:sanctum'])->post('/api/autorizacion/eliminar',[AutorizacionController::class,'destroy']);
 
 Route::middleware(['auth:sanctum'])->get('/api/autorizacion/getfiltro',[AutorizacionController::class,'getFiltro']);
 

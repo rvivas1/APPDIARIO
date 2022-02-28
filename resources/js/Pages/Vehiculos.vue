@@ -292,21 +292,21 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                    class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-rojito text-rojito mr-6 pt-1 pb-1 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                                 Cancelar
                             </button>
                             <button
                                 @click="regVehiculo"
                                 v-if="boton"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde pt-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Guardar
                             </button>
                             <button
                                 @click="actualizarVehi"
                                 v-if="boton==false"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-green-800 text-green-800 mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                                class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde  pt-1 pb-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                                 Actualizar
                             </button>
                         </div>
@@ -496,7 +496,7 @@
                                             rows="3"
                                             placeholder="Estado o condiciones del vehículo"
                                             class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                            maxlength="600">
+                                            maxlength="500">
                                         </textarea>
                                     </div>
                                 </div>
@@ -506,8 +506,8 @@
                             <button
                                 @click="cerrarReg"
                                 type="buttom"
-                                class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-1 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
-                                Salir
+                                class="pl-5 pr-5 bg-white border-2 border-red-800 text-rojito  pt-1 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                                SALIR
                             </button>
                         </div>
                     </div>
@@ -540,11 +540,13 @@ export default defineComponent({
             edo: "",
             idParq: "",
             idPers: "",
+            idDet: 0,
             idVehi: 0,
             arrayTpVehi: [],
             arrayParq: [],
             arrayPersona: [],
             arrayData: [],
+            arrayDetParq: []
         };
     },
     props: ["vehiculo"],
@@ -570,6 +572,9 @@ export default defineComponent({
         },
         regVehiculo() {
             let me= this;
+            this.arrayDetParq.push({
+            id_parq: this.idParq
+            });
             var url="/api/vehiculo/registrar";
             axios.post(url,
             {
@@ -579,6 +584,7 @@ export default defineComponent({
                 edo: this.edo,
                 idTpVehi: this.idTpVehi,
                 idPers: this.idPers,
+                data: this.arrayDetParq
             }
             ).then(function(response)
             {
@@ -601,25 +607,31 @@ export default defineComponent({
             this.color = data["color"];
             this.idTpVehi = data["idtpv"];
             this.edo = data["edo"];
-            this.idParq = data["placa"];
+            this.idParq = data["id_parq"];
             this.idPers = data["idper"];
+            this.idDet = data["idDet"]
         },
         actualizarVehi() {
             let me= this;
+            this.arrayDetParq.push({
+            id_parq: this.idParq,
+            idDet: this.idDet
+            });
             var url="/api/vehiculo/actualizar";
             axios.put(url,
             {
-                id:this.idVehi,
+                id: this.idVehi,
                 placa: this.placa,
                 marca: this.marca,
                 color: this.color,
                 edo: this.edo,
                 idTpVehi: this.idTpVehi,
                 idPers: this.idPers,
+                data: this.arrayDetParq
             }
             ).then(function(response)
             {
-                alert("Registro guardado exitosamente!");
+                alert("Registro Actualizado exitosamente!");
                 me.listarDatos();
                 me.tpAccion=0;
                 me.borrar();
@@ -640,6 +652,7 @@ export default defineComponent({
             this.edo = data["edo"];
             this.idParq = data["placa"];
             this.idPers = data["idper"];
+            this.idDet = data["idDet"]
         },
         eliminarVehi() {
             this.tpAccion=2;

@@ -15,7 +15,7 @@ class AutorizacionController extends Controller
         ->join('area_trabajos','tipo_autorizacions.id_aTrab','=','area_trabajos.id')
         ->select('autorizacions.fecha','autorizacions.id as idAut','autorizacions.descripcion as desc',
         'area_trabajos.id as idaTr','area_trabajos.descripcion as area','tipo_autorizacions.descripcion as tipo',
-        'tipo_autorizacions.id as idaut','oficina_locals.numero as oficina','oficina_locals.id as idof')
+        'tipo_autorizacions.id as idat','oficina_locals.numero as oficina','oficina_locals.id as idof')
         ->get();
         return ['autorizacion'=>$autorizacion];
     }
@@ -56,9 +56,8 @@ class AutorizacionController extends Controller
         $autorizacion=Autorizacion::join(
         'tipo_autorizacions','autorizacions.id_tpAuto','=','tipo_autorizacions.id')
         ->join('area_trabajos','tipo_autorizacions.id_aTrab','=','area_trabajos.id')
-        ->select('autorizacions.id',
-        'tipo_autorizacions.descripcion as Tipo','area_trabajos.descripcion as Area',
-        'autorizacions.fecha')
+        ->select('autorizacions.id','tipo_autorizacions.descripcion as Tipo',
+        'area_trabajos.descripcion as Area','autorizacions.fecha')
         ->where('autorizacions.id_tpAuto',$tipoAut)
         ->orWhereBetween('autorizacions.fecha',[$fechaIn,$fechaFin])
         ->get();

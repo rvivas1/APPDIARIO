@@ -94,7 +94,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="verAut"
+                                                    @click="verAut(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -138,7 +138,7 @@
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     stroke="currentColor"
-                                                    @click="eliminarAut"
+                                                    @click="abrirEliminar(objeto)"
                                                 >
                                                     <path
                                                         stroke-linecap="round"
@@ -179,6 +179,7 @@
                                             Área
                                         </label>
                                         <select
+                                            @change="listarTpAut"
                                             v-model="idAreatrab"
                                             class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado">
@@ -267,21 +268,21 @@
                         <button
                             @click="cerrarReg"
                             type="buttom"
-                            class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                            class="pl-5 pr-5 bg-white border-2 text-xl border-rojito text-rojito mr-6 pt-1 pb-1 text-lg rounded-lg hover:bg-rojito hover:text-white focus:border-3">
                             Cancelar
                         </button>
                         <button
                             @click="regAutorizacion"
                             v-if="boton"
                             type="buttom"
-                            class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                            class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde pt-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                             Guardar
                         </button>
                         <button
                             @click="actAutorizacion"
                             v-if="boton==false"
                             type="buttom"
-                            class="pl-5 pr-6 bg-white border-2 border-green-800 text-verde mr-1 mt-2 text-xl rounded-lg hover:bg-verde hover:text-white focus:border-3">
+                            class="pl-5 pr-5 bg-white border-2 text-xl border-green-800 text-verde  pt-1 pb-1 text-lg rounded-lg hover:bg-verde hover:text-white focus:border-3">
                             Actualizar
                         </button>
                     </div>
@@ -320,7 +321,7 @@
                                         <div class="flex flex-col ml-3">
                                             <div
                                                 class="font-medium leading-none text-xl text-white">
-                                                Eliminar?
+                                                Autorizacion: {{nomAut}}
                                             </div>
                                             <p
                                                 class="text-lg text-white leading-none mt-1">
@@ -335,6 +336,7 @@
                                         Cancelar
                                     </button>
                                     <button
+                                    @click="eliminarAut"
                                         class="flex-no-shrink bg-green-500 px-5 ml-4 py-2 text-lg shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-700 text-white rounded-full">
                                         Aceptar
                                     </button>
@@ -345,7 +347,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="tpAccion == 1" class="overflow-x-auto mb-4">
+        <div v-if="tpAccion == 3" class="overflow-x-auto mb-4">
             <div
                 class="bg-gray-200 flex ml-6 justify-center bg-gray-100 font-sans overflow-hidden"
             >
@@ -362,32 +364,33 @@
                                     class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-xl font-bold text-rojito"
+                                            class="block mt-2 text-2xl font-bold text-rojito"
                                             for="">
                                             Área
                                         </label>
-                                        <select
+                                        <select 
                                             v-model="idAreatrab"
+                                            disabled
                                             class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado">
                                             <option v-for="(objeto,index) in arrayareaTrab" :key="index" :value="objeto.id">
                                                 {{objeto.descripcion}}
-                                                </option>
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="mb-4 md:mr-2 md:mb-0">
                                     <label
-                                        class="block mt-2 text-xl font-bold text-rojito"
+                                        class="block mt-2 text-2xl font-bold text-rojito"
                                         for="">
                                         Fecha
                                     </label>
                                     <input
                                         v-model="fecha"
+                                        disabled
                                         class="w-full px-3 py-2 text-xl mb-0 leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                         id=""
-                                        type="date"
-                                        placeholder="Medidas en M2"/>
+                                        type="date"/>
                                 </div>
                             </div>
                              <div class="grid xl:grid-cols-1 xl:gap-6">
@@ -395,17 +398,18 @@
                                     class="flex sm:flex-row items-center mb-2 sm:space-x-5">
                                     <div class="w-full md:mr-2">
                                         <label
-                                            class="block mt-2 text-xl font-bold text-rojito"
+                                            class="block mt-2 text-2xl font-bold text-rojito"
                                             for="">
                                             Tipo de autorización
                                         </label>
                                         <select
                                             v-model="idTpAuto"
+                                            disabled
                                             class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado">
                                             <option v-for="(objeto,index) in arrayTpAut" :key="index" :value="objeto.id">
                                                 {{objeto.descripcion}}
-                                                </option>
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -415,12 +419,13 @@
                                     class="flex sm:flex-row mb-2 sm:space-x-5">
                                     <div class="w-full mt-2 md:mr-2">
                                         <label
-                                            class="block text-xl font-bold text-rojito"
+                                            class="block text-2xl font-bold text-rojito"
                                             for="">
                                             Oficina / Local
                                         </label>
                                         <select
                                             v-model="idOfLoc"
+                                            disabled
                                             class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow focus:outline-none focus:shadow-outline"
                                             name="estado">
                                             <option v-for="(objeto,index) in arrayOfiLoc" :key="index" :value="objeto.id">
@@ -433,17 +438,18 @@
                                 <div class="mb-2 md:mb-0">
                                     <div class="mt-2 md:mr-2 md:mb-0">
                                         <label
-                                            class="block text-xl font-bold text-rojito"
+                                            class="block text-2xl font-bold text-rojito"
                                             for="">
                                             Descripción
                                         </label>
                                         <textarea
                                             v-model="desc"
+                                            disabled
                                             name="body"
                                             cols="75"
                                             rows="3"
                                             placeholder="Escriba aquí la descripcion de la autorización"
-                                            class="w-full px-3 py-2 text-lg leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                                            class="w-full px-3 py-2 text-xl leading-tight text-rojito border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                             maxlength="600">
                                         </textarea>
                                     </div>
@@ -455,8 +461,8 @@
                         <button
                             @click="cerrarReg"
                             type="buttom"
-                            class="pl-5 pr-6 bg-white border-2 border-red-800 text-rojito mr-6 mt-2 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
-                            Salir
+                            class="pl-5 pr-5 bg-white border-2 border-red-800 text-rojito pt-1 text-xl rounded-lg hover:bg-rojito hover:text-white focus:border-3">
+                            SALIR
                         </button>
                     </div>
                 </div>
@@ -483,6 +489,7 @@ export default defineComponent({
             fecha: "",
             desc: "",
             idOfLoc: "",
+            nomAut:"",
             idAut: 0,
             idTpAuto: "",
             idAreatrab: "",
@@ -490,6 +497,7 @@ export default defineComponent({
             arrayOfiLoc: [],
             arrayareaTrab: [],
             arrayData: [],
+            arrayTiposAut: []
         };
     },
     props: ["autorizacion"],
@@ -542,8 +550,9 @@ export default defineComponent({
             this.fecha = data["fecha"];
             this.desc = data["desc"];
             this.idOfLoc = data["idof"];
-            this.idTpAuto = data["idaut"];
+            this.idTpAuto = data["idat"];
             this.idAreatrab = data["idaTr"];
+            this.listarTpAut();
         },
         actAutorizacion() {
              let me= this;
@@ -559,7 +568,7 @@ export default defineComponent({
             }
             ).then(function(response)
             {
-                alert("Registro guardado exitosamente!");
+                alert("Registro actualizado correctamente!");
                 me.listarDatos();
                 me.tpAccion=0;
                 me.borrar();
@@ -568,13 +577,39 @@ export default defineComponent({
                 console.log(error.message);
             })
         },
-        verAut() {
-            alert("Botón ver ok");
+        verAut(data=[]) {
+            this.tpAccion = 3;
+            this.tittle = "información de la Autorización";
+            this.idAut =data["idAut"]
+            this.fecha = data["fecha"];
+            this.desc = data["desc"];
+            this.idOfLoc = data["idof"];
+            this.idTpAuto = data["idat"];
+            this.idAreatrab = data["idaTr"];
+            this.listarTpAut();
         },
-        eliminarAut() {
+        abrirEliminar(data=[]) {
             this.tpAccion=2;
             this.tittle="eliminar autorización"
-            alert("Botón inactivar ok");
+            this.idAut = data['idAut'];
+            this.nomAut = data['tipo'];
+        },
+        eliminarAut() {
+             let me= this;
+            var url="/api/autorizacion/eliminar";
+            axios.post(url,
+            {
+                id: this.idAut,
+            }
+            ).then(function(response)
+            {
+                alert("Registro eliminado correctamente!");
+                me.listarDatos();
+                me.tpAccion=0;
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
         },
         listarOfiLoc() {
         let me = this;
@@ -592,13 +627,27 @@ export default defineComponent({
         },
         listarTpAut() {
         let me = this;
-        var url = "/api/tipoAut/getTpAuto";
+        var url = "/api/tipoAut/getTpAuto?id_at=" + this.idAreatrab;
 
         axios
             .get(url)
             .then(function (response) {
             var respuesta = response.data;
             me.arrayTpAut = respuesta.tipoAut;
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
+        },
+        listarTiposAut() {
+        let me = this;
+        var url = "/api/tipoAut/getTiposAut";
+
+        axios
+            .get(url)
+            .then(function (response) {
+            var respuesta = response.data;
+            me.arrayTiposAut = respuesta.tipoAut;
             })
             .catch(function (error) {
             console.log(error);
@@ -620,6 +669,7 @@ export default defineComponent({
         },
         cerrarReg() {
             this.tpAccion = 0;
+            this.borrar();
         },
         borrar() {
             this.fecha="";
@@ -627,14 +677,14 @@ export default defineComponent({
             this.idOfLoc="";
             this.idTpAuto="";
             this.idAreatrab="";
+            this.idAut = 0;
         },
     },
     mounted(){
         this.listarOfiLoc();
-        this.listarTpAut();
+        // this.listarTpAut();
         this.listarAreaTrab();
         this.listarDatos();
-
     },
 });
 </script>

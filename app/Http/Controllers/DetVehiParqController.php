@@ -13,8 +13,6 @@ class DetVehiParqController extends Controller
         $detalleVp=DetVehiParq::all();
         return['detalleVp'=>$detalleVp];
     }
-
-
     public function store(Request $request){
         $detalleVp= new DetVehiParq();
 

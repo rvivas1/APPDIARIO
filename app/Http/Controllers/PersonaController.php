@@ -18,6 +18,7 @@ class PersonaController extends Controller
         'tipo_documentos.id as idtd','tipo_documentos.descripcion as desc',
         'personas.num_doc','personas.tel','personas.tel_alter','personas.correo',
         'oficina_locals.numero as oficina','oficina_locals.id as idof','personas.estado')
+        ->orderBy('personas.estado','desc')
         ->get();
         return['persona'=>$persona];
     }
